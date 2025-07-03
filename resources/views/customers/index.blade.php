@@ -313,7 +313,7 @@
                         <div class="flex items-center">
                             <div class="flex flex-col">
                                 <div class="flex items-center">
-                                    @if(isset($customer->total_penalty) && $customer->total_penalty > 0)
+                                    @if(($customer->total_penalty ?? 0) > 0)
                                     <span
                                         class="text-lg font-black text-red-400 group-hover:text-red-300 transition-colors"
                                         title="Rp {{ number_format($customer->total_penalty, 0, ',', '.') }}">
@@ -338,7 +338,7 @@
                                     </div>
                                     @endif
                                 </div>
-                                @if(isset($customer->total_penalty) && $customer->total_penalty > 0)
+                                @if(($customer->total_penalty ?? 0) > 0)
                                 <div class="text-xs text-red-300 mt-1 bg-red-900/30 px-2 py-0.5 rounded-full">Tunggakan
                                 </div>
                                 @else
@@ -423,7 +423,7 @@
                     <div class="text-right">
                         <div class="text-2xl font-black text-emerald-300">{{ $customer->containers_count ?? 0 }}</div>
                         <div class="text-xs text-slate-400">peti kemas</div>
-                        @if(isset($customer->total_penalty) && $customer->total_penalty > 0)
+                        @if(($customer->total_penalty ?? 0) > 0)
                         <div class="text-lg font-black text-red-400 mt-1">Rp {{ number_format($customer->total_penalty,
                             0, ',', '.') }}</div>
                         <div class="text-xs text-red-400">denda</div>

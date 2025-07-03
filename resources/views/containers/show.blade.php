@@ -523,6 +523,7 @@
                     <input type="hidden" name="process_start_time" value="{{ now()->format('Y-m-d\TH:i') }}">
                     <input type="hidden" name="customer_id" value="{{ $container->customer_id }}">
                     <input type="hidden" name="container_number" value="{{ $container->container_number }}">
+                    <input type="hidden" name="type" value="{{ $container->type }}">
                     <input type="hidden" name="priority" value="{{ $container->priority }}">
                     <button type="submit"
                         class="w-full bg-gradient-to-r from-amber-600 via-amber-700 to-orange-700 hover:from-amber-700 hover:via-amber-800 hover:to-orange-800 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-amber-500/25 transform hover:-translate-y-1 hover:scale-105">
@@ -545,6 +546,7 @@
                     <input type="hidden" name="process_end_time" value="{{ now()->format('Y-m-d\TH:i') }}">
                     <input type="hidden" name="customer_id" value="{{ $container->customer_id }}">
                     <input type="hidden" name="container_number" value="{{ $container->container_number }}">
+                    <input type="hidden" name="type" value="{{ $container->type }}">
                     <input type="hidden" name="priority" value="{{ $container->priority }}">
                     <button type="submit"
                         class="w-full bg-gradient-to-r from-emerald-600 via-emerald-700 to-green-700 hover:from-emerald-700 hover:via-emerald-800 hover:to-green-800 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-1 hover:scale-105">
@@ -553,7 +555,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Selesaikan Pemrosesan
+                            Selesaikan
                         </div>
                     </button>
                 </form>

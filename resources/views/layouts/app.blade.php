@@ -110,10 +110,10 @@
                             </a>
 
                             <a href="{{ route('containers.index') }}"
-                                class="group flex items-center px-4 py-4 rounded-2xl text-slate-300 hover:text-white transition-all duration-300 {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25' : 'hover:bg-slate-800/50' }}">
+                                class="group flex items-center px-4 py-4 rounded-2xl text-slate-300 hover:text-white transition-all duration-300 {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/25' : 'hover:bg-slate-800/50' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-3 rounded-xl {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') ? 'bg-white/20 text-white' : 'bg-slate-700 text-slate-400 group-hover:bg-purple-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-3 rounded-xl {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-white/20 text-white' : 'bg-slate-700 text-slate-400 group-hover:bg-purple-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -126,7 +126,8 @@
                                         </p>
                                     </div>
                                 </div>
-                                @if(request()->routeIs('containers.*') && !request()->routeIs('containers.queue'))
+                                @if(request()->routeIs('containers.*') && !request()->routeIs('containers.queue') &&
+                                !request()->routeIs('containers.penalty-report'))
                                 <div class="w-1 h-8 bg-white rounded-full opacity-75"></div>
                                 @endif
                             </a>
@@ -177,40 +178,26 @@
                 </div>
 
                 <!-- Enhanced User Profile Section - Fixed at bottom -->
-                <div class="px-6 pb-8 flex-shrink-0">
+                <div class="px-4 pb-6 flex-shrink-0">
                     <div
-                        class="bg-gradient-to-r from-slate-800/60 to-slate-700/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-600/30 shadow-xl">
+                        class="bg-gradient-to-r from-slate-800/60 to-slate-700/60 backdrop-blur-sm rounded-xl p-4 border border-slate-600/30 shadow-xl">
                         <div class="flex items-center">
                             <div class="relative">
                                 <div
-                                    class="w-12 h-12 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
-                                    <span class="text-white text-lg font-bold">A</span>
+                                    class="w-8 h-8 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg">
+                                    <span class="text-white text-sm font-bold">A</span>
                                 </div>
                                 <div
-                                    class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-slate-800 animate-pulse">
+                                    class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-400 rounded-full border-2 border-slate-800 animate-pulse">
                                 </div>
                             </div>
-                            <div class="ml-4 flex-1">
-                                <p class="text-white font-bold text-lg">Pengguna Admin</p>
-                                <p class="text-slate-400 text-sm">Administrator Sistem</p>
+                            <div class="ml-3 flex-1">
+                                <p class="text-white font-bold text-sm">Pengguna Admin</p>
+                                <p class="text-slate-400 text-xs">Administrator Sistem</p>
                             </div>
                             <div class="flex flex-col items-center">
-                                <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse mb-1"></div>
+                                <div class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse mb-0.5"></div>
                                 <span class="text-xs text-slate-400">Daring</span>
-                            </div>
-                        </div>
-
-                        <!-- Quick Stats in Sidebar -->
-                        <div class="mt-4 pt-4 border-t border-slate-600/30">
-                            <div class="grid grid-cols-2 gap-4 text-center">
-                                <div>
-                                    <p class="text-2xl font-bold text-white">{{ $totalContainers ?? 0 }}</p>
-                                    <p class="text-xs text-slate-400">Total</p>
-                                </div>
-                                <div>
-                                    <p class="text-2xl font-bold text-amber-400">{{ $pendingContainers ?? 0 }}</p>
-                                    <p class="text-xs text-slate-400">Menunggu</p>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,28 +12,31 @@ class Container extends Model
 
     protected $fillable = [
         'container_number',
-        'customer', // Customer name
-        'customer_id', // Foreign key to users table
-        'tanggal_masuk',
-        'tanggal_keluar',
+        'customer_id',
+        'type',
+        'contents',
+        'entry_date',
+        'exit_date',
         'status',
-        'waktu_estimasi',
-        'priority', // Sekarang enum: Normal, Tinggi, Darurat
-        'status_denda',
-        'jumlah_denda',
-        'keterangan',
+        'estimated_time',
+        'priority',
+        'penalty_status',
+        'penalty_amount',
+        'penalty_notes',
+        'notes',
         'queue_position',
-        'waktu_mulai_proses',
-        'waktu_selesai_proses',
+        'process_start_time',
+        'process_end_time',
     ];
 
     protected $casts = [
-        'tanggal_masuk' => 'datetime',
-        'tanggal_keluar' => 'datetime',
-        'waktu_mulai_proses' => 'datetime',
-        'waktu_selesai_proses' => 'datetime',
-        'status_denda' => 'boolean',
-        'jumlah_denda' => 'decimal:2',
+        'entry_date' => 'datetime',
+        'exit_date' => 'datetime',
+        'process_start_time' => 'datetime',
+        'process_end_time' => 'datetime',
+        'penalty_status' => 'boolean',
+        'penalty_amount' => 'decimal:2',
+        'contents' => 'array',
     ];
 
     /**
@@ -41,7 +44,7 @@ class Container extends Model
      */
     public function customer()
     {
-        return $this->belongsTo(User::class, 'customer_id');
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
     /**
@@ -342,5 +345,69 @@ class Container extends Model
             'Tinggi' => 'Tinggi',
             'Darurat' => 'Darurat',
         ];
+    }
+
+    /**
+     * Get available type options
+     */
+    public static function getTypeOptions()
+    {
+        return [
+            '20ft' => '20ft',
+            '40ft' => '40ft',
+        ];
+    }
+
+    /**
+     * Get formatted contents string
+     */
+    public function getFormattedContentsAttribute()
+    {
+        if (!$this->contents || empty($this->contents)) {
+            return 'Tidak ada isi';
+        }
+
+        return implode(', ', $this->contents);
+    }
+
+    /**
+     * Get contents count
+     */
+    public function getContentsCountAttribute()
+    {
+        return $this->contents ? count($this->contents) : 0;
+    }
+
+    /**
+     * Calculate delivery penalty based on exit_date and container type
+     * Delivery full 40ft:
+     * - Masa 1: Rp.15.125 (hari 1-5 dihitung 1 masa) beban ke Pelayaran
+     * - Masa 1.2: Rp.15.125/hari (hari 6-10) beban ke JPT
+     * - Masa 2: Rp.30.250/hari (11-seterusnya) beban ke JPT (customer)
+     *
+     * Delivery full 20ft:
+     * - Masa 1: Rp.7600 (hari 1-5 dihitung 1 masa) beban ke Pelayaran
+     * - Masa 1.2: Rp.7.600/hari (hari 6-10) beban ke JPT
+     * - Masa 2: Rp.15.200/hari (11-seterusnya) beban ke JPT (customer)
+     */
+    public function getDeliveryPenaltyAttribute()
+    {
+        return \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($this);
+    }
+
+    /**
+     * Get delivery penalty days
+     */
+    public function getDeliveryPenaltyDaysAttribute()
+    {
+        return \App\Services\PenaltyCalculationService::getPenaltyDays($this);
+    }
+
+    /**
+     * Update delivery penalty automatically
+     */
+    public function updateDeliveryPenalty()
+    {
+        return \App\Services\PenaltyCalculationService::updateContainerPenalty($this);
     }
 }

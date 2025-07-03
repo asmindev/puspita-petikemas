@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Makassar', // Use 'Asia/Makassar' for Indonesian timezone
 
     /*
     |--------------------------------------------------------------------------

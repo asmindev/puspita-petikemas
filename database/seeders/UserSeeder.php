@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Container;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
@@ -18,6 +19,14 @@ class UserSeeder extends Seeder
         // Create admin user
         $admin = User::create([
             'name' => 'Administrator Pelabuhan',
+            'email' => 'admin@containerq.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
+        ]);
+
+        // Create secondary admin user for testing
+        $testAdmin = User::create([
+            'name' => 'Admin User',
             'email' => 'admin@test.com',
             'password' => Hash::make('123'),
             'role' => 'admin',
@@ -44,98 +53,123 @@ class UserSeeder extends Seeder
         }
 
         // Create customer users (shipping lines & logistics companies)
-        $customers = [
+        $users = [
             [
-                'name' => 'PT. Pelayaran Nasional Indonesia (PELNI)',
+                'name' => 'User PT. PELNI',
                 'email' => 'operations@pelni.co.id',
                 'password' => Hash::make('pelni2025'),
                 'role' => 'customer',
             ],
             [
-                'name' => 'PT. Samudera Indonesia',
+                'name' => 'User PT. Samudera Indonesia',
                 'email' => 'container@samudera.id',
                 'password' => Hash::make('samudera2025'),
                 'role' => 'customer',
             ],
             [
-                'name' => 'PT. Meratus Line',
+                'name' => 'User PT. Meratus Line',
                 'email' => 'logistics@meratusline.com',
                 'password' => Hash::make('meratus2025'),
                 'role' => 'customer',
             ],
+        ];
+
+        foreach ($users as $userData) {
+            User::create($userData);
+        }
+
+        // Create customer companies (separate from users)
+        $customers = [
+            [
+                'name' => 'PT. Pelayaran Nasional Indonesia (PELNI)',
+                'email' => 'corporate@pelni.co.id',
+                'phone' => '+62-21-385-2000',
+                'address' => 'Jl. Gajah Mada No. 14, Jakarta Pusat',
+                'contact_person' => 'Budi Santoso',
+                'type' => 'shipping_line',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'PT. Samudera Indonesia',
+                'email' => 'info@samudera.id',
+                'phone' => '+62-21-2985-2100',
+                'address' => 'Samudera Indonesia Building, Jakarta',
+                'contact_person' => 'Sari Dewi',
+                'type' => 'shipping_line',
+                'is_active' => true,
+            ],
+            [
+                'name' => 'PT. Meratus Line',
+                'email' => 'info@meratusline.com',
+                'phone' => '+62-511-3360-888',
+                'address' => 'Banjarmasin, Kalimantan Selatan',
+                'contact_person' => 'Ahmad Rahman',
+                'type' => 'logistics',
+                'is_active' => true,
+            ],
             [
                 'name' => 'PT. TEMAS Tbk',
-                'email' => 'operations@temas.co.id',
-                'password' => Hash::make('temas2025'),
-                'role' => 'customer',
+                'email' => 'corporate@temas.co.id',
+                'phone' => '+62-21-4585-1234',
+                'address' => 'Terminal Petikemas Surabaya',
+                'contact_person' => 'Lisa Hartono',
+                'type' => 'logistics',
+                'is_active' => true,
             ],
             [
-                'name' => 'PT. Berlian Laju Tanker',
-                'email' => 'container@blt.co.id',
-                'password' => Hash::make('blt2025'),
-                'role' => 'customer',
+                'name' => 'PT. Indofood Sukses Makmur',
+                'email' => 'logistics@indofood.co.id',
+                'phone' => '+62-21-2650-2000',
+                'address' => 'Sudirman Plaza, Jakarta',
+                'contact_person' => 'Rudi Wijaya',
+                'type' => 'manufacturer',
+                'is_active' => true,
             ],
             [
-                'name' => 'PT. Tanto Intim Line',
-                'email' => 'shipping@tantointim.com',
-                'password' => Hash::make('tantointim2025'),
-                'role' => 'customer',
+                'name' => 'PT. Pan Brothers Tbk',
+                'email' => 'export@panbrothers.com',
+                'phone' => '+62-22-6034-9999',
+                'address' => 'Bandung, Jawa Barat',
+                'contact_person' => 'Maya Sari',
+                'type' => 'manufacturer',
+                'is_active' => true,
             ],
             [
-                'name' => 'Evergreen Marine Corporation',
-                'email' => 'jakarta@evergreen-marine.com',
-                'password' => Hash::make('evergreen2025'),
-                'role' => 'customer',
+                'name' => 'PT. Samsung Electronics Indonesia',
+                'email' => 'logistics@samsung.co.id',
+                'phone' => '+62-21-5299-3333',
+                'address' => 'Cikarang, Jawa Barat',
+                'contact_person' => 'Kim Jong-Su',
+                'type' => 'manufacturer',
+                'is_active' => true,
             ],
             [
-                'name' => 'OOCL Indonesia',
-                'email' => 'operations@oocl.co.id',
-                'password' => Hash::make('oocl2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'Maersk Indonesia',
-                'email' => 'container@maersk.co.id',
-                'password' => Hash::make('maersk2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'MSC Indonesia',
-                'email' => 'operations@msc.co.id',
-                'password' => Hash::make('msc2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'PT. IPC Terminal Operator',
-                'email' => 'terminal@ipc.co.id',
-                'password' => Hash::make('ipc2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'PT. Jakarta International Container Terminal',
-                'email' => 'operations@jict.co.id',
-                'password' => Hash::make('jict2025'),
-                'role' => 'customer',
+                'name' => 'PT. Unilever Indonesia',
+                'email' => 'supply@unilever.co.id',
+                'phone' => '+62-21-2995-1000',
+                'address' => 'BSD City, Tangerang',
+                'contact_person' => 'Diana Putri',
+                'type' => 'manufacturer',
+                'is_active' => true,
             ],
         ];
 
-        $customerUsers = [];
+        $customerEntities = [];
         foreach ($customers as $customerData) {
-            $customerUsers[] = User::create($customerData);
+            $customerEntities[] = Customer::create($customerData);
         }
 
         // Create sample containers with realistic data and assign to customers
-        $this->createSampleContainers($customerUsers);
+        $this->createSampleContainers($customerEntities);
     }
 
-    private function createSampleContainers($customerUsers): void
+    private function createSampleContainers($customerEntities): void
     {
         // Container data with realistic scenarios
         $containers = [
             // High priority export containers (ready for departure)
             [
                 'container_number' => 'EVGU1234567',
-                'customer' => 'PT. Indofood Sukses Makmur',
                 'priority' => 'Darurat',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(2),
@@ -144,7 +178,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'MSCU9876543',
-                'customer' => 'PT. Pan Brothers Tbk',
                 'priority' => 'Tinggi',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(1.5),
@@ -155,7 +188,6 @@ class UserSeeder extends Seeder
             // Import containers waiting for processing
             [
                 'container_number' => 'OOLU5678901',
-                'customer' => 'PT. Samsung Electronics Indonesia',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(3),
@@ -164,7 +196,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'MAEU3456789',
-                'customer' => 'PT. Japfa Comfeed Indonesia',
                 'priority' => 'Tinggi',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subMinutes(45),
@@ -177,7 +208,6 @@ class UserSeeder extends Seeder
             // Transshipment containers
             [
                 'container_number' => 'TEMU7890123',
-                'customer' => 'PT. Astra International',
                 'priority' => 'Tinggi',
                 'status' => 'processing',
                 'tanggal_masuk' => now()->subHours(4),
@@ -187,7 +217,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'JICT2345678',
-                'customer' => 'PT. Unilever Indonesia',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(2.5),
@@ -198,7 +227,6 @@ class UserSeeder extends Seeder
             // Domestic containers
             [
                 'container_number' => 'PELNI456789',
-                'customer' => 'PT. Pertamina Tbk',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(1),
@@ -207,7 +235,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'SMDR8901234',
-                'customer' => 'PT. Kimia Farma Tbk',
                 'priority' => 'Darurat',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subMinutes(30),
@@ -218,7 +245,6 @@ class UserSeeder extends Seeder
             // Completed containers
             [
                 'container_number' => 'BLTU1357924',
-                'customer' => 'PT. Mayora Indah Tbk',
                 'priority' => 'Normal',
                 'status' => 'completed',
                 'tanggal_masuk' => now()->subHours(8),
@@ -230,7 +256,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'MERU2468135',
-                'customer' => 'PT. Toyota Motor Manufacturing Indonesia',
                 'priority' => 'Normal',
                 'status' => 'completed',
                 'tanggal_masuk' => now()->subHours(12),
@@ -244,7 +269,6 @@ class UserSeeder extends Seeder
             // Cancelled container
             [
                 'container_number' => 'CANC9999999',
-                'customer' => 'PT. Adaro Energy Tbk',
                 'priority' => 'Normal',
                 'status' => 'cancelled',
                 'tanggal_masuk' => now()->subHours(6),
@@ -255,7 +279,6 @@ class UserSeeder extends Seeder
             // Containers with penalties
             [
                 'container_number' => 'FINE1111111',
-                'customer' => 'PT. Chandra Asri Petrochemical',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(4),
@@ -266,7 +289,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'LATE2222222',
-                'customer' => 'PT. Pupuk Kaltim Tbk',
                 'priority' => 'Normal',
                 'status' => 'processing',
                 'tanggal_masuk' => now()->subHours(5),
@@ -280,7 +302,6 @@ class UserSeeder extends Seeder
             // More waiting containers for queue testing
             [
                 'container_number' => 'WAIT3333333',
-                'customer' => 'PT. Tzu Chi Indonesia',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(7),
@@ -289,7 +310,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'WAIT4444444',
-                'customer' => 'PT. Wijaya Karya Tbk',
                 'priority' => 'Tinggi',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(1.8),
@@ -298,7 +318,6 @@ class UserSeeder extends Seeder
             ],
             [
                 'container_number' => 'WAIT5555555',
-                'customer' => 'PT. Gudang Garam Tbk',
                 'priority' => 'Normal',
                 'status' => 'waiting',
                 'tanggal_masuk' => now()->subHours(3.2),
@@ -308,8 +327,8 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($containers as $index => $containerData) {
-            // Assign each container to a random customer user
-            $randomCustomer = $customerUsers[array_rand($customerUsers)];
+            // Assign each container to a random customer entity
+            $randomCustomer = $customerEntities[array_rand($customerEntities)];
 
             Container::create(array_merge($containerData, [
                 'customer_id' => $randomCustomer->id,

@@ -11,14 +11,14 @@ class PenaltyCalculationService
      * Calculate delivery penalty based on exit_date and container type
      *
      * Delivery full 40ft:
-     * - Masa 1: Rp.15.125 (hari 1-5 dihitung 1 masa) beban ke Pelayaran
-     * - Masa 1.2: Rp.15.125/hari (hari 6-10, hitung hanya hari lebih dari 5) beban ke JPT
-     * - Masa 2: Rp.30.250/hari (hari 11+, hitung hanya hari lebih dari 10) beban ke JPT
+     * - Masa 1: Rp.15.125 (hari 1-5 flat rate) beban ke Pelayaran
+     * - Masa 1.2: Rp.15.125/hari (hari 6-10, mulai hitung dari hari ke-6) beban ke JPT
+     * - Masa 2: Rp.30.250/hari (hari 11+, mulai hitung dari hari ke-11) beban ke JPT
      *
      * Delivery full 20ft:
-     * - Masa 1: Rp.7600 (hari 1-5 dihitung 1 masa) beban ke Pelayaran
-     * - Masa 1.2: Rp.7.600/hari (hari 6-10, hitung hanya hari lebih dari 5) beban ke JPT
-     * - Masa 2: Rp.15.200/hari (hari 11+, hitung hanya hari lebih dari 10) beban ke JPT
+     * - Masa 1: Rp.7600 (hari 1-5 flat rate) beban ke Pelayaran
+     * - Masa 1.2: Rp.7.600/hari (hari 6-10, mulai hitung dari hari ke-6) beban ke JPT
+     * - Masa 2: Rp.15.200/hari (hari 11+, mulai hitung dari hari ke-11) beban ke JPT
      */
     public static function calculateDeliveryPenalty(Container $container): array
     {
@@ -64,8 +64,9 @@ class PenaltyCalculationService
         $totalAmount = 0;
         $breakdown = [];
         $responsibleParty = null;
+
         if ($penaltyDays <= 5) {
-            // Masa 1: Hari 1-5 (beban ke Pelayaran)
+            // Masa 1: Hari 1-5 (flat rate, beban ke Pelayaran)
             $totalAmount = $masa1Rate;
             $responsibleParty = 'Pelayaran';
             $breakdown[] = [
@@ -74,31 +75,64 @@ class PenaltyCalculationService
                 'rate' => $masa1Rate,
                 'amount' => $masa1Rate,
                 'responsible' => 'Pelayaran',
-                'note' => 'Dihitung 1 masa untuk hari 1-5'
+                'note' => 'Flat rate untuk masa 1'
             ];
         } elseif ($penaltyDays <= 10) {
-            // Masa 1.2: Hitung semua hari terlambat dengan tarif masa 1.2 (beban ke JPT)
-            $totalAmount = $penaltyDays * $masa12Rate;
+            // Masa 1 + Masa 1.2: Flat rate masa 1 + hitung per hari mulai hari ke-6 (beban ke JPT)
+            $masa1Amount = $masa1Rate;
+            $masa12Days = $penaltyDays - 5; // Hari di masa 1.2 (mulai dari hari ke-6)
+            $masa12Amount = $masa12Days * $masa12Rate;
+            $totalAmount = $masa1Amount + $masa12Amount;
             $responsibleParty = 'JPT';
+
+            $breakdown[] = [
+                'period' => 'Masa 1 (Hari 1-5)',
+                'days' => 5,
+                'rate' => $masa1Rate,
+                'amount' => $masa1Amount,
+                'responsible' => 'Pelayaran',
+                'note' => 'Flat rate untuk masa 1'
+            ];
             $breakdown[] = [
                 'period' => 'Masa 1.2 (Hari 6-10)',
-                'days' => $penaltyDays,
+                'days' => $masa12Days,
                 'rate' => $masa12Rate,
-                'amount' => $totalAmount,
+                'amount' => $masa12Amount,
                 'responsible' => 'JPT',
-                'note' => 'Per hari untuk semua hari terlambat'
+                'note' => 'Per hari mulai hari ke-6'
             ];
         } else {
-            // Masa 2: Hitung semua hari terlambat dengan tarif masa 2 (beban ke JPT)
-            $totalAmount = $penaltyDays * $masa2Rate;
+            // Masa 1 + Masa 1.2 + Masa 2: Flat rate masa 1 + masa 1.2 (5 hari) + hitung per hari mulai hari ke-11 (beban ke JPT)
+            $masa1Amount = $masa1Rate;
+            $masa12Amount = 5 * $masa12Rate; // 5 hari masa 1.2 (hari 6-10)
+            $masa2Days = $penaltyDays - 10; // Hari di masa 2 (mulai dari hari ke-11)
+            $masa2Amount = $masa2Days * $masa2Rate;
+            $totalAmount = $masa1Amount + $masa12Amount + $masa2Amount;
             $responsibleParty = 'JPT';
+
+            $breakdown[] = [
+                'period' => 'Masa 1 (Hari 1-5)',
+                'days' => 5,
+                'rate' => $masa1Rate,
+                'amount' => $masa1Amount,
+                'responsible' => 'Pelayaran',
+                'note' => 'Flat rate untuk masa 1'
+            ];
+            $breakdown[] = [
+                'period' => 'Masa 1.2 (Hari 6-10)',
+                'days' => 5,
+                'rate' => $masa12Rate,
+                'amount' => $masa12Amount,
+                'responsible' => 'JPT',
+                'note' => 'Per hari untuk hari 6-10'
+            ];
             $breakdown[] = [
                 'period' => 'Masa 2 (Hari 11+)',
-                'days' => $penaltyDays,
+                'days' => $masa2Days,
                 'rate' => $masa2Rate,
-                'amount' => $totalAmount,
+                'amount' => $masa2Amount,
                 'responsible' => 'JPT',
-                'note' => 'Per hari untuk semua hari terlambat'
+                'note' => 'Per hari mulai hari ke-11'
             ];
         }
 
@@ -119,11 +153,13 @@ class PenaltyCalculationService
         $formattedAmount = 'Rp ' . number_format($totalAmount, 0, ',', '.');
 
         if ($penaltyDays <= 5) {
-            return "Denda delivery {$containerType}: Masa 1 ({$penaltyDays} hari) = {$formattedAmount} (beban Pelayaran)";
+            return "Denda delivery {$containerType}: Masa 1 ({$penaltyDays} hari) = {$formattedAmount} (flat rate, beban Pelayaran)";
         } elseif ($penaltyDays <= 10) {
-            return "Denda delivery {$containerType}: Masa 1.2 ({$penaltyDays} hari) = {$formattedAmount} (beban JPT)";
+            $masa12Days = $penaltyDays - 5;
+            return "Denda delivery {$containerType}: Masa 1 (5 hari flat) + Masa 1.2 ({$masa12Days} hari x tarif) = {$formattedAmount} (beban JPT)";
         } else {
-            return "Denda delivery {$containerType}: Masa 2 ({$penaltyDays} hari) = {$formattedAmount} (beban JPT)";
+            $masa2Days = $penaltyDays - 10;
+            return "Denda delivery {$containerType}: Masa 1 (flat) + Masa 1.2 (5 hari) + Masa 2 ({$masa2Days} hari x tarif) = {$formattedAmount} (beban JPT)";
         }
     }
 

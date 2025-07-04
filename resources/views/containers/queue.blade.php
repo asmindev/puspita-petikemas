@@ -265,8 +265,9 @@
                                 Pelanggan</th>
                             <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
                                 Type</th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
-                                Isi Container</th>
+                            {{-- <th
+                                class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                Isi Container</th> --}}
                             <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
                                 Prioritas</th>
                             <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
@@ -274,8 +275,6 @@
                             <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
-                                Waktu Tunggu</th>
                             <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
                                 Aksi
                             </th>
@@ -295,7 +294,7 @@
                                     </div>
                                     @if($loop->first)
                                     <span
-                                        class="ml-3 px-3 py-1 text-xs font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-white rounded-full animate-pulse shadow-lg">BERIKUTNYA</span>
+                                        class="ml-3 px-3 py-1 text-xs font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-white rounded-full animate-pulse shadow-lg">NEXT</span>
                                     @endif
                                 </div>
                                 @else
@@ -324,7 +323,7 @@
                                     {{ $container->type ?? '20ft' }}
                                 </span>
                             </td>
-                            <td class="px-4 py-4">
+                            {{-- <td class="px-4 py-4">
                                 <div class="text-sm text-white max-w-[180px]">
                                     @if($container->contents && count($container->contents) > 0)
                                     <div class="space-y-1">
@@ -343,7 +342,7 @@
                                     <span class="text-slate-500 text-xs">Kosong</span>
                                     @endif
                                 </div>
-                            </td>
+                            </td> --}}
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <span
                                     class="inline-flex items-center px-3 py-1 text-xs font-bold rounded-full shadow-sm
@@ -378,7 +377,7 @@
                                     $container->status)))) }}
                                 </span>
                             </td>
-                            <td class="px-4 py-4 whitespace-nowrap">
+                            {{-- <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="text-sm font-medium text-white">
                                     @if($container->entry_date)
                                     {{ $container->entry_date->diffForHumans() }}
@@ -386,7 +385,7 @@
                                     N/A
                                     @endif
                                 </div>
-                            </td>
+                            </td> --}}
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center space-x-3">
                                     <a href="{{ route('containers.show', $container) }}"

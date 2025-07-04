@@ -515,7 +515,7 @@
                 </h3>
             </div>
             <div class="p-8 space-y-4">
-                @if($container->status === 'pending')
+                {{-- @if($container->status === 'pending')
                 <form method="POST" action="{{ route('containers.update', $container) }}" class="w-full">
                     @csrf
                     @method('PUT')
@@ -559,7 +559,7 @@
                         </div>
                     </button>
                 </form>
-                @endif
+                @endif --}}
 
                 <a href="{{ route('containers.edit', $container) }}"
                     class="w-full bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:via-blue-800 hover:to-indigo-800 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transform hover:-translate-y-1 hover:scale-105 text-center block">

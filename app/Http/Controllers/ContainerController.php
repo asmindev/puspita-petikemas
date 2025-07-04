@@ -94,6 +94,9 @@ class ContainerController extends Controller
             'notes' => 'nullable|string',
         ]);
 
+
+
+
         // Filter out empty content items
         $data = $request->all();
         if (isset($data['contents'])) {
@@ -104,6 +107,21 @@ class ContainerController extends Controller
         }
 
         $container = Container::create($data);
+
+        // Update entry_date with hour and minute from created_at
+        if ($container->entry_date && $container->created_at) {
+            $entryDate = Carbon::parse($container->entry_date);
+            $createdAt = Carbon::parse($container->created_at);
+
+            // Set entry_date dengan tanggal asli tapi jam/menit dari created_at
+            $updatedEntryDate = $entryDate->setTime(
+                $createdAt->hour,
+                $createdAt->minute,
+                $createdAt->second
+            );
+
+            $container->update(['entry_date' => $updatedEntryDate]);
+        }
 
         // Update customer container count
         $container->customer->updateContainerCount();
@@ -166,6 +184,21 @@ class ContainerController extends Controller
 
         $oldCustomerId = $container->customer_id;
         $container->update($data);
+
+        // Update entry_date with hour and minute from updated_at if entry_date was changed
+        if ($container->wasChanged('entry_date') && $container->entry_date) {
+            $entryDate = Carbon::parse($container->entry_date);
+            $updatedAt = Carbon::parse($container->updated_at);
+
+            // Set entry_date dengan tanggal asli tapi jam/menit dari updated_at
+            $updatedEntryDate = $entryDate->setTime(
+                $updatedAt->hour,
+                $updatedAt->minute,
+                $updatedAt->second
+            );
+
+            $container->update(['entry_date' => $updatedEntryDate]);
+        }
 
         // Update container counts for both old and new customers
         if ($oldCustomerId != $container->customer_id) {

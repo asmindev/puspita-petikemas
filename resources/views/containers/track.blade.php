@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="ml-4">
-                        <span class="text-xl sm:text-2xl font-black text-white block tracking-tight">PetikemasQ</span>
+                        <span class="text-xl sm:text-2xl font-black text-white block tracking-tight">PelindoTrack</span>
                         <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Portal Pelacakan</span>
                     </div>
                 </div>
@@ -421,14 +421,14 @@
                     Segarkan Status
                 </button>
 
-                <button onclick="window.print()"
+                {{-- <button onclick="window.print()"
                     class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-semibold rounded-xl transition-all duration-200 transform hover:scale-105">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                     </svg>
                     Cetak Detail
-                </button>
+                </button> --}}
             </div>
         </div>
         @endif

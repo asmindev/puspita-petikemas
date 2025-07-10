@@ -16,38 +16,38 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 font-sans antialiased min-h-screen">
+<body class="bg-gray-50 font-sans antialiased min-h-screen">
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-8">
+        <div class="max-w-md w-full space-y-6">
             <!-- Logo and Header -->
             <div class="text-center">
-                <div class="flex justify-center mb-6">
+                <div class="flex justify-center mb-4">
                     <div class="relative group">
                         <!-- Logo Container with fallback to SVG if PNG not available -->
                         <div
-                            class="w-20 h-20 bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                            class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                             <!-- Try to load PNG logo first -->
                             <img src="{{ asset('images/brand/logo.jpeg') }}" alt="PelindoTrack Logo"
                                 class="w-full h-full object-cover"
                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
 
                             <!-- Fallback SVG Icon -->
-                            <svg class="w-12 h-12 text-white hidden" fill="none" stroke="currentColor"
+                            <svg class="w-8 h-8 text-white hidden" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
                         </div>
                         <div
-                            class="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                            <span class="text-white text-sm font-bold">✓</span>
+                            class="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center shadow-sm animate-bounce">
+                            <span class="text-white text-xs font-bold">✓</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-8">
-                    <h1 class="text-4xl font-black text-white mb-2 tracking-tight">PelindoTrack</h1>
-                    <p class="text-lg font-semibold text-blue-400 uppercase tracking-widest">Sistem Manajemen</p>
+                <div class="mb-6">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-1 tracking-tight">PelindoTrack</h1>
+                    <p class="text-lg font-semibold text-blue-600 uppercase tracking-wide">Sistem Manajemen</p>
                     <p class="text-slate-400 text-sm mt-4">Masuk ke akun Anda untuk melanjutkan</p>
                 </div>
             </div>

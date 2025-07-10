@@ -9,15 +9,15 @@
     <div class="mb-8">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-white mb-2">Manajemen Antrian Peti Kemas</h1>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Manajemen Antrian Peti Kemas</h1>
                 <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></div>
-                    <p class="text-slate-300 text-sm">Algoritma Penjadwalan FCFS + Prioritas</p>
+                    <div class="w-3 h-3 bg-blue-600 rounded-full animate-pulse"></div>
+                    <p class="text-gray-600 text-sm">Algoritma Penjadwalan FCFS + Prioritas</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
                 <a href="{{ route('containers.index') }}"
-                    class="inline-flex items-center justify-center px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105">
+                    class="inline-flex items-center justify-center px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
@@ -28,7 +28,7 @@
                 <form action="{{ route('containers.queue.process-next') }}" method="POST" class="inline">
                     @csrf
                     <button type="submit"
-                        class="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-green-500/25">
+                        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
@@ -44,25 +44,25 @@
     <!-- Queue Statistics -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
         <div
-            class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+            class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
             <div class="flex items-center">
-                <div class="p-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-blue-600 rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-blue-400">Total Menunggu</p>
-                    <p class="text-2xl font-bold text-white">{{ $statistics['total_pending'] }}</p>
+                    <p class="text-sm font-medium text-blue-600">Total Menunggu</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $statistics['total_pending'] }}</p>
                 </div>
             </div>
         </div>
 
         <div
-            class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+            class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
             <div class="flex items-center">
-                <div class="p-3 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-red-600 rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z">
@@ -70,16 +70,16 @@
                     </svg>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-red-400">Prioritas Tinggi</p>
-                    <p class="text-2xl font-bold text-white">{{ $statistics['high_priority_pending'] }}</p>
+                    <p class="text-sm font-medium text-red-600">Prioritas Tinggi</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $statistics['high_priority_pending'] }}</p>
                 </div>
             </div>
         </div>
 
         <div
-            class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
+            class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
             <div class="flex items-center">
-                <div class="p-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-green-600 rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
@@ -87,8 +87,8 @@
                     </svg>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-green-400">Prioritas Normal</p>
-                    <p class="text-2xl font-bold text-white">{{ $statistics['normal_priority_pending'] }}</p>
+                    <p class="text-sm font-medium text-green-600">Prioritas Normal</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ $statistics['normal_priority_pending'] }}</p>
                 </div>
             </div>
         </div>
@@ -113,10 +113,10 @@
 
     <!-- Next Container Alert -->
     @if($nextContainer)
-    <div class="bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700 rounded-xl p-6 mb-8">
+    <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
         <div class="flex items-start">
             <div class="flex-shrink-0">
-                <div class="p-3 bg-gradient-to-r from-yellow-500 to-amber-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-blue-600 rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -125,21 +125,21 @@
             </div>
             <div class="ml-6 flex-1">
                 <div class="flex items-center mb-2">
-                    <h3 class="text-lg font-bold text-yellow-400">Peti Kemas Berikutnya untuk Diproses</h3>
+                    <h3 class="text-lg font-bold text-blue-600">Peti Kemas Berikutnya untuk Diproses</h3>
                     <span
-                        class="ml-3 px-3 py-1 text-xs font-bold bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-full animate-pulse shadow-lg">SIAP</span>
+                        class="ml-3 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-full animate-pulse shadow-lg">SIAP</span>
                 </div>
                 <div class="flex flex-col lg:flex-row gap-4">
                     <!-- Tabel 1 -->
                     <table class="w-full lg:w-1/2 text-sm text-left border-separate border-spacing-y-2">
                         <tbody>
                             <tr>
-                                <th class="text-yellow-300 font-medium pr-4">Peti Kemas</th>
-                                <td class="font-bold text-white">{{ $nextContainer->container_number }}</td>
+                                <th class="text-blue-600 font-medium pr-4">Peti Kemas</th>
+                                <td class="font-bold text-gray-900">{{ $nextContainer->container_number }}</td>
                             </tr>
                             <tr>
-                                <th class="text-yellow-300 font-medium pr-4">Pelanggan</th>
-                                <td class="font-semibold text-white">{{ $nextContainer->customer->name }}</td>
+                                <th class="text-blue-600 font-medium pr-4">Pelanggan</th>
+                                <td class="font-semibold text-gray-900">{{ $nextContainer->customer->name }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -147,18 +147,19 @@
                     <table class="w-full lg:w-1/2 text-sm text-left border-separate border-spacing-y-2">
                         <tbody>
                             <tr>
-                                <th class="text-yellow-300 font-medium pr-4">Prioritas</th>
+                                <th class="text-blue-600 font-medium pr-4">Prioritas</th>
                                 <td>
                                     <span
                                         class="px-3 py-1 text-xs font-bold rounded-full
-                        {{ $nextContainer->priority === 'High' ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-blue-500/20 text-blue-300 border border-blue-500/30' }}">
+                        {{ $nextContainer->priority === 'High' ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-blue-100 text-blue-700 border border-blue-200' }}">
                                         {{ $nextContainer->priority === 'High' ? 'Tinggi' : 'Normal' }}
                                     </span>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="text-yellow-300 font-medium pr-4">Masuk</th>
-                                <td class="font-semibold text-white">{{ $nextContainer->entry_date->format('M d, H:i')
+                                <th class="text-blue-600 font-medium pr-4">Masuk</th>
+                                <td class="font-semibold text-gray-900">{{ $nextContainer->entry_date->format('M d,
+                                    H:i')
                                     }}</td>
                             </tr>
                         </tbody>
@@ -173,28 +174,28 @@
     @endif
 
     {{-- Filter --}}
-    <div class="bg-slate-800/70 backdrop-blur-sm border border-slate-700 rounded-xl p-6 mb-8 shadow-lg">
+    <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8 shadow-lg">
         <div class="flex items-center mb-4">
-            <svg class="w-5 h-5 text-slate-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-gray-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.414A1 1 0 013 6.707V4z">
                 </path>
             </svg>
-            <h3 class="text-lg font-semibold text-white">Filter Antrian</h3>
+            <h3 class="text-lg font-semibold text-gray-900">Filter Antrian</h3>
         </div>
         <form method="GET" action="{{ route('containers.queue') }}">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                 <div class="lg:col-span-2 xl:col-span-2">
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Cari</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Cari</label>
                     <input type="text" name="search" value="{{ $filters['search'] }}"
                         placeholder="Nomor peti kemas, pelanggan..."
-                        class="w-full px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-white placeholder-slate-400">
+                        class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900 placeholder-gray-400">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Status</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
                     <select name="status"
-                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-white">
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900">
                         <option value="all" {{ $filters['status']==='all' ? 'selected' : '' }}>Semua Status</option>
                         <option value="pending" {{ $filters['status']==='pending' ? 'selected' : '' }}>Menunggu</option>
                         <option value="in_progress" {{ $filters['status']==='in_progress' ? 'selected' : '' }}>Sedang
@@ -205,9 +206,9 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2">Prioritas</label>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Prioritas</label>
                     <select name="priority"
-                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-white">
+                        class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900">
                         <option value="all" {{ $filters['priority']==='all' ? 'selected' : '' }}>Semua Prioritas
                         </option>
                         <option value="High" {{ $filters['priority']==='High' ? 'selected' : '' }}>Prioritas Tinggi
@@ -219,11 +220,11 @@
 
                 <div class="flex items-end gap-2">
                     <button type="submit"
-                        class="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-blue-500/25">
+                        class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                         Filter
                     </button>
                     <a href="{{ route('containers.queue') }}"
-                        class="px-4 py-2.5 bg-slate-600 hover:bg-slate-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105">
+                        class="px-4 py-2.5 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105">
                         Reset
                     </a>
                 </div>
@@ -232,20 +233,20 @@
     </div>
 
     <!-- Queue Table -->
-    <div class="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700 overflow-hidden mb-8">
-        <div class="px-6 py-5 border-b border-slate-700 bg-gradient-to-r from-slate-800 to-slate-900">
+    <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden mb-8">
+        <div class="px-6 py-5 border-b border-gray-200 bg-gray-50">
             <div class="flex items-center justify-between">
                 <div>
-                    <h2 class="text-xl font-bold text-white flex items-center">
+                    <h2 class="text-xl font-bold text-gray-900 flex items-center">
                         <div class="w-2 h-2 bg-blue-500 rounded-full mr-3 animate-pulse"></div>
                         Antrian Peti Kemas (FCFS + Prioritas)
                     </h2>
-                    <p class="text-sm text-slate-300 mt-1">Diurutkan berdasarkan Prioritas (Tinggi terlebih dahulu),
+                    <p class="text-sm text-gray-600 mt-1">Diurutkan berdasarkan Prioritas (Tinggi terlebih dahulu),
                         kemudian berdasarkan Tanggal Masuk (paling awal dulu)</p>
                 </div>
                 <div class="text-right">
-                    <div class="text-sm text-slate-400">Total Item</div>
-                    <div class="text-2xl font-bold text-white">{{ $containers->total() }}</div>
+                    <div class="text-sm text-gray-600">Total Item</div>
+                    <div class="text-2xl font-bold text-gray-900">{{ $containers->total() }}</div>
                 </div>
             </div>
         </div>
@@ -253,69 +254,67 @@
         @if($containers->count() > 0)
         <div class="overflow-x-auto">
             <div class="inline-block min-w-full">
-                <table class="table-auto min-w-full divide-y divide-slate-700">
-                    <thead class="bg-gradient-to-r from-slate-800 to-slate-900">
+                <table class="table-auto min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Antrian #
                             </th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Peti Kemas</th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Pelanggan</th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Type</th>
-                            {{-- <th
-                                class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
-                                Isi Container</th> --}}
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Prioritas</th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Tanggal Masuk</th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Status
                             </th>
-                            <th class="px-4 py-4 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                 Aksi
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-slate-800/50 divide-y divide-slate-700">
+                    <tbody class="bg-white divide-y divide-gray-200">
                         @foreach($containers as $index => $container)
                         <tr
-                            class="hover:bg-gradient-to-r hover:from-slate-700/50 hover:to-slate-600/50 transition-all duration-200 {{ $loop->first && $container->status === 'pending' ? 'bg-gradient-to-r from-yellow-500/20 to-amber-500/20 ring-1 ring-yellow-500/30' : '' }}">
+                            class="hover:bg-gray-50 transition-all duration-200 {{ $loop->first && $container->status === 'pending' ? 'bg-blue-50 ring-1 ring-blue-200' : '' }}">
                             <td class="px-4 py-4 whitespace-nowrap">
                                 @if($container->status === 'pending')
                                 <div class="flex items-center">
                                     <div
-                                        class="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                                        class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
                                         <span class="text-sm font-bold text-white">{{ ($containers->currentPage() - 1) *
                                             $containers->perPage() + $loop->iteration }}</span>
                                     </div>
                                     @if($loop->first)
                                     <span
-                                        class="ml-3 px-3 py-1 text-xs font-bold bg-gradient-to-r from-yellow-400 to-amber-500 text-white rounded-full animate-pulse shadow-lg">NEXT</span>
+                                        class="ml-3 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-full animate-pulse shadow-lg">NEXT</span>
                                     @endif
                                 </div>
                                 @else
-                                <span class="text-slate-500 font-medium">-</span>
+                                <span class="text-gray-500 font-medium">-</span>
                                 @endif
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
-                                    <div class="text-sm font-bold text-white">{{ $container->container_number }}</div>
+                                    <div class="text-sm font-bold text-gray-900">{{ $container->container_number }}
+                                    </div>
                                 </div>
                             </td>
                             <td class="px-4 py-4">
-                                <div class="text-sm font-semibold text-white max-w-[200px] truncate"
+                                <div class="text-sm font-semibold text-gray-900 max-w-[200px] truncate"
                                     title="{{ $container->customer->name }}">
                                     {{ $container->customer->name }}
                                 </div>
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <span
-                                    class="inline-flex items-center px-3 py-1 text-xs font-bold rounded-full shadow-sm bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30">
+                                    class="inline-flex items-center px-3 py-1 text-xs font-bold rounded-full shadow-sm bg-blue-100 text-blue-700 border border-blue-200">
                                     <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
@@ -346,7 +345,7 @@
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <span
                                     class="inline-flex items-center px-3 py-1 text-xs font-bold rounded-full shadow-sm
-                                    {{ $container->priority === 'High' ? 'bg-red-500/20 text-red-300 ring-1 ring-red-500/30' : 'bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/30' }}">
+                                    {{ $container->priority === 'High' ? 'bg-red-100 text-red-700 border border-red-200' : 'bg-blue-100 text-blue-700 border border-blue-200' }}">
                                     @if($container->priority === 'High')
                                     <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
@@ -358,19 +357,19 @@
                                 </span>
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap">
-                                <div class="text-sm text-white font-medium">
+                                <div class="text-sm text-gray-900 font-medium">
                                     {{ $container->entry_date ? $container->entry_date->format('M d, Y') : 'N/A' }}
                                 </div>
-                                <div class="text-xs text-slate-400">
+                                <div class="text-xs text-gray-500">
                                     {{ $container->entry_date ? $container->entry_date->format('H:i') : '' }}
                                 </div>
                             </td>
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <span
                                     class="inline-flex items-center px-3 py-1 text-xs font-bold rounded-full shadow-sm
-                                    {{ $container->status === 'pending' ? 'bg-yellow-500/20 text-yellow-300 ring-1 ring-yellow-500/30' :
-                                       ($container->status === 'in_progress' ? 'bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/30' :
-                                       ($container->status === 'completed' ? 'bg-green-500/20 text-green-300 ring-1 ring-green-500/30' : 'bg-slate-500/20 text-slate-300 ring-1 ring-slate-500/30')) }}">
+                                    {{ $container->status === 'pending' ? 'bg-yellow-100 text-yellow-700 border border-yellow-200' :
+                                       ($container->status === 'in_progress' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
+                                       ($container->status === 'completed' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-gray-100 text-gray-700 border border-gray-200')) }}">
                                     {{ $container->status === 'pending' ? 'Menunggu' :
                                     ($container->status === 'in_progress' ? 'Sedang Diproses' :
                                     ($container->status === 'completed' ? 'Selesai' : ucwords(str_replace('_', ' ',
@@ -389,7 +388,7 @@
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center space-x-3">
                                     <a href="{{ route('containers.show', $container) }}"
-                                        class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-blue-300 bg-blue-500/20 hover:bg-blue-500/30 rounded-lg transition-all duration-200 hover:scale-105 ring-1 ring-blue-500/30">
+                                        class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-100 hover:bg-blue-200 rounded-lg transition-all duration-200 hover:scale-105 border border-blue-200">
                                         <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -405,7 +404,7 @@
                                         method="POST" class="inline">
                                         @csrf
                                         <button type="submit"
-                                            class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-green-300 bg-green-500/20 hover:bg-green-500/30 rounded-lg transition-all duration-200 hover:scale-105 ring-1 ring-green-500/30"
+                                            class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-green-600 bg-green-100 hover:bg-green-200 rounded-lg transition-all duration-200 hover:scale-105 border border-green-200"
                                             onclick="return confirm('Selesaikan pemrosesan untuk peti kemas ini?')">
                                             <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -426,21 +425,20 @@
         </div>
 
         <!-- Pagination -->
-        <div class="px-6 py-4 border-t border-slate-700 bg-slate-800/50">
+        <div class="px-6 py-4 border-t border-gray-200 bg-gray-50">
             {{ $containers->appends(request()->query())->links() }}
         </div>
         @else
         <div class="px-6 py-16 text-center">
-            <div
-                class="mx-auto w-24 h-24 bg-gradient-to-r from-slate-700 to-slate-800 rounded-full flex items-center justify-center mb-6">
-                <svg class="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6">
+                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
                     </path>
                 </svg>
             </div>
-            <h3 class="text-lg font-semibold text-white mb-2">Tidak ada peti kemas ditemukan</h3>
-            <p class="text-slate-400 mb-6">Tidak ada peti kemas yang cocok dengan filter Anda saat ini.</p>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Tidak ada peti kemas ditemukan</h3>
+            <p class="text-gray-600 mb-6">Tidak ada peti kemas yang cocok dengan filter Anda saat ini.</p>
             <a href="{{ route('containers.queue') }}"
                 class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
                 Reset Filter
@@ -450,18 +448,18 @@
     </div>
 
     <!-- Queue Simulation Section -->
-    <div class="bg-slate-800/70 backdrop-blur-sm rounded-xl shadow-2xl border border-slate-700 overflow-hidden">
-        <div class="px-6 py-5 border-b border-slate-700 bg-gradient-to-r from-slate-800 to-slate-900">
+    <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
+        <div class="px-6 py-5 border-b border-gray-200 bg-gray-50">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                    <h2 class="text-xl font-bold text-white flex items-center">
-                        <div class="w-2 h-2 bg-purple-500 rounded-full mr-3 animate-pulse"></div>
+                    <h2 class="text-xl font-bold text-gray-900 flex items-center">
+                        <div class="w-2 h-2 bg-blue-600 rounded-full mr-3 animate-pulse"></div>
                         Simulasi Pemrosesan Antrian
                     </h2>
-                    <p class="text-sm text-slate-300 mt-1">Analisis prediktif dari timeline pemrosesan antrian</p>
+                    <p class="text-sm text-gray-600 mt-1">Analisis prediktif dari timeline pemrosesan antrian</p>
                 </div>
                 <button id="loadSimulation"
-                    class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-violet-600 hover:from-purple-600 hover:to-violet-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-purple-500/25">
+                    class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
@@ -475,10 +473,9 @@
         <div id="simulationContent" class="hidden">
             <div class="p-6">
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <div
-                        class="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/30 rounded-xl p-4 shadow-lg">
+                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-lg">
                         <div class="flex items-center">
-                            <div class="p-2 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg shadow">
+                            <div class="p-2 bg-blue-600 rounded-lg shadow">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
@@ -486,30 +483,28 @@
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <div class="text-sm font-medium text-blue-300">Total Peti Kemas</div>
-                                <div class="text-xl font-bold text-white" id="simTotalContainers">-</div>
+                                <div class="text-sm font-medium text-blue-600">Total Peti Kemas</div>
+                                <div class="text-xl font-bold text-gray-900" id="simTotalContainers">-</div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-xl p-4 shadow-lg">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 shadow-lg">
                         <div class="flex items-center">
-                            <div class="p-2 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg shadow">
+                            <div class="p-2 bg-green-600 rounded-lg shadow">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <div class="text-sm font-medium text-green-300">Estimasi Waktu</div>
-                                <div class="text-xl font-bold text-white" id="simTotalTime">-</div>
+                                <div class="text-sm font-medium text-green-600">Estimasi Waktu</div>
+                                <div class="text-xl font-bold text-gray-900" id="simTotalTime">-</div>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="bg-gradient-to-br from-red-500/20 to-pink-500/20 border border-red-500/30 rounded-xl p-4 shadow-lg">
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-4 shadow-lg">
                         <div class="flex items-center">
-                            <div class="p-2 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg shadow">
+                            <div class="p-2 bg-red-600 rounded-lg shadow">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z">
@@ -517,39 +512,39 @@
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <div class="text-sm font-medium text-red-300">Prioritas Tinggi</div>
-                                <div class="text-xl font-bold text-white" id="simHighPriority">-</div>
+                                <div class="text-sm font-medium text-red-600">Prioritas Tinggi</div>
+                                <div class="text-xl font-bold text-gray-900" id="simHighPriority">-</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="overflow-x-auto rounded-lg border border-slate-700">
+                <div class="overflow-x-auto rounded-lg border border-gray-200">
                     <div class="inline-block min-w-full">
-                        <table class="min-w-full divide-y divide-slate-700">
-                            <thead class="bg-gradient-to-r from-slate-800 to-slate-900">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
                                 <tr>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Posisi</th>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Peti Kemas</th>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Prioritas</th>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Est. Mulai</th>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Est. Selesai</th>
                                     <th
-                                        class="px-4 py-3 text-left text-xs font-bold text-slate-300 uppercase tracking-wider">
+                                        class="px-4 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                                         Waktu Tunggu</th>
                                 </tr>
                             </thead>
-                            <tbody id="simulationTable" class="bg-slate-800/50 divide-y divide-slate-700">
+                            <tbody id="simulationTable" class="bg-white divide-y divide-gray-200">
                                 <!-- Simulation results will be loaded here -->
                             </tbody>
                         </table>
@@ -589,19 +584,19 @@
 
             data.containers.forEach(function(item, index) {
                 const row = document.createElement('tr');
-                row.className = 'hover:bg-gradient-to-r hover:from-slate-700/50 hover:to-slate-600/50 transition-all duration-200';
+                row.className = 'hover:bg-gray-50 transition-all duration-200';
 
                 // Add staggered animation
                 row.style.opacity = '0';
                 row.style.transform = 'translateY(10px)';
 
                 const priorityClass = item.container.priority === 'High'
-                    ? 'bg-red-500/20 text-red-300 ring-1 ring-red-500/30'
-                    : 'bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/30';
+                    ? 'bg-red-100 text-red-700 border border-red-200'
+                    : 'bg-blue-100 text-blue-700 border border-blue-200';
 
                 const positionBadge = index === 0
-                    ? 'bg-gradient-to-r from-yellow-400 to-amber-500 text-white shadow-lg'
-                    : 'bg-gradient-to-r from-slate-600 to-slate-700 text-white';
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-gray-600 text-white';
 
                 row.innerHTML = `
                     <td class="px-4 py-4 whitespace-nowrap">
@@ -609,13 +604,13 @@
                             <span class="w-8 h-8 ${positionBadge} rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
                                 ${item.position}
                             </span>
-                            ${index === 0 ? '<span class="ml-2 px-2 py-1 text-xs font-bold bg-yellow-500/20 text-yellow-300 rounded-full ring-1 ring-yellow-500/30">BERIKUTNYA</span>' : ''}
+                            ${index === 0 ? '<span class="ml-2 px-2 py-1 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200">BERIKUTNYA</span>' : ''}
                         </div>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                            <div class="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
-                            <span class="text-sm font-bold text-white">${item.container.container_number}</span>
+                            <div class="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
+                            <span class="text-sm font-bold text-gray-900">${item.container.container_number}</span>
                         </div>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
@@ -627,25 +622,25 @@
                         </span>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-white">
+                        <div class="text-sm font-medium text-gray-900">
                             ${new Date(item.estimated_start_time).toLocaleDateString()}
                         </div>
-                        <div class="text-xs text-slate-400">
+                        <div class="text-xs text-gray-500">
                             ${new Date(item.estimated_start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                         </div>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-white">
+                        <div class="text-sm font-medium text-gray-900">
                             ${new Date(item.estimated_completion_time).toLocaleDateString()}
                         </div>
-                        <div class="text-xs text-slate-400">
+                        <div class="text-xs text-gray-500">
                             ${new Date(item.estimated_completion_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                         </div>
                     </td>
                     <td class="px-4 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                             <div class="w-2 h-2 bg-orange-400 rounded-full mr-2"></div>
-                            <span class="text-sm font-medium text-white">${item.estimated_wait_time} min</span>
+                            <span class="text-sm font-medium text-gray-900">${item.estimated_wait_time} min</span>
                         </div>
                     </td>
                 `;
@@ -685,13 +680,13 @@
             const errorDiv = document.createElement('div');
             errorDiv.className = 'text-center py-8';
             errorDiv.innerHTML = `
-                <div class="text-red-400 mb-2">
+                <div class="text-red-600 mb-2">
                     <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
-                <p class="text-slate-300">Gagal memuat data simulasi</p>
-                <p class="text-sm text-slate-400 mt-1">Silakan coba lagi nanti</p>
+                <p class="text-gray-700">Gagal memuat data simulasi</p>
+                <p class="text-sm text-gray-500 mt-1">Silakan coba lagi nanti</p>
             `;
 
             document.getElementById('simulationTable').appendChild(errorDiv);

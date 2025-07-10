@@ -6,35 +6,34 @@
 @section('content')
 <!-- Enhanced Header with Dark Theme -->
 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
-    <div
-        class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm rounded-3xl p-8 border border-slate-600/30 shadow-2xl">
+    <div class="bg-white rounded-xl p-8 border border-gray-200 ">
         <div class="flex items-center mb-4">
-            <div class="p-3 bg-gradient-to-br from-amber-500 via-orange-600 to-red-600 rounded-2xl shadow-lg">
+            <div class="p-3 bg-blue-600 rounded-2xl ">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
             </div>
             <div class="ml-4">
-                <h2 class="text-3xl font-black text-white mb-2">Laporan Denda Container</h2>
-                <p class="text-slate-300 text-lg">Monitor dan kelola denda keterlambatan delivery container</p>
+                <h2 class="text-3xl font-black text-gray-900 mb-2">Laporan Denda Container</h2>
+                <p class="text-gray-600 text-lg">Monitor dan kelola denda keterlambatan delivery container</p>
             </div>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-            <div class="flex items-center text-blue-300">
+            <div class="flex items-center text-blue-600">
                 <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $stats['total_containers'] }} Total Container
             </div>
-            <div class="flex items-center text-red-300">
+            <div class="flex items-center text-red-600">
                 <div class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $stats['containers_with_penalty'] }} Bermasalah
             </div>
-            <div class="flex items-center text-amber-300">
-                <div class="w-2 h-2 bg-amber-400 rounded-full mr-2 animate-pulse"></div>
+            <div class="flex items-center text-orange-600">
+                <div class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></div>
                 Rp {{ number_format($stats['total_penalty_amount'], 0, ',', '.') }}
             </div>
-            <div class="flex items-center text-emerald-300">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse"></div>
+            <div class="flex items-center text-green-600">
+                <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $containers->count() }} Ditampilkan
             </div>
         </div>
@@ -42,15 +41,14 @@
 </div>
 
 <!-- Filter Controls -->
-<div
-    class="bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-600/30 shadow-xl mb-6">
+<div class="bg-white rounded-xl p-6 border border-gray-200 mb-6">
     <form method="GET" action="{{ route('containers.penalty-report') }}" class="space-y-4 lg:space-y-0">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
             <!-- Container Type Filter -->
             <div>
-                <label for="type" class="block text-sm font-medium text-slate-300 mb-2">Jenis Container</label>
+                <label for="type" class="block text-sm font-medium text-gray-700 mb-2">Jenis Container</label>
                 <select name="type" id="type"
-                    class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="all" {{ request('type')=='all' ? 'selected' : '' }}>Semua Jenis</option>
                     <option value="20ft" {{ request('type')=='20ft' ? 'selected' : '' }}>20ft</option>
                     <option value="40ft" {{ request('type')=='40ft' ? 'selected' : '' }}>40ft</option>
@@ -59,9 +57,9 @@
 
             <!-- Penalty Status Filter -->
             <div>
-                <label for="penalty_status" class="block text-sm font-medium text-slate-300 mb-2">Status Denda</label>
+                <label for="penalty_status" class="block text-sm font-medium text-gray-700 mb-2">Status Denda</label>
                 <select name="penalty_status" id="penalty_status"
-                    class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="" {{ request('penalty_status')=='' ? 'selected' : '' }}>Semua Status</option>
                     <option value="has_penalty" {{ request('penalty_status')=='has_penalty' ? 'selected' : '' }}>Ada
                         Denda</option>
@@ -70,22 +68,22 @@
 
             <!-- Date From -->
             <div>
-                <label for="date_from" class="block text-sm font-medium text-slate-300 mb-2">Tanggal Dari</label>
+                <label for="date_from" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Dari</label>
                 <input type="date" name="date_from" id="date_from" value="{{ request('date_from') }}"
-                    class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <!-- Date To -->
             <div>
-                <label for="date_to" class="block text-sm font-medium text-slate-300 mb-2">Tanggal Sampai</label>
+                <label for="date_to" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Sampai</label>
                 <input type="date" name="date_to" id="date_to" value="{{ request('date_to') }}"
-                    class="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <!-- Action Buttons -->
             <div class="flex items-end space-x-2">
                 <button type="submit"
-                    class="px-4 py-2 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center">
+                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -93,7 +91,7 @@
                     Filter
                 </button>
                 <a href="{{ route('containers.penalty-report') }}"
-                    class="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white font-medium rounded-xl transition-all duration-200">
+                    class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-xl transition-all duration-200">
                     Reset
                 </a>
             </div>
@@ -102,62 +100,62 @@
 </div>
 
 <!-- Statistics Cards -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+{{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
     <!-- 20ft Statistics -->
-    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-lg border border-slate-700 p-6">
+    <div class="bg-white rounded-2xl  border border-gray-200 p-6">
         <div class="flex items-center">
-            <div class="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
+            <div class="p-3 bg-blue-600 rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-slate-400">Container 20ft</p>
-                <p class="text-2xl font-bold text-white">{{ $stats['by_type']['20ft']['count'] }}</p>
-                <p class="text-xs text-slate-400">Rp {{ number_format($stats['by_type']['20ft']['penalty'], 0, ',', '.')
+                <p class="text-sm font-medium text-gray-600">Container 20ft</p>
+                <p class="text-2xl font-bold text-gray-900">{{ $stats['by_type']['20ft']['count'] }}</p>
+                <p class="text-xs text-gray-600">Rp {{ number_format($stats['by_type']['20ft']['penalty'], 0, ',', '.')
                     }}</p>
             </div>
         </div>
     </div>
 
     <!-- 40ft Statistics -->
-    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-lg border border-slate-700 p-6">
+    <div class="bg-white rounded-2xl  border border-gray-200 p-6">
         <div class="flex items-center">
-            <div class="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl">
+            <div class="p-3 bg-blue-600 rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-slate-400">Container 40ft</p>
-                <p class="text-2xl font-bold text-white">{{ $stats['by_type']['40ft']['count'] }}</p>
-                <p class="text-xs text-slate-400">Rp {{ number_format($stats['by_type']['40ft']['penalty'], 0, ',', '.')
+                <p class="text-sm font-medium text-gray-600">Container 40ft</p>
+                <p class="text-2xl font-bold text-gray-900">{{ $stats['by_type']['40ft']['count'] }}</p>
+                <p class="text-xs text-gray-600">Rp {{ number_format($stats['by_type']['40ft']['penalty'], 0, ',', '.')
                     }}</p>
             </div>
         </div>
     </div>
 
     <!-- Total Penalty -->
-    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-lg border border-slate-700 p-6">
+    <div class="bg-white rounded-2xl  border border-gray-200 p-6">
         <div class="flex items-center">
-            <div class="p-3 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl">
+            <div class="p-3 bg-red-600 rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
             </div>
             <div class="ml-4">
-                <p class="text-sm font-medium text-slate-400">Total Denda</p>
-                <p class="text-2xl font-bold text-red-400">Rp {{ number_format($stats['total_penalty_amount'], 0, ',',
+                <p class="text-sm font-medium text-gray-600">Total Denda</p>
+                <p class="text-2xl font-bold text-red-600">Rp {{ number_format($stats['total_penalty_amount'], 0, ',',
                     '.') }}</p>
             </div>
         </div>
     </div>
 
     <!-- Penalty Rate -->
-    {{-- <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl shadow-lg border border-slate-700 p-6">
+    <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl  border border-slate-700 p-6">
         <div class="flex items-center">
             <div class="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,91 +169,86 @@
                     round(($stats['containers_with_penalty'] / $stats['total_containers']) * 100, 1) : 0 }}%</p>
             </div>
         </div>
-    </div> --}}
-</div>
+    </div>
+</div> --}}
 
 <!-- Containers Table -->
-<div
-    class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl shadow-2xl border border-slate-700/50 overflow-hidden backdrop-blur-sm">
+<div class="bg-white rounded-xl  border border-gray-200 overflow-hidden">
     @if($containers->count() > 0)
     <div class="overflow-x-auto">
         <table class="min-w-full">
-            <thead class="bg-gradient-to-r from-slate-700 to-slate-800 border-b border-slate-600">
+            <thead class="border-b border-gray-200 bg-white">
                 <tr>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Container
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Container
                     </th>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Pelanggan
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Pelanggan
                     </th>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Type</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Tanggal
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Type</th>
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Tanggal
                         Keluar</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Hari
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Hari
                         Terlambat</th>
-                    <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">Denda</th>
-                    {{-- <th class="px-6 py-4 text-left text-xs font-bold text-slate-200 uppercase tracking-wider">
-                        Penanggung
-                        Jawab</th> --}}
-                    <th class="px-6 py-4 text-right text-xs font-bold text-slate-200 uppercase tracking-wider">Aksi</th>
+                    <th class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Denda</th>
+                    <th class="px-6 py-3 text-right text-xs font-bold text-gray-700 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody class="bg-gradient-to-br from-slate-800/80 to-slate-900/80 divide-y divide-slate-700/30">
+            <tbody class="divide-y divide-gray-300 bg-gray-100">
                 @foreach($containers as $container)
                 @php
                 $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
                 $penaltyDays = \App\Services\PenaltyCalculationService::getPenaltyDays($container);
                 @endphp
-                <tr
-                    class="hover:bg-gradient-to-r hover:from-slate-700/50 hover:to-slate-600/50 transition-all duration-300">
-                    <td class="px-6 py-4 whitespace-nowrap">
+                <tr class="hover:bg-gray-50 transition-all duration-300">
+                    <td class="px-6 py-3 whitespace-nowrap">
                         <div class="flex items-center">
                             <div
-                                class="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-400/30 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor"
+                                class="h-10 w-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <div class="text-sm font-bold text-white">{{ $container->container_number }}</div>
+                                <div class="text-sm font-bold text-gray-900">{{ $container->container_number }}</div>
                             </div>
                         </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm font-medium text-slate-200">{{ $container->customer->name ?? 'N/A' }}</div>
+                    <td class="px-6 py-3 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900">{{ $container->customer->name ?? 'N/A' }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-3 whitespace-nowrap">
                         <span
-                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-indigo-500/20 border border-indigo-400/40 text-indigo-300">
+                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-blue-100 border border-blue-200 text-blue-700">
                             {{ $container->type ?? '20ft' }}
                         </span>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-300">
+                    <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700">
                         {{ $container->exit_date ? $container->exit_date->format('d M Y') : '-' }}
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-3 whitespace-nowrap">
                         @if($penaltyDays > 0)
                         <span
-                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-red-500/20 border border-red-400/40 text-red-300">
+                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-red-100 border border-red-200 text-red-700">
                             {{ $penaltyDays }} hari
                         </span>
                         @else
                         <span
-                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-green-500/20 border border-green-400/40 text-green-300">
+                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-green-100 border border-green-200 text-green-700">
                             Tepat waktu
                         </span>
                         @endif
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-3 whitespace-nowrap">
                         @if($penaltyInfo['total_amount'] > 0)
-                        <span class="text-red-400 font-bold">
+                        <span class="text-red-600 font-bold">
                             Rp {{ number_format($penaltyInfo['total_amount'], 0, ',', '.') }}
                         </span>
                         @else
-                        <span class="text-green-400 font-bold">Rp 0</span>
+                        <span class="text-green-600 font-bold">Rp 0</span>
                         @endif
                     </td>
-                    {{-- <td class="px-6 py-4 whitespace-nowrap">
+                    {{-- <td class="px-6 py-3 whitespace-nowrap">
                         @if($penaltyInfo['responsible_party'])
                         <span class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold
                                 @if(str_contains($penaltyInfo['responsible_party'], 'Pelayaran'))
@@ -271,10 +264,10 @@
                         <span class="text-slate-500">-</span>
                         @endif
                     </td> --}}
-                    <td class="px-6 py-4 whitespace-nowrap text-right">
+                    <td class="px-6 py-3 whitespace-nowrap text-right">
                         <div class="flex items-center justify-end space-x-2">
                             <a href="{{ route('containers.show', $container) }}"
-                                class="p-2 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-400/30 text-blue-300 rounded-lg transition-all duration-300">
+                                class="p-2 bg-blue-100 hover:bg-blue-200 border border-blue-200 text-blue-600 rounded-lg transition-all duration-300">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -286,7 +279,7 @@
                                 class="inline">
                                 @csrf
                                 <button type="submit"
-                                    class="p-2 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/30 text-amber-300 rounded-lg transition-all duration-300"
+                                    class="p-2 bg-orange-100 hover:bg-orange-200 border border-orange-200 text-orange-600 rounded-lg transition-all duration-300"
                                     title="Update Denda">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -304,7 +297,7 @@
 
     <!-- Pagination -->
     @if($containers->hasPages())
-    <div class="px-6 py-4 border-t border-slate-700/30">
+    <div class="px-6 py-3 border-t border-gray-200 bg-gray-50">
         {{ $containers->links() }}
     </div>
     @endif
@@ -313,14 +306,14 @@
     <div class="text-center py-20">
         <div class="max-w-md mx-auto">
             <div
-                class="mx-auto h-24 w-24 bg-gradient-to-br from-slate-700/50 to-slate-600/50 rounded-3xl flex items-center justify-center mb-6 border border-slate-600/30">
-                <svg class="h-12 w-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="mx-auto h-24 w-24 bg-gray-100 rounded-xl flex items-center justify-center mb-6 border border-gray-200">
+                <svg class="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Tidak ada container dengan denda</h3>
-            <p class="text-slate-400 mb-8">Tidak ada container yang memiliki denda delivery sesuai dengan filter yang
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">Tidak ada container dengan denda</h3>
+            <p class="text-gray-600 mb-8">Tidak ada container yang memiliki denda delivery sesuai dengan filter yang
                 dipilih.</p>
         </div>
     </div>

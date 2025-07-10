@@ -6,7 +6,7 @@
 @section('content')
 <div class="mb-6">
     <a href="{{ route('containers.index') }}"
-        class="inline-flex items-center text-sm text-gray-600 hover:text-blue-600 transition-colors duration-200 group">
+        class="inline-flex items-center text-sm text-gray-600 hover:text-primary transition-colors duration-200 group">
         <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
             viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -19,7 +19,7 @@
 <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
         <div class="flex items-center mb-4 lg:mb-0">
-            <div class="h-12 w-12 rounded-lg bg-blue-600 flex items-center justify-center shadow-md">
+            <div class="h-12 w-12 rounded-lg bg-primary flex items-center justify-center shadow-md">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -67,7 +67,7 @@
 
         <div class="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-3">
             <a href="{{ route('containers.edit', $container) }}"
-                class="group px-6 py-3 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 hover:scale-105">
+                class="group px-6 py-3 text-sm font-bold text-white bg-primary rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 hover:scale-105">
                 <div class="flex items-center"> <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform"
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -105,7 +105,7 @@
             <div class="px-8 py-6 border-b border-gray-100">
                 <h3 class="text-xl font-bold text-gray-900 flex items-center">
                     <div class="p-2 bg-blue-100 rounded-xl mr-3">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -216,7 +216,7 @@
             <div class="px-8 py-6 border-b border-gray-100">
                 <h3 class="text-xl font-bold text-gray-900 flex items-center">
                     <div class="p-2 bg-blue-100 rounded-xl mr-3">
-                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -254,6 +254,7 @@
         <!-- Penalty Information -->
         @php
         $penaltyInfo = $container->delivery_penalty;
+        $currentPenaltyInfo = $container->current_period_penalty;
         $penaltyDays = $container->delivery_penalty_days;
         @endphp
 
@@ -280,7 +281,7 @@
                 </h3>
             </div>
             <div class="p-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="gridd grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                         <div class="space-y-4">
                             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
@@ -299,28 +300,41 @@
                                 </span>
                             </div>
                             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                                <span class="text-sm font-medium text-gray-600">Total Denda:</span>
+                                <span class="text-sm font-medium text-gray-600">Periode Saat Ini:</span>
+                                <span class="text-gray-900 font-bold">
+                                    @if($currentPenaltyInfo['current_period'])
+                                    {{ $currentPenaltyInfo['current_period'] }}
+                                    @else
+                                    -
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Total Denda Masa Ini:</span>
                                 <span class="text-gray-900 font-bold text-lg">
-                                    @if($penaltyInfo['total_amount'] > 0)
-                                    <span class="text-red-600">Rp {{ number_format($penaltyInfo['total_amount'], 0, ',',
+                                    @if($currentPenaltyInfo['current_amount'] > 0)
+                                    <span class="text-red-600">Rp {{
+                                        number_format($currentPenaltyInfo['current_amount'],
+                                        0, ',',
                                         '.') }}</span>
                                     @else
                                     <span class="text-green-600">Rp 0</span>
                                     @endif
                                 </span>
                             </div>
-                            @if($penaltyInfo['responsible_party'])
+                            @if($currentPenaltyInfo['current_responsible'])
                             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
                                 <span class="text-sm font-medium text-gray-600">Tanggung Jawab:</span>
-                                <span class="text-gray-900 font-bold">{{ $penaltyInfo['responsible_party'] }}</span>
+                                <span class="text-gray-900 font-bold">{{ $currentPenaltyInfo['current_responsible']
+                                    }}</span>
                             </div>
                             @endif
                         </div>
                     </div>
 
-                    @if(!empty($penaltyInfo['breakdown']))
+                    {{-- @if(!empty($penaltyInfo['breakdown']))
                     <div>
-                        <h4 class="text-lg font-bold text-gray-900 mb-4">Rincian Perhitungan Denda</h4>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">Rincian Perhitungan (Jika Akumulatif)</h4>
                         <div class="space-y-3">
                             @foreach($penaltyInfo['breakdown'] as $breakdown)
                             <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
@@ -346,20 +360,23 @@
                         @if($penaltyInfo['total_amount'] > 0)
                         <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl">
                             <div class="flex items-center justify-between">
-                                <span class="font-bold text-gray-900">Total Denda:</span>
+                                <span class="font-bold text-gray-900">Total Akumulatif:</span>
                                 <span class="text-xl font-bold text-red-600">Rp {{
                                     number_format($penaltyInfo['total_amount'], 0, ',', '.') }}</span>
                             </div>
                         </div>
                         @endif
                     </div>
-                    @endif
+                    @endif --}}
                 </div>
 
-                @if($penaltyInfo['description'])
-                <div class="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                    <h5 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Deskripsi:</h5>
-                    <p class="text-gray-900">{{ $penaltyInfo['description'] }}</p>
+                @if($currentPenaltyInfo['description'])
+                <div class="mt-6 p-4 bg-blue-50 rounded-xl border border-blue-200">
+                    <h5 class="text-sm font-bold text-blue-800 uppercase tracking-wider mb-2">Rincian Denda Masa Saat
+                        Ini:</h5>
+                    <p class="text-blue-900 mb-2">{{ $currentPenaltyInfo['description'] }}</p>
+                    <p class="text-xs text-blue-700 italic">* Ini adalah total denda untuk masa/periode saat ini saja,
+                        bukan akumulatif dari semua masa.</p>
                 </div>
                 @endif
             </div>
@@ -414,7 +431,7 @@
                                 <div class="relative flex space-x-3">
                                     <div>
                                         <span
-                                            class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+                                            class="h-8 w-8 rounded-full bg-primary flex items-center justify-center shadow-lg">
                                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -554,7 +571,7 @@
                 @endif --}}
 
                 <a href="{{ route('containers.edit', $container) }}"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 hover:scale-105 text-center block">
+                    class="w-full bg-primary text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 hover:scale-105 text-center block">
                     <div class="flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

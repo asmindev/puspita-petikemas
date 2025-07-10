@@ -8,7 +8,7 @@
     <!-- Compact Back Button -->
     <div class="mb-4">
         <a href="{{ route('containers.index') }}"
-            class="group inline-flex items-center bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 hover:text-blue-600 py-2 px-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md text-sm">
+            class="group inline-flex items-center bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 hover:text-primary py-2 px-4 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md text-sm">
             <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -23,14 +23,14 @@
         <div class="px-4 py-3 border-b border-gray-200 bg-gray-50">
             <div class="flex items-center">
                 <div class="p-2 bg-blue-50 rounded-xl border border-blue-200">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                 </div>
                 <div class="ml-3">
                     <h3 class="text-lg font-bold text-gray-900">Edit Peti Kemas</h3>
-                    <p class="text-gray-600 text-sm">Perbarui informasi peti kemas</p>
+                    <p class="text-primary text-sm">Perbarui informasi peti kemas</p>
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
                 <!-- Compact Section Header -->
                 <div class="md:col-span-2 mb-3">
                     <div class="flex items-center">
-                        <div class="w-1 h-6 bg-blue-600 rounded-full mr-3"></div>
+                        <div class="w-1 h-6 bg-pritext-primary rounded-full mr-3"></div>
                         <h4 class="text-lg font-bold text-gray-900">Informasi Peti Kemas</h4>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <label for="customer_id" class="block text-sm font-medium text-gray-700">Pelanggan</label>
                     <div class="relative">
                         <select name="customer_id" id="customer_id"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('customer_id') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 @error('customer_id') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="" class="text-gray-500">Pilih pelanggan</option>
                             @foreach($customers as $customer)
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     @error('customer_id')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -90,7 +90,7 @@
                     <div class="relative">
                         <input type="text" name="container_number" id="container_number"
                             value="{{ old('container_number', $container->container_number) }}"
-                            class="w-full px-5 py-4 pl-10 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 @error('container_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 pl-10 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 @error('container_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan nomor peti kemas" required>
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     @error('container_number')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -115,7 +115,7 @@
                     <label for="type" class="block text-sm font-medium text-gray-700">Tipe Peti Kemas</label>
                     <div class="relative">
                         <select name="type" id="type"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('type') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 @error('type') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="20ft" {{ old('type', $container->type ?? '20ft') == '20ft' ? 'selected' : ''
                                 }}>20ft</option>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     @error('type')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -155,11 +155,11 @@
                             <div class="content-item flex items-center space-x-2">
                                 <div class="flex-1">
                                     <input type="text" name="contents[]" value="{{ $content }}"
-                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
+                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
                                         placeholder="Masukkan nama barang/isi container">
                                 </div>
                                 <button type="button"
-                                    class="remove-content {{ count($contents) <= 1 ? 'hidden' : '' }} px-2 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-all duration-200">
+                                    class="remove-content {{ count($contents) <= 1 ? 'hidden' : '' }} px-2 py-2 bg-red-50 hover:bg-red-100 textpritext-primary rounded-xl transition-all duration-200">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12"></path>
@@ -171,11 +171,11 @@
                             <div class="content-item flex items-center space-x-2">
                                 <div class="flex-1">
                                     <input type="text" name="contents[]"
-                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
+                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
                                         placeholder="Masukkan nama barang/isi container">
                                 </div>
                                 <button type="button"
-                                    class="remove-content hidden px-2 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-all duration-200">
+                                    class="remove-content hidden px-2 py-2 bg-red-50 hover:bg-red-100 textpritext-primary rounded-xl transition-all duration-200">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12"></path>
@@ -185,7 +185,7 @@
                             @endif
                         </div>
                         <button type="button" id="add-content"
-                            class="inline-flex items-center px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium rounded-xl transition-all duration-200 text-sm">
+                            class="inline-flex items-center px-3 py-2 bg-blue-50 hover:bg-blue-100 text-primary font-medium rounded-xl transition-all duration-200 text-sm">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4v16m8-8H4"></path>
@@ -194,7 +194,7 @@
                         </button>
                     </div>
                     @error('contents')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -209,7 +209,7 @@
                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                     <div class="relative">
                         <select name="status" id="status"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('status') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 @error('status') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="pending" {{ old('status', $container->status)=='pending' ? 'selected' : ''
                                 }}>Menunggu</option>
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                     @error('status')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -241,7 +241,7 @@
                     <label for="priority" class="block text-sm font-medium text-gray-700">Prioritas</label>
                     <div class="relative">
                         <select name="priority" id="priority"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('priority') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 @error('priority') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="Normal" {{ old('priority', $container->priority)=='Normal' ? 'selected' : ''
                                 }}>Normal</option>
@@ -256,7 +256,7 @@
                         </div>
                     </div>
                     @error('priority')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -271,7 +271,7 @@
                     <label for="notes" class="block text-sm font-medium text-gray-700">Catatan Tambahan</label>
                     <div class="relative">
                         <textarea name="notes" id="notes" rows="3"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none @error('notes') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none @error('notes') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan catatan tambahan atau instruksi khusus...">{{ old('notes', $container->notes) }}</textarea>
                         <div class="absolute top-2 right-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -281,7 +281,7 @@
                         </div>
                     </div>
                     @error('notes')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -297,7 +297,7 @@
                     <div class="relative">
                         <input type="date" name="exit_date" id="exit_date"
                             value="{{ old('exit_date', $container->exit_date ? $container->exit_date->format('Y-m-d') : '') }}"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('exit_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 @error('exit_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan tanggal keluar">
                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -307,7 +307,7 @@
                         </div>
                     </div>
                     @error('exit_date')
-                    <div class="flex items-center mt-1 text-red-600">
+                    <div class="flex items-center mt-1 textpritext-primary">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -324,14 +324,14 @@
                     <!-- Tips Section -->
                     <div class="bg-blue-50 border border-blue-200 rounded-xl p-3">
                         <div class="flex items-start">
-                            <svg class="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" fill="none"
+                            <svg class="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <div>
                                 <p class="text-sm font-medium text-blue-800">Tips</p>
-                                <p class="text-xs text-blue-600">Perbarui status dan prioritas saat peti kemas bergerak
+                                <p class="text-xs text-primary">Perbarui status dan prioritas saat peti kemas bergerak
                                     melalui antrian pemrosesan.</p>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
                             </span>
                         </a>
                         <button type="submit"
-                            class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md text-sm">
+                            class="px-6 py-2 bg-pritext-primary hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md text-sm">
                             <span class="flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -383,10 +383,10 @@
         contentItem.innerHTML = `
             <div class="flex-1">
                 <input type="text" name="contents[]"
-                    class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
+                    class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pritext-primary focus:border-pritext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
                     placeholder="Masukkan nama barang/isi container">
             </div>
-            <button type="button" class="remove-content px-2 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-all duration-200">
+            <button type="button" class="remove-content px-2 py-2 bg-red-50 hover:bg-red-100 textpritext-primary rounded-xl transition-all duration-200">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>

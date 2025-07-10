@@ -29,7 +29,7 @@
                     <div class="flex items-center group">
                         <div class="relative">
                             <div
-                                class="size-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                                class="size-10 bg-primary rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                                 <!-- Try to load PNG logo first -->
                                 <img src="{{ asset('images/brand/logo.jpeg') }}" alt="PelindoTrack Logo"
                                     class="w-full h-full object-cover"
@@ -46,7 +46,7 @@
                         <div class="ml-3">
                             <span class="text-lg font-bold text-gray-900 block tracking-tight">PelindoTrack</span>
                             <span
-                                class="text-xs font-semibold text-blue-600 uppercase tracking-wide bg-blue-50 px-2 py-0.5 rounded">Manajemen
+                                class="text-xs font-semibold text-primary uppercase tracking-wide bg-blue-50 px-2 py-0.5 rounded">Manajemen
                                 Pro</span>
                         </div>
                     </div>
@@ -65,10 +65,10 @@
                     <nav>
                         <div class="space-y-2">
                             <a href="{{ route('dashboard') }}"
-                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-blue-600 text-white shadow-lg' : 'hover:bg-gray-100' }}">
+                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('dashboard') ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-100' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-2 rounded-lg {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-blue-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-2 rounded-lg {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-primary group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
@@ -88,10 +88,10 @@
                             </a>
 
                             <a href="{{ route('customers.index') }}"
-                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('customers.*') ? 'bg-blue-600 text-white shadow-lg' : 'hover:bg-gray-100' }}">
+                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('customers.*') ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-100' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-2 rounded-lg {{ request()->routeIs('customers.*') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-blue-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-2 rounded-lg {{ request()->routeIs('customers.*') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-primary group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -108,10 +108,10 @@
                             </a>
 
                             <a href="{{ route('containers.index') }}"
-                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-blue-600 text-white shadow-lg' : 'hover:bg-gray-100' }}">
+                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-100' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-2 rounded-lg {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-blue-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-2 rounded-lg {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-primary group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -130,10 +130,10 @@
                             </a>
 
                             <a href="{{ route('containers.queue') }}"
-                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.queue') ? 'bg-blue-600 text-white shadow-lg' : 'hover:bg-gray-100' }}">
+                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.queue') ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-100' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-2 rounded-lg {{ request()->routeIs('containers.queue') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-blue-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-2 rounded-lg {{ request()->routeIs('containers.queue') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-primary group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -150,10 +150,10 @@
                             </a>
 
                             <a href="{{ route('containers.penalty-report') }}"
-                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.penalty-report') ? 'bg-blue-600 text-white shadow-lg' : 'hover:bg-gray-100' }}">
+                                class="group flex items-center px-3 py-3 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300 {{ request()->routeIs('containers.penalty-report') ? 'bg-primary text-white shadow-lg' : 'hover:bg-gray-100' }}">
                                 <div class="flex items-center flex-1">
                                     <div
-                                        class="p-2 rounded-lg {{ request()->routeIs('containers.penalty-report') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-blue-600 group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
+                                        class="p-2 rounded-lg {{ request()->routeIs('containers.penalty-report') ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600 group-hover:bg-primary group-hover:text-white' }} transition-all duration-300 transform group-hover:scale-110">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
@@ -178,7 +178,7 @@
                         <div class="flex items-center">
                             <div class="relative">
                                 <div
-                                    class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center shadow-sm">
+                                    class="w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-sm">
                                     <span class="text-white text-xs font-bold">A</span>
                                 </div>
                                 <div
@@ -243,7 +243,7 @@
                         <!-- User Avatar -->
                         <div class="flex items-center group cursor-pointer relative">
                             <div
-                                class="w-6 h-6 sm:w-8 sm:h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-sm transform group-hover:scale-110 transition-transform duration-200">
+                                class="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-full flex items-center justify-center shadow-sm transform group-hover:scale-110 transition-transform duration-200">
                                 <span class="text-white text-xs sm:text-sm font-bold">U</span>
                             </div>
                             <div class="ml-2 hidden sm:block">
@@ -363,11 +363,11 @@
         }
 
         .nav-link.active {
-            @apply bg-blue-50 text-blue-700 border-r-2 border-blue-600;
+            @apply bg-blue-50 text-blue-700 border-r-2 border-primary;
         }
 
         .nav-link.active svg {
-            @apply text-blue-600;
+            @apply text-primary;
         }
 
         /* Custom scrollbar styles */

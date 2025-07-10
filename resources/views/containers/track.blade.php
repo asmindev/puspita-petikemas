@@ -35,13 +35,13 @@
                     <div class="ml-4">
                         <span
                             class="text-xl sm:text-2xl font-bold text-gray-900 block tracking-tight">PelindoTrack</span>
-                        <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Portal Pelacakan</span>
+                        <span class="text-xs font-bold text-primary uppercase tracking-widest">Portal Pelacakan</span>
                     </div>
                 </div>
 
                 <div class="flex items-center space-x-4">
                     <a href="{{ route('dashboard') }}"
-                        class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105">
+                        class="inline-flex items-center px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z" />
@@ -58,7 +58,7 @@
         <!-- Hero Section -->
         <div class="text-center mb-12">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">
-                Pelacakan <span class="text-blue-600">Peti Kemas</span>
+                Pelacakan <span class="text-primary">Peti Kemas</span>
             </h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                 Masukkan nomor peti kemas Anda di bawah ini untuk melacak status, lokasi, dan informasi pemrosesan
@@ -90,7 +90,7 @@
                 </div>
 
                 <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
+                    class="w-full bg-primary hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/25 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
                     <div class="flex items-center justify-center">
                         <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -164,7 +164,7 @@
                         @php
                         $statusColors = [
                         'pending' => 'bg-amber-500',
-                        'in_progress' => 'bg-blue-600',
+                        'in_progress' => 'bg-primary',
                         'completed' => 'bg-green-500',
                         'cancelled' => 'bg-red-500'
                         ];
@@ -256,7 +256,7 @@
                 <!-- Basic Information -->
                 <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-xl">
                     <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>

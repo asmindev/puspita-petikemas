@@ -8,7 +8,7 @@
     <!-- Compact Back Button -->
     <div class="mb-4">
         <a href="{{ route('containers.index') }}"
-            class="group inline-flex items-center bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 hover:text-blue-600 py-2 px-4 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md text-sm">
+            class="group inline-flex items-center bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 hover:text-primary py-2 px-4 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md text-sm">
             <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
                 viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -22,8 +22,8 @@
         <!-- Compact Form Header -->
         <div class="px-4 py-3 border-b border-gray-200 bg-gray-50">
             <div class="flex items-center">
-                <div class="p-2 bg-blue-50 rounded-lg border border-blue-200">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="p-2 bg-primtext-primaryrounded-lg border border-primtext-primary">
+                    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
@@ -45,7 +45,7 @@
                 <!-- Compact Section Header -->
                 <div class="md:col-span-2 mb-3">
                     <div class="flex items-center">
-                        <div class="w-1 h-6 bg-blue-600 rounded-full mr-3"></div>
+                        <div class="w-1 h-6 bg-primtext-primary rounded-full mr-3"></div>
                         <h4 class="text-lg font-bold text-gray-900">Informasi Peti Kemas</h4>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     <label for="customer_id" class="block text-sm font-medium text-gray-700">JPT</label>
                     <div class="relative">
                         <select name="customer_id" id="customer_id"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('customer_id') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('customer_id') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="" class="text-gray-500">Pilih JPT</option>
                             @foreach($customers as $customer)
@@ -89,7 +89,7 @@
                     <div class="relative">
                         <input type="text" name="container_number" id="container_number"
                             value="{{ old('container_number') }}"
-                            class="w-full px-5 py-4 pl-10 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 @error('container_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 pl-10 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 @error('container_number') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan nomor peti kemas" required>
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,7 +114,7 @@
                     <label for="type" class="block text-sm font-medium text-gray-700">Tipe Peti Kemas</label>
                     <div class="relative">
                         <select name="type" id="type"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('type') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('type') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="20ft" {{ old('type', '20ft' )=='20ft' ? 'selected' : '' }}>20ft</option>
                             <option value="40ft" {{ old('type')=='40ft' ? 'selected' : '' }}>40ft</option>
@@ -145,7 +145,7 @@
                             <div class="content-item flex items-center space-x-2">
                                 <div class="flex-1">
                                     <input type="text" name="contents[]"
-                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
+                                        class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
                                         placeholder="Masukkan nama barang/isi container">
                                 </div>
                                 <button type="button"
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                         <button type="button" id="add-content"
-                            class="inline-flex items-center px-3 py-2 bg-blue-50 hover:bg-blue-100 text-blue-600 font-medium rounded-lg transition-all duration-200 text-sm">
+                            class="inline-flex items-center px-3 py-2 bg-primtext-primaryhover:bg-primtext-primary text-primary font-medium rounded-lg transition-all duration-200 text-sm">
                             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 4v16m8-8H4"></path>
@@ -181,7 +181,7 @@
                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                     <div class="relative">
                         <select name="status" id="status"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('status') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('status') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="pending" {{ old('status', 'pending' )=='pending' ? 'selected' : '' }}>
                                 Menunggu</option>
@@ -213,7 +213,7 @@
                     <label for="priority" class="block text-sm font-medium text-gray-700">Prioritas</label>
                     <div class="relative">
                         <select name="priority" id="priority"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('priority') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('priority') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             required>
                             <option value="Normal" {{ old('priority', 'Normal' )=='Normal' ? 'selected' : '' }}>Normal
                             </option>
@@ -243,7 +243,7 @@
                     <div class="relative">
                         <input onload="this.value = new Date().toISOString().split('T')[0]" type="date"
                             name="entry_date" id="entry_date" value="{{ old('entry_date') }}"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('entry_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('entry_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan tanggal masuk" required>
                     </div>
                     @error('entry_date')
@@ -260,7 +260,7 @@
                     <label for="exit_date" class="block text-sm font-medium text-gray-700">Tanggal Keluar</label>
                     <div class="relative">
                         <input type="date" name="exit_date" id="exit_date" value="{{ old('exit_date') }}"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 @error('exit_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 @error('exit_date') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan tanggal keluar" required>
                     </div>
                     @error('exit_date')
@@ -279,7 +279,7 @@
                     <label for="notes" class="block text-sm font-medium text-gray-700">Catatan Tambahan</label>
                     <div class="relative">
                         <textarea name="notes" id="notes" rows="3"
-                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none @error('notes') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
+                            class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 resize-none @error('notes') border-red-300 focus:ring-red-500 focus:border-red-500 @enderror text-sm"
                             placeholder="Masukkan catatan tambahan atau instruksi khusus...">{{ old('notes') }}</textarea>
                         <div class="absolute top-2 right-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -304,16 +304,16 @@
             <div class="mt-6 pt-4 border-t border-gray-200">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <!-- Tips Section -->
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <div class="bg-primtext-primaryborder border-primtext-primary rounded-lg p-3">
                         <div class="flex items-start">
-                            <svg class="w-4 h-4 text-blue-600 mt-0.5 mr-2 flex-shrink-0" fill="none"
+                            <svg class="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <div>
-                                <p class="text-sm font-medium text-blue-800">Tips</p>
-                                <p class="text-xs text-blue-600">Pilih tingkat prioritas yang sesuai dengan urgensi dan
+                                <p class="text-sm font-medium text-primary">Tips</p>
+                                <p class="text-xs text-primary">Pilih tingkat prioritas yang sesuai dengan urgensi dan
                                     kebutuhan pemrosesan peti kemas.</p>
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                             </span>
                         </a>
                         <button type="submit"
-                            class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md text-sm">
+                            class="px-6 py-3 bg-primtext-primary hover:bg-primtext-primary text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md text-sm">
                             <span class="flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -364,7 +364,7 @@
         contentItem.innerHTML = `
             <div class="flex-1">
                 <input type="text" name="contents[]"
-                    class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
+                    class="w-full px-5 py-4 bg-white border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-primtext-primary focus:border-primtext-primary transition-all duration-200 text-gray-900 placeholder-gray-500 text-sm"
                     placeholder="Masukkan nama barang/isi container">
             </div>
             <button type="button" class="remove-content px-2 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-lg transition-all duration-200">

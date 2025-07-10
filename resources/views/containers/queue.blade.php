@@ -11,7 +11,7 @@
             <div>
                 <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Manajemen Antrian Peti Kemas</h1>
                 <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-blue-600 rounded-full animate-pulse"></div>
+                    <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
                     <p class="text-gray-600 text-sm">Algoritma Penjadwalan FCFS + Prioritas</p>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <form action="{{ route('containers.queue.process-next') }}" method="POST" class="inline">
                     @csrf
                     <button type="submit"
-                        class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        class="inline-flex items-center justify-center px-4 py-2 bg-primary text-white text-sm font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
                             </path>
@@ -46,14 +46,14 @@
         <div
             class="bg-white border border-gray-200 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200">
             <div class="flex items-center">
-                <div class="p-3 bg-blue-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-primary rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm font-medium text-blue-600">Total Menunggu</p>
+                    <p class="text-sm font-medium text-primary">Total Menunggu</p>
                     <p class="text-2xl font-bold text-gray-900">{{ $statistics['total_pending'] }}</p>
                 </div>
             </div>
@@ -116,7 +116,7 @@
     <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
         <div class="flex items-start">
             <div class="flex-shrink-0">
-                <div class="p-3 bg-blue-600 rounded-xl shadow-lg">
+                <div class="p-3 bg-primary rounded-xl shadow-lg">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -125,20 +125,20 @@
             </div>
             <div class="ml-6 flex-1">
                 <div class="flex items-center mb-2">
-                    <h3 class="text-lg font-bold text-blue-600">Peti Kemas Berikutnya untuk Diproses</h3>
+                    <h3 class="text-lg font-bold text-primary">Peti Kemas Berikutnya untuk Diproses</h3>
                     <span
-                        class="ml-3 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-full animate-pulse shadow-lg">SIAP</span>
+                        class="ml-3 px-3 py-1 text-xs font-bold bg-primary text-white rounded-full animate-pulse shadow-lg">SIAP</span>
                 </div>
                 <div class="flex flex-col lg:flex-row gap-4">
                     <!-- Tabel 1 -->
                     <table class="w-full lg:w-1/2 text-sm text-left border-separate border-spacing-y-2">
                         <tbody>
                             <tr>
-                                <th class="text-blue-600 font-medium pr-4">Peti Kemas</th>
+                                <th class="text-primary font-medium pr-4">Peti Kemas</th>
                                 <td class="font-bold text-gray-900">{{ $nextContainer->container_number }}</td>
                             </tr>
                             <tr>
-                                <th class="text-blue-600 font-medium pr-4">Pelanggan</th>
+                                <th class="text-primary font-medium pr-4">Pelanggan</th>
                                 <td class="font-semibold text-gray-900">{{ $nextContainer->customer->name }}</td>
                             </tr>
                         </tbody>
@@ -147,7 +147,7 @@
                     <table class="w-full lg:w-1/2 text-sm text-left border-separate border-spacing-y-2">
                         <tbody>
                             <tr>
-                                <th class="text-blue-600 font-medium pr-4">Prioritas</th>
+                                <th class="text-primary font-medium pr-4">Prioritas</th>
                                 <td>
                                     <span
                                         class="px-3 py-1 text-xs font-bold rounded-full
@@ -157,7 +157,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th class="text-blue-600 font-medium pr-4">Masuk</th>
+                                <th class="text-primary font-medium pr-4">Masuk</th>
                                 <td class="font-semibold text-gray-900">{{ $nextContainer->entry_date->format('M d,
                                     H:i')
                                     }}</td>
@@ -220,7 +220,7 @@
 
                 <div class="flex items-end gap-2">
                     <button type="submit"
-                        class="flex-1 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                        class="flex-1 px-4 py-2.5 bg-primary hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                         Filter
                     </button>
                     <a href="{{ route('containers.queue') }}"
@@ -286,13 +286,13 @@
                                 @if($container->status === 'pending')
                                 <div class="flex items-center">
                                     <div
-                                        class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                                        class="w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
                                         <span class="text-sm font-bold text-white">{{ ($containers->currentPage() - 1) *
                                             $containers->perPage() + $loop->iteration }}</span>
                                     </div>
                                     @if($loop->first)
                                     <span
-                                        class="ml-3 px-3 py-1 text-xs font-bold bg-blue-600 text-white rounded-full animate-pulse shadow-lg">NEXT</span>
+                                        class="ml-3 px-3 py-1 text-xs font-bold bg-primary text-white rounded-full animate-pulse shadow-lg">NEXT</span>
                                     @endif
                                 </div>
                                 @else
@@ -388,7 +388,7 @@
                             <td class="px-4 py-4 whitespace-nowrap">
                                 <div class="flex items-center space-x-3">
                                     <a href="{{ route('containers.show', $container) }}"
-                                        class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-100 hover:bg-blue-200 rounded-lg transition-all duration-200 hover:scale-105 border border-blue-200">
+                                        class="inline-flex items-center px-3 py-1.5 text-xs font-medium text-primary bg-blue-100 hover:bg-blue-200 rounded-lg transition-all duration-200 hover:scale-105 border border-blue-200">
                                         <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -440,7 +440,7 @@
             <h3 class="text-lg font-semibold text-gray-900 mb-2">Tidak ada peti kemas ditemukan</h3>
             <p class="text-gray-600 mb-6">Tidak ada peti kemas yang cocok dengan filter Anda saat ini.</p>
             <a href="{{ route('containers.queue') }}"
-                class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
+                class="inline-flex items-center px-4 py-2 bg-primary hover:bg-blue-700 text-white font-medium rounded-lg transition-colors">
                 Reset Filter
             </a>
         </div>
@@ -453,13 +453,13 @@
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-gray-900 flex items-center">
-                        <div class="w-2 h-2 bg-blue-600 rounded-full mr-3 animate-pulse"></div>
+                        <div class="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse"></div>
                         Simulasi Pemrosesan Antrian
                     </h2>
                     <p class="text-sm text-gray-600 mt-1">Analisis prediktif dari timeline pemrosesan antrian</p>
                 </div>
                 <button id="loadSimulation"
-                    class="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
+                    class="inline-flex items-center px-4 py-2 bg-primary hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
@@ -475,7 +475,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 shadow-lg">
                         <div class="flex items-center">
-                            <div class="p-2 bg-blue-600 rounded-lg shadow">
+                            <div class="p-2 bg-primary rounded-lg shadow">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
@@ -483,7 +483,7 @@
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <div class="text-sm font-medium text-blue-600">Total Peti Kemas</div>
+                                <div class="text-sm font-medium text-primary">Total Peti Kemas</div>
                                 <div class="text-xl font-bold text-gray-900" id="simTotalContainers">-</div>
                             </div>
                         </div>
@@ -595,7 +595,7 @@
                     : 'bg-blue-100 text-blue-700 border border-blue-200';
 
                 const positionBadge = index === 0
-                    ? 'bg-blue-600 text-white shadow-lg'
+                    ? 'bg-primary text-white shadow-lg'
                     : 'bg-gray-600 text-white';
 
                 row.innerHTML = `

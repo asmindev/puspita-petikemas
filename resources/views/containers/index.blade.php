@@ -8,7 +8,7 @@
 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
     <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
         <div class="flex items-center mb-3">
-            <div class="p-2 bg-blue-600 rounded-xl shadow-sm">
+            <div class="p-2 bg-primary rounded-xl shadow-sm">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -16,19 +16,19 @@
             </div>
             <div class="ml-3">
                 <h2 class="text-2xl font-bold text-gray-900 mb-1">Manajemen Peti Kemas</h2>
-                <p class="text-gray-600 text-sm">Lacak dan kelola antrian serta pemrosesan peti kemas</p>
+                <p class="text-pribg-primary text-sm">Lacak dan kelola antrian serta pemrosesan peti kemas</p>
             </div>
         </div>
         <div class="flex items-center space-x-4 text-sm">
-            <div class="flex items-center text-green-600">
+            <div class="flex items-center text-gpribg-primary">
                 <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $containers->total() }} Total Peti Kemas
             </div>
-            <div class="flex items-center text-blue-600">
+            <div class="flex items-center text-pribg-primary">
                 <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $containers->where('status', 'pending')->count() }} Menunggu
             </div>
-            <div class="flex items-center text-orange-600">
+            <div class="flex items-center text-orpribg-primary">
                 <div class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $containers->where('priority', 'High')->count() }} Prioritas Tinggi
             </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="mt-4 lg:mt-0">
         <a href="{{ route('containers.create') }}"
-            class="group relative bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center shadow-sm hover:shadow-md transform hover:-translate-y-1">
+            class="group relative bg-primary text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 flex items-center shadow-sm hover:shadow-md transform hover:-translate-y-1">
             <div class="relative flex items-center">
                 <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -64,14 +64,14 @@
                     </div>
                     <input type="text" name="search" id="search" value="{{ request('search') }}"
                         placeholder="Cari berdasarkan nomor peti kemas, pelanggan, status..."
-                        class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pribg-primary focus:border-transparent">
                 </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="flex space-x-2">
                 <button type="submit"
-                    class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center shadow-sm hover:shadow-md">
+                    class="px-6 py-3 bg-primary hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center shadow-sm hover:shadow-md">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -79,7 +79,7 @@
                     Cari
                 </button>
                 <a href="{{ route('containers.index') }}"
-                    class="px-6 py-3 bg-gray-600 hover:bg-gray-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center shadow-sm hover:shadow-md">
+                    class="px-6 py-3 bg-primary hover:bg-gray-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center shadow-sm hover:shadow-md">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -102,7 +102,7 @@
                     <tr>
                         <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-1/6">
                             <a href="{{ route('containers.index', array_merge(request()->query(), ['sort' => 'container_number', 'direction' => request('sort') == 'container_number' && request('direction') == 'asc' ? 'desc' : 'asc'])) }}"
-                                class="flex items-center space-x-1 hover:text-blue-600 transition-colors">
+                                class="flex items-center space-x-1 hover:text-primary transition-colors">
                                 <span>Peti Kemas</span>
                                 @if(request('sort') == 'container_number')
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@
                         </th>
                         <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-1/6">
                             <a href="{{ route('containers.index', array_merge(request()->query(), ['sort' => 'status', 'direction' => request('sort') == 'status' && request('direction') == 'asc' ? 'desc' : 'asc'])) }}"
-                                class="flex items-center space-x-1 hover:text-blue-600 transition-colors">
+                                class="flex items-center space-x-1 hover:text-pribg-primary transition-colors">
                                 <span>Status</span>
                                 @if(request('sort') == 'status')
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +145,7 @@
                         </th>
                         <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-1/6">
                             <a href="{{ route('containers.index', array_merge(request()->query(), ['sort' => 'priority', 'direction' => request('sort') == 'priority' && request('direction') == 'asc' ? 'desc' : 'asc'])) }}"
-                                class="flex items-center space-x-1 hover:text-blue-600 transition-colors">
+                                class="flex items-center space-x-1 hover:text-pribg-primary transition-colors">
                                 <span>Prioritas</span>
                                 @if(request('sort') == 'priority')
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -162,7 +162,7 @@
                         </th>
                         <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider w-1/6">
                             <a href="{{ route('containers.index', array_merge(request()->query(), ['sort' => 'created_at', 'direction' => request('sort') == 'created_at' && request('direction') == 'asc' ? 'desc' : 'asc'])) }}"
-                                class="flex items-center space-x-1 hover:text-blue-600 transition-colors">
+                                class="flex items-center space-x-1 hover:text-pribg-primary transition-colors">
                                 <span>Dibuat</span>
                                 @if(request('sort') == 'created_at')
                                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,7 +191,7 @@
                                 <div class="flex-shrink-0 h-10 w-10">
                                     <div
                                         class="h-10 w-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center">
-                                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
+                                        <svg class="w-5 h-5 text-pribg-primary" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -200,7 +200,7 @@
                                 </div>
                                 <div class="ml-3">
                                     <div
-                                        class="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                        class="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">
                                         {{ $container->container_number }}</div>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap w-1/6">
@@ -210,7 +210,7 @@
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap w-1/12">
                             <span
-                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-blue-50 border border-blue-200 text-blue-600">
+                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-blue-50 border border-blue-200 text-pribg-primary">
                                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
@@ -234,13 +234,13 @@
                         <td class="px-4 py-4 whitespace-nowrap w-1/6">
                             <span class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold border
                             @if($container->status === 'completed')
-                                bg-green-50 border-green-200 text-green-600
+                                bg-green-50 border-green-200 text-gpribg-primary
                             @elseif($container->status === 'in_progress')
-                                bg-orange-50 border-orange-200 text-orange-600
+                                bg-orange-50 border-orange-200 text-orpribg-primary
                             @elseif($container->status === 'cancelled')
-                                bg-red-50 border-red-200 text-red-600
+                                bg-red-50 border-red-200 textpribg-primary
                             @else
-                                bg-gray-50 border-gray-200 text-gray-600
+                                bg-gray-50 border-gray-200 text-pribg-primary
                             @endif">
                                 {{ $container->status === 'pending' ? 'Menunggu' :
                                 ($container->status === 'in_progress' ? 'Sedang Diproses' :
@@ -252,13 +252,13 @@
                         <td class="px-4 py-4 whitespace-nowrap w-1/6">
                             @if($container->priority === 'High')
                             <span
-                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-red-500/20 border border-red-400/40 text-red-600 backdrop-blur-sm">
+                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-red-500/20 border border-red-400/40 textpribg-primary backdrop-blur-sm">
                                 <div class="w-1.5 h-1.5 bg-red-400 rounded-full mr-1 animate-pulse"></div>
                                 Prioritas Tinggi
                             </span>
                             @else
                             <span
-                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-blue-500/20 border border-blue-400/40 text-blue-600 backdrop-blur-sm">
+                                class="inline-flex items-center px-2 py-1 rounded-xl text-xs font-bold bg-blue-500/20 border border-blue-400/40 text-pribg-primary backdrop-blur-sm">
                                 <div class="w-1.5 h-1.5 bg-blue-400 rounded-full mr-1"></div>
                                 Prioritas Normal
                             </span>
@@ -271,7 +271,7 @@
                             <div class="flex items-center justify-end space-x-1">
                                 <a href="{{ route('containers.show', $container) }}"
                                     class="group p-1.5 bg-blue-500/20 hover:bg-blue-500/30 border border-blue-400/30 hover:border-blue-400/50 text-blue-300 hover:text-blue-200 rounded-xl transition-all duration-300 backdrop-blur-sm">
-                                    <svg class="w-4 h-4 group-hover:scale-110 transition-transform text-blue-600"
+                                    <svg class="w-4 h-4 group-hover:scale-110 transition-transform text-pribg-primary"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -281,7 +281,7 @@
                                 </a>
                                 <a href="{{ route('containers.edit', $container) }}"
                                     class="group p-1.5 bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/30 hover:border-emerald-400/50 text-emerald-300 hover:text-emerald-200 rounded-xl transition-all duration-300 backdrop-blur-sm">
-                                    <svg class="w-4 h-4 group-hover:scale-110 transition-transform text-emerald-600"
+                                    <svg class="w-4 h-4 group-hover:scale-110 transition-transform text-emepribg-primary"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -294,7 +294,7 @@
                                     <button type="submit"
                                         class="group p-1.5 bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 hover:border-red-400/50 text-red-300 hover:text-red-200 rounded-xl transition-all duration-300 backdrop-blur-sm"
                                         onclick="return confirm('Apakah Anda yakin ingin menghapus peti kemas ini?')">
-                                        <svg class="w-4 h-4 group-hover:scale-110 transition-transform text-red-600"
+                                        <svg class="w-4 h-4 group-hover:scale-110 transition-transform textpribg-primary"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -314,7 +314,7 @@
     <div class="lg:hidden divide-y divide-slate-700/30">
         @foreach($containers as $container)
         <div
-            class="p-6 hover:bg-gradient-to-r hover:from-slate-700/30 hover:to-slate-600/30 transition-all duration-300">
+            class="p-6 hover:bg-gradient-to-r hover:from-slate-700/30 hover:to-spribg-primary/30 transition-all duration-300">
             <div class="flex items-start justify-between mb-4">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 h-12 w-12">
@@ -422,7 +422,7 @@
     <div class="text-center py-20">
         <div class="max-w-md mx-auto">
             <div
-                class="mx-auto h-24 w-24 bg-gradient-to-br from-slate-700/50 to-slate-600/50 rounded-3xl flex items-center justify-center mb-6 border border-slate-600/30">
+                class="mx-auto h-24 w-24 bg-gradient-to-br from-slate-700/50 to-spribg-primary/50 rounded-3xl flex items-center justify-center mb-6 border border-spribg-primary/30">
                 <svg class="h-12 w-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -432,9 +432,9 @@
             <p class="text-slate-400 mb-8">Mulai kelola antrian peti kemas dengan membuat entri peti kemas pertama Anda.
             </p>
             <a href="{{ route('containers.create') }}"
-                class="group relative bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-700 hover:from-emerald-700 hover:via-emerald-800 hover:to-teal-800 text-white font-bold py-4 px-8 rounded-3xl transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-2 hover:scale-105">
+                class="group relative bg-gradient-to-r from-emepribg-primary via-emerald-700 to-teal-700 hover:from-emerald-700 hover:via-emerald-800 hover:to-teal-800 text-white font-bold py-4 px-8 rounded-3xl transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25 transform hover:-translate-y-2 hover:scale-105">
                 <div
-                    class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-3xl blur opacity-50 group-hover:opacity-75 transition-opacity">
+                    class="absolute inset-0 bg-gradient-to-r from-emepribg-primary to-pribg-primary rounded-3xl blur opacity-50 group-hover:opacity-75 transition-opacity">
                 </div>
                 <div class="relative flex items-center">
                     <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" fill="none"

@@ -404,6 +404,14 @@ class Container extends Model
     }
 
     /**
+     * Get current period penalty (non-cumulative)
+     */
+    public function getCurrentPeriodPenaltyAttribute()
+    {
+        return \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($this);
+    }
+
+    /**
      * Update delivery penalty automatically
      */
     public function updateDeliveryPenalty()

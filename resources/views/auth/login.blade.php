@@ -25,7 +25,7 @@
                     <div class="relative group">
                         <!-- Logo Container with fallback to SVG if PNG not available -->
                         <div
-                            class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                            class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                             <!-- Try to load PNG logo first -->
                             <img src="{{ asset('images/brand/logo.jpeg') }}" alt="PelindoTrack Logo"
                                 class="w-full h-full object-cover"
@@ -47,7 +47,7 @@
 
                 <div class="mb-6">
                     <h1 class="text-3xl font-bold text-gray-900 mb-1 tracking-tight">PelindoTrack</h1>
-                    <p class="text-lg font-semibold text-blue-600 uppercase tracking-wide">Sistem Manajemen</p>
+                    <p class="text-lg font-semibold text-primabg-primary uppercase tracking-wide">Sistem Manajemen</p>
                     <p class="text-slate-400 text-sm mt-4">Masuk ke akun Anda untuk melanjutkan</p>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                         <div class="relative">
                             <input type="email" id="email" name="email" value="{{ old('email') }}"
                                 placeholder="Masukkan alamat email Anda"
-                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 {{ $errors->has('email') ? '!border-red-500' : '' }}"
+                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-primabg-primary focus:ring-4 focus:ring-primabg-primary/20 transition-all duration-200 {{ $errors->has('email') ? '!border-red-500' : '' }}"
                                 required autocomplete="email" autofocus>
                             <div class="absolute inset-y-0 right-0 flex items-center pr-5">
                                 <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor"
@@ -122,7 +122,7 @@
                         </label>
                         <div class="relative">
                             <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda"
-                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 {{ $errors->has('password') ? '!border-red-500' : '' }}"
+                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-primabg-primary focus:ring-4 focus:ring-primabg-primary/20 transition-all duration-200 {{ $errors->has('password') ? '!border-red-500' : '' }}"
                                 required autocomplete="current-password">
                             <div class="absolute inset-y-0 right-0 flex items-center pr-5">
                                 <button type="button" onclick="togglePassword()"
@@ -148,7 +148,7 @@
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input type="checkbox" id="remember" name="remember"
-                                class="w-4 h-4 text-blue-600 bg-slate-700 border-slate-600 rounded focus:ring-blue-500 focus:ring-2">
+                                class="w-4 h-4 text-primabg-primary bg-slate-700 border-slate-600 rounded focus:ring-primabg-primary focus:ring-2">
                             <label for="remember" class="ml-3 text-sm text-slate-300">
                                 Ingat saya
                             </label>
@@ -156,7 +156,7 @@
 
                         <div>
                             <a href="#"
-                                class="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200">
+                                class="text-sm text-primabg-primary hover:text-primabg-primary transition-colors duration-200">
                                 Lupa kata sandi?
                             </a>
                         </div>
@@ -164,7 +164,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/25 focus:outline-none focus:ring-4 focus:ring-blue-500/50">
+                        class="w-full bg-gradient-to-r from-primabg-primary via-purple-600 to-indigo-600 hover:from-primabg-primary hover:via-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-primabg-primary/25 focus:outline-none focus:ring-4 focus:ring-primabg-primary/50">
                         <div class="flex items-center justify-center">
                             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

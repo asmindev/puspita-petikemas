@@ -6,7 +6,7 @@
 @section('content')
 <div class="mb-8">
     <a href="{{ route('customers.index') }}"
-        class="inline-flex items-center text-sm text-gray-600 hover:text-blue-600 transition-all duration-200 group">
+        class="inline-flex items-center text-sm text-gray-600 hover:text-primary transition-all duration-200 group">
         <svg class="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor"
             viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -19,18 +19,18 @@
 <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 mb-8">
     <div class="flex items-start justify-between">
         <div class="flex items-center">
-            <div class="h-20 w-20 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg">
+            <div class="h-20 w-20 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
                 <span class="text-white font-bold text-2xl">{{ substr($customer->name, 0, 1) }}</span>
             </div>
             <div class="ml-6">
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $customer->name }}</h1>
                 <div class="flex items-center space-x-4 text-sm">
                     <p class="text-gray-600 flex items-center">
-                        <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                         </svg>
-                        <span class="font-medium text-blue-600 ml-1">#{{ $customer->id }}</span>
+                        <span class="font-medium text-primary ml-1">#{{ $customer->id }}</span>
                     </p>
                     <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
                     <p class="text-gray-600 flex items-center">
@@ -45,7 +45,7 @@
         </div>
         <div class="flex items-center space-x-3">
             <a href="{{ route('customers.edit', $customer) }}"
-                class="group px-6 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
+                class="group px-6 py-3 text-sm font-medium text-white bg-primary rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
                 <svg class="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -63,7 +63,7 @@
     <div
         class="group bg-white rounded-2xl shadow-lg border border-gray-200 p-6 hover:shadow-xl transition-all duration-300">
         <div class="flex items-center">
-            <div class="p-4 bg-blue-600 rounded-xl shadow-lg transition-transform duration-300">
+            <div class="p-4 bg-primary rounded-xl shadow-lg transition-transform duration-300">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -71,7 +71,7 @@
             </div>
             <div class="ml-4">
                 <p class="text-sm font-medium text-gray-600">Total Peti Kemas</p>
-                <p class="text-3xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">{{
+                <p class="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">{{
                     $customer->containers->count() }}</p>
             </div>
         </div>
@@ -119,7 +119,7 @@
     <div class="px-8 py-6 border-b border-gray-200 flex items-center justify-between bg-gray-50">
         <div>
             <h3 class="text-xl font-bold text-gray-900 flex items-center">
-                <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-6 h-6 mr-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
@@ -128,7 +128,7 @@
             <p class="text-sm text-gray-600 mt-1">Semua peti kemas milik pelanggan ini</p>
         </div>
         <a href="{{ route('containers.create', ['customer_id' => $customer->id]) }}"
-            class="group px-6 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
+            class="group px-6 py-3 text-sm font-medium text-white bg-primary rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center">
             <svg class="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-300" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -162,7 +162,7 @@
                 <tr class="hover:bg-gray-50 transition-all duration-200 group">
                     <td class="px-8 py-6 whitespace-nowrap">
                         <div class="flex items-center">
-                            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center mr-3">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -198,7 +198,7 @@
                     <td class="px-8 py-6 whitespace-nowrap text-right text-sm font-medium">
                         <div class="flex items-center justify-end space-x-3">
                             <a href="{{ route('containers.show', $container) }}"
-                                class="p-2 text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-all duration-200">
+                                class="p-2 text-primary hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -240,7 +240,7 @@
             peti kemas pertama mereka untuk memulai pelacakan.</p>
         <div class="mt-8">
             <a href="{{ route('containers.create', ['customer_id' => $customer->id]) }}"
-                class="group bg-blue-600 hover:bg-blue-700 text-white font-medium py-4 px-8 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center">
+                class="group bg-primary text-white font-medium py-4 px-8 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 inline-flex items-center">
                 <svg class="w-5 h-5 mr-3 group-hover:rotate-90 transition-transform duration-300" fill="none"
                     stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />

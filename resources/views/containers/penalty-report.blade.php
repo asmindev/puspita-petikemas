@@ -8,7 +8,7 @@
 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
     <div class="bg-white rounded-xl p-8 border border-gray-200 ">
         <div class="flex items-center mb-4">
-            <div class="p-3 bg-blue-600 rounded-2xl ">
+            <div class="p-3 bg-primary rounded-2xl ">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
@@ -20,8 +20,8 @@
             </div>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-            <div class="flex items-center text-blue-600">
-                <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
+            <div class="flex items-center text-primabg-primary">
+                <div class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
                 {{ $stats['total_containers'] }} Total Container
             </div>
             <div class="flex items-center text-red-600">
@@ -48,7 +48,7 @@
             <div>
                 <label for="type" class="block text-sm font-medium text-gray-700 mb-2">Jenis Container</label>
                 <select name="type" id="type"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primabg-primary">
                     <option value="all" {{ request('type')=='all' ? 'selected' : '' }}>Semua Jenis</option>
                     <option value="20ft" {{ request('type')=='20ft' ? 'selected' : '' }}>20ft</option>
                     <option value="40ft" {{ request('type')=='40ft' ? 'selected' : '' }}>40ft</option>
@@ -59,7 +59,7 @@
             <div>
                 <label for="penalty_status" class="block text-sm font-medium text-gray-700 mb-2">Status Denda</label>
                 <select name="penalty_status" id="penalty_status"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primabg-primary">
                     <option value="" {{ request('penalty_status')=='' ? 'selected' : '' }}>Semua Status</option>
                     <option value="has_penalty" {{ request('penalty_status')=='has_penalty' ? 'selected' : '' }}>Ada
                         Denda</option>
@@ -70,20 +70,20 @@
             <div>
                 <label for="date_from" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Dari</label>
                 <input type="date" name="date_from" id="date_from" value="{{ request('date_from') }}"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primabg-primary">
             </div>
 
             <!-- Date To -->
             <div>
                 <label for="date_to" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Sampai</label>
                 <input type="date" name="date_to" id="date_to" value="{{ request('date_to') }}"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primabg-primary">
             </div>
 
             <!-- Action Buttons -->
             <div class="flex items-end space-x-2">
                 <button type="submit"
-                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center">
+                    class="px-4 py-2 bg-primary hover:bg-primary text-white font-medium rounded-xl transition-all duration-200 flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -104,7 +104,7 @@
     <!-- 20ft Statistics -->
     <div class="bg-white rounded-2xl  border border-gray-200 p-6">
         <div class="flex items-center">
-            <div class="p-3 bg-blue-600 rounded-xl">
+            <div class="p-3 bg-primary rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -122,7 +122,7 @@
     <!-- 40ft Statistics -->
     <div class="bg-white rounded-2xl  border border-gray-200 p-6">
         <div class="flex items-center">
-            <div class="p-3 bg-blue-600 rounded-xl">
+            <div class="p-3 bg-primary rounded-xl">
                 <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -195,16 +195,14 @@
             <tbody class="divide-y divide-gray-300 bg-gray-100">
                 @foreach($containers as $container)
                 @php
-                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
+                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
                 $penaltyDays = \App\Services\PenaltyCalculationService::getPenaltyDays($container);
                 @endphp
                 <tr class="hover:bg-gray-50 transition-all duration-300">
                     <td class="px-6 py-3 whitespace-nowrap">
                         <div class="flex items-center">
-                            <div
-                                class="h-10 w-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
+                            <div class="h-10 w-10 rounded-xl border border-primary/40 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                                 </svg>
@@ -219,7 +217,7 @@
                     </td>
                     <td class="px-6 py-3 whitespace-nowrap">
                         <span
-                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-blue-100 border border-blue-200 text-blue-700">
+                            class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold bg-primary/10 border border-primary text-primary">
                             {{ $container->type ?? '20ft' }}
                         </span>
                     </td>
@@ -240,9 +238,9 @@
                         @endif
                     </td>
                     <td class="px-6 py-3 whitespace-nowrap">
-                        @if($penaltyInfo['total_amount'] > 0)
+                        @if($penaltyInfo['current_amount'] > 0)
                         <span class="text-red-600 font-bold">
-                            Rp {{ number_format($penaltyInfo['total_amount'], 0, ',', '.') }}
+                            Rp {{ number_format($penaltyInfo['current_amount'], 0, ',', '.') }}
                         </span>
                         @else
                         <span class="text-green-600 font-bold">Rp 0</span>
@@ -252,7 +250,7 @@
                         @if($penaltyInfo['responsible_party'])
                         <span class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-bold
                                 @if(str_contains($penaltyInfo['responsible_party'], 'Pelayaran'))
-                                    bg-blue-500/20 border border-blue-400/40 text-blue-300
+                                    bg-primary/20 border border-primabg-primary/40 text-primabg-primary
                                 @elseif(str_contains($penaltyInfo['responsible_party'], 'Customer'))
                                     bg-red-500/20 border border-red-400/40 text-red-300
                                 @else
@@ -267,7 +265,7 @@
                     <td class="px-6 py-3 whitespace-nowrap text-right">
                         <div class="flex items-center justify-end space-x-2">
                             <a href="{{ route('containers.show', $container) }}"
-                                class="p-2 bg-blue-100 hover:bg-blue-200 border border-blue-200 text-blue-600 rounded-lg transition-all duration-300">
+                                class="p-2 bg-primary/10 hover:bg-primary/20 border border-primary text-primary rounded-lg transition-all duration-300">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

@@ -338,4 +338,36 @@ class ContainerQueueService
 
         return $simulation;
     }
+
+    /**
+     * Get estimated wait time for a specific container
+     *
+     * @param Container $container
+     * @return int Wait time in minutes
+     */
+    public function getEstimatedWaitTime(Container $container): int
+    {
+        if ($container->status !== 'pending') {
+            return 0; // Not in queue
+        }
+
+        $pendingContainers = Container::with('customer')
+            ->where('status', 'pending')
+            ->get();
+
+        $sortedContainers = $this->sortByPriorityAndFCFS($pendingContainers);
+
+        $waitTime = 0;
+        $defaultProcessTime = 30;
+
+        foreach ($sortedContainers as $queuedContainer) {
+            if ($queuedContainer->id === $container->id) {
+                break;
+            }
+            $estimatedTime = $queuedContainer->estimated_time ?? $defaultProcessTime;
+            $waitTime += $estimatedTime;
+        }
+
+        return $waitTime;
+    }
 }

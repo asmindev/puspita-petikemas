@@ -10,7 +10,7 @@
     --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
-    --color-primary: oklch(60.9% 0.126 221.723); /* Cyan 600 */
+    --color-primary: oklch(78.9% 0.154 211.53); /* Cyan 400 */
 }
 
 /* Custom Dashboard Animations */

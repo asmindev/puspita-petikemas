@@ -8,7 +8,7 @@
 <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
     <div class="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
         <div class="flex items-center mb-3">
-            <div class="p-2 bg-blue-600 rounded-lg shadow-sm">
+            <div class="p-2 bg-primary rounded-lg shadow-sm">
                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="flex items-center space-x-4 text-sm">
-            <div class="flex items-center text-blue-600">
+            <div class="flex items-center text-primary">
                 <div class="w-2 h-2 bg-blue-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $customers->count() }} Total Pelanggan
             </div>
@@ -36,7 +36,7 @@
     </div>
     <div class="mt-4 lg:mt-0">
         <a href="{{ route('customers.create') }}"
-            class="group bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center shadow-sm hover:shadow-md transform hover:-translate-y-1">
+            class="group bg-primary text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center shadow-sm hover:shadow-md transform hover:-translate-y-1">
             <div class="flex items-center">
                 <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -64,7 +64,7 @@
                     </div>
                     <input type="text" name="search" id="search" value="{{ request('search') }}"
                         placeholder="Cari berdasarkan nama pelanggan..."
-                        class="w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600">
+                        class="w-full pl-10 pr-4 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
                 </div>
             </div>
 
@@ -72,7 +72,7 @@
             <div>
                 <label for="sort" class="block text-sm font-medium text-gray-700 mb-2">Urutkan</label>
                 <select name="sort" id="sort"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="name_asc" {{ request('sort', 'name_asc' )=='name_asc' ? 'selected' : '' }}>Nama A-Z
                     </option>
                     <option value="name_desc" {{ request('sort')=='name_desc' ? 'selected' : '' }}>Nama Z-A</option>
@@ -88,7 +88,7 @@
             <div>
                 <label for="per_page" class="block text-sm font-medium text-gray-700 mb-2">Item per Halaman</label>
                 <select name="per_page" id="per_page"
-                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                     <option value="5" {{ request('per_page', 5)==5 ? 'selected' : '' }}>5 item</option>
                     <option value="10" {{ request('per_page')==10 ? 'selected' : '' }}>10 item</option>
                     <option value="15" {{ request('per_page')==15 ? 'selected' : '' }}>15 item</option>
@@ -100,7 +100,7 @@
             <!-- Action Buttons -->
             <div class="flex items-end space-x-2">
                 <button type="submit"
-                    class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center">
+                    class="px-4 py-2 bg-primary hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -122,7 +122,7 @@
                     <label for="container_filter" class="block text-sm font-medium text-gray-700 mb-2">Filter
                         Container</label>
                     <select name="container_filter" id="container_filter"
-                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                         <option value="" {{ request('container_filter')=='' ? 'selected' : '' }}>Semua</option>
                         <option value="has_containers" {{ request('container_filter')=='has_containers' ? 'selected'
                             : '' }}>Ada Container</option>
@@ -136,7 +136,7 @@
                     <label for="penalty_filter" class="block text-sm font-medium text-gray-700 mb-2">Filter
                         Denda</label>
                     <select name="penalty_filter" id="penalty_filter"
-                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                         <option value="" {{ request('penalty_filter')=='' ? 'selected' : '' }}>Semua</option>
                         <option value="has_penalty" {{ request('penalty_filter')=='has_penalty' ? 'selected' : '' }}>Ada
                             Denda</option>
@@ -149,13 +149,13 @@
                 <div>
                     <label for="date_from" class="block text-sm font-medium text-gray-700 mb-2">Terdaftar Dari</label>
                     <input type="date" name="date_from" id="date_from" value="{{ request('date_from') }}"
-                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                 </div>
 
                 <div>
                     <label for="date_to" class="block text-sm font-medium text-gray-700 mb-2">Terdaftar Sampai</label>
                     <input type="date" name="date_to" id="date_to" value="{{ request('date_to') }}"
-                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        class="w-full px-3 py-2 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary">
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
         <!-- Toggle Advanced Filters Button -->
         <div class="flex justify-center mt-4">
             <button type="button" id="toggle-advanced"
-                class="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center">
+                class="text-sm text-gray-600 hover:text-primary transition-colors flex items-center">
                 <span id="toggle-text">Tampilkan Filter Lanjutan</span>
                 <svg id="toggle-icon" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -182,7 +182,7 @@
             <div class="text-sm text-gray-700">
                 <span class="font-medium">{{ $customers->total() }}</span> pelanggan ditemukan
                 @if(request('search'))
-                untuk pencarian "<span class="font-medium text-blue-600">{{ request('search') }}</span>"
+                untuk pencarian "<span class="font-medium text-primary">{{ request('search') }}</span>"
                 @endif
             </div>
             <a href="{{ route('customers.index') }}" class="text-sm text-red-600 hover:text-red-700 transition-colors">
@@ -203,8 +203,7 @@
                 <tr>
                     <th class="px-6 py-6 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
                         <div class="flex items-center">
-                            <svg class="size-5 mr-2 text-blue-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="size-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
@@ -213,8 +212,7 @@
                     </th>
                     <th class="p-6 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
                         <div class="flex items-center">
-                            <svg class="size-5 mr-2 text-blue-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="size-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
@@ -232,8 +230,7 @@
                     </th>
                     <th class="p-6 text-left text-sm font-bold text-gray-700 uppercase tracking-wider">
                         <div class="flex items-center">
-                            <svg class="size-5 mr-2 text-blue-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="size-5 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -242,7 +239,7 @@
                     </th>
                     <th class="px-4 py-3 text-right text-xs font-bold text-gray-700 uppercase tracking-wider">
                         <div class="flex items-center justify-end">
-                            <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor"
+                            <svg class="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -259,7 +256,7 @@
                         <div class="flex items-center">
                             <div class="relative flex-shrink-0 h-12 w-12">
                                 <div
-                                    class="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-blue-600/25 transform group-hover:mb-1 transition-all duration-300">
+                                    class="h-12 w-12 rounded-xl bg-primary flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-primary/25 transform group-hover:mb-1 transition-all duration-300">
                                     <span class="text-white font-bold text-lg">{{ substr($customer->name, 0, 1)
                                         }}</span>
                                 </div>
@@ -272,8 +269,7 @@
                                 </div>
                             </div>
                             <div class="ml-4">
-                                <div
-                                    class="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                <div class="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors">
                                     {{
                                     $customer->name }}</div>
                                 <div class="text-xs text-gray-500 mt-1">ID: #{{ str_pad($customer->id, 4, '0',
@@ -291,10 +287,10 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <span
-                                        class="text-2xl font-black text-gray-900 group-hover:text-blue-600 transition-colors">{{
+                                        class="text-2xl font-black text-gray-900 group-hover:text-primary transition-colors">{{
                                         $customer->containers_count ?? 0 }}</span>
                                     <div class="ml-2 px-2 py-1 bg-blue-50 rounded-lg border border-blue-200">
-                                        <span class="text-blue-600 text-xs font-bold">Kontainer</span>
+                                        <span class="text-primary text-xs font-bold">Kontainer</span>
                                     </div>
                                 </div>
                                 @if($customer->containers_count == 0)
@@ -351,8 +347,8 @@
                     <td class="px-4 py-4">
                         <div class="flex items-center justify-end space-x-2">
                             <a href="{{ route('customers.show', $customer) }}"
-                                class="group/btn relative p-2 bg-blue-50 hover:bg-blue-600 rounded-lg border border-blue-200 hover:border-blue-600 transition-all duration-300 transform hover:mb-1 hover:shadow-lg hover:shadow-blue-600/25">
-                                <svg class="w-4 h-4 text-blue-600 group-hover/btn:text-white group-hover/btn:scale-110 transition-all"
+                                class="group/btn relative p-2 bg-blue-50 hover:bg-primary rounded-lg border border-blue-200 hover:border-primary transition-all duration-300 transform hover:mb-1 hover:shadow-lg hover:shadow-primary/25">
+                                <svg class="w-4 h-4 text-primary group-hover/btn:text-white group-hover/btn:scale-110 transition-all"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -399,7 +395,7 @@
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center">
                         <div class="relative h-14 w-14">
-                            <div class="h-14 w-14 rounded-2xl bg-blue-600 flex items-center justify-center shadow-lg">
+                            <div class="h-14 w-14 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
                                 <span class="text-white font-bold text-lg">{{ substr($customer->name, 0, 1) }}</span>
                             </div>
                             <div
@@ -413,7 +409,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <div class="text-2xl font-black text-blue-600">{{ $customer->containers_count ?? 0 }}</div>
+                        <div class="text-2xl font-black text-primary">{{ $customer->containers_count ?? 0 }}</div>
                         <div class="text-xs text-gray-500">peti kemas</div>
                         @if(($customer->total_penalty ?? 0) > 0)
                         <div class="text-lg font-black text-red-600 mt-1">Rp {{ number_format($customer->total_penalty,
@@ -433,7 +429,7 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <a href="{{ route('customers.show', $customer) }}"
-                            class="p-3 bg-blue-50 hover:bg-blue-600 text-blue-600 hover:text-white rounded-xl transition-all duration-300 transform hover:mb-2">
+                            class="p-3 bg-blue-50 hover:bg-primary text-primary hover:text-white rounded-xl transition-all duration-300 transform hover:mb-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -487,7 +483,7 @@
             <p class="text-gray-600 text-lg mb-8">Mulai dengan membuat pelanggan pertama untuk mengelola peti kemas
                 mereka.</p>
             <a href="{{ route('customers.create') }}"
-                class="group relative bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl hover:shadow-blue-600/25 transform hover:-translate-y-1">
+                class="group relative bg-primary hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 inline-flex items-center shadow-xl hover:shadow-2xl hover:shadow-primary/25 transform hover:-translate-y-1">
                 <div class="relative flex items-center">
                     <svg class="w-5 h-5 mr-3 group-hover:mb-2 transition-transform" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24">

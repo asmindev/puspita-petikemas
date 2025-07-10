@@ -27,8 +27,8 @@
                             <span class="text-green-600">Semua Sistem Online</span>
                         </div>
                         <div class="flex items-center">
-                            <div class="w-2 h-2 bg-blue-600 rounded-full animate-pulse mr-2"></div>
-                            <span class="text-blue-600">{{ $pendingContainers }} Menunggu</span>
+                            <div class="w-2 h-2 bg-primary rounded-full animate-pulse mr-2"></div>
+                            <span class="text-primary">{{ $pendingContainers }} Menunggu</span>
                         </div>
                     </div>
                 </div>
@@ -36,14 +36,14 @@
                     <div class="relative">
                         <div
                             class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200 shadow-sm">
-                            <svg class="w-12 h-12 text-blue-600 animate-pulse" fill="none" stroke="currentColor"
+                            <svg class="w-12 h-12 text-primary animate-pulse" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
                         </div>
                         <!-- Floating particles -->
-                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-blue-600 rounded-full opacity-60 animate-ping">
+                        <div class="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-60 animate-ping">
                         </div>
                         <div
                             class="absolute -bottom-1 -left-1 w-3 h-3 bg-green-400 rounded-full opacity-60 animate-ping animation-delay-200">
@@ -77,7 +77,7 @@
             <div class="flex items-start justify-between mb-3">
                 <div class="flex items-center space-x-2">
                     <div
-                        class="p-2 bg-blue-600 rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                        class="p-2 bg-primary rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -98,7 +98,7 @@
 
             <!-- Content Section -->
             <div class="space-y-2">
-                <div class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div class="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {{ $totalCustomers }}
                 </div>
                 <div class="flex items-center">
@@ -123,7 +123,7 @@
             <div class="flex items-start justify-between mb-3">
                 <div class="flex items-center space-x-2">
                     <div
-                        class="p-2 bg-blue-600 rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                        class="p-2 bg-primary rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -143,7 +143,7 @@
 
             <!-- Content Section -->
             <div class="space-y-2">
-                <div class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div class="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {{ $totalContainers }}
                 </div>
                 <div class="flex items-center">
@@ -168,7 +168,7 @@
             <div class="flex items-start justify-between mb-3">
                 <div class="flex items-center space-x-2">
                     <div
-                        class="p-2 bg-blue-600 rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                        class="p-2 bg-primary rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -189,7 +189,7 @@
 
             <!-- Content Section -->
             <div class="space-y-2">
-                <div class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div class="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {{ $pendingContainers }}
                 </div>
                 <div class="flex items-center">
@@ -214,7 +214,7 @@
             <div class="flex items-start justify-between mb-3">
                 <div class="flex items-center space-x-2">
                     <div
-                        class="p-2 bg-blue-600 rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                        class="p-2 bg-primary rounded-xl shadow-sm transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -235,7 +235,7 @@
 
             <!-- Content Section -->
             <div class="space-y-2">
-                <div class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div class="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {{ $completedContainers }}
                 </div>
                 <div class="flex items-center">
@@ -271,7 +271,7 @@
                             Pembaruan Langsung
                         </span>
                         <a href="{{ route('containers.index') }}"
-                            class="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors">
+                            class="text-primary hover:text-blue-700 text-sm font-medium transition-colors">
                             Lihat Semua →
                         </a>
                     </div>
@@ -287,7 +287,7 @@
                             <div class="flex items-center space-x-3">
                                 <div class="relative">
                                     <div
-                                        class="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
+                                        class="w-8 h-8 bg-primary rounded-xl flex items-center justify-center shadow-sm">
                                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -340,7 +340,7 @@
                                     </span>
                                 </div>
                                 <a href="{{ route('containers.show', $container) }}"
-                                    class="text-blue-600 hover:text-blue-700 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    class="text-primary hover:text-blue-700 opacity-0 group-hover:opacity-100 transition-opacity">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
@@ -363,7 +363,7 @@
                     <p class="text-gray-500 mb-4">Mulai dengan membuat peti kemas pertama untuk melihat aktivitas di
                         sini.</p>
                     <a href="{{ route('containers.create') }}"
-                        class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                        class="inline-flex items-center px-4 py-2 bg-primary text-white rounded-xl hover:bg-blue-700 transition-colors">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -381,7 +381,7 @@
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="bg-gray-50 px-4 py-3 border-b border-gray-200">
                 <h3 class="text-lg font-bold text-gray-900 flex items-center">
-                    <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -390,7 +390,7 @@
             </div>
             <div class="p-4 space-y-3">
                 <a href="{{ route('containers.create') }}"
-                    class="group w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
+                    class="group w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
                     <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -398,7 +398,7 @@
                     Tambah Peti Kemas Baru
                 </a>
                 <a href="{{ route('customers.create') }}"
-                    class="group w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
+                    class="group w-full bg-primary hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center shadow-sm hover:shadow-md transform hover:-translate-y-0.5">
                     <svg class="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -454,7 +454,7 @@
         <!-- Performance Overview -->
         {{-- <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
             <h4 class="text-lg font-bold text-gray-900 mb-3 flex items-center">
-                <svg class="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4 mr-2 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -463,11 +463,11 @@
             <div class="space-y-3">
                 <div class="bg-blue-50 border border-blue-200 rounded-xl p-3">
                     <div class="flex items-center justify-between">
-                        <span class="text-sm font-medium text-blue-600">Tingkat Pemrosesan</span>
-                        <span class="text-lg font-bold text-blue-600">94%</span>
+                        <span class="text-sm font-medium text-primary">Tingkat Pemrosesan</span>
+                        <span class="text-lg font-bold text-primary">94%</span>
                     </div>
                     <div class="w-full bg-blue-200 rounded-full h-2 mt-2">
-                        <div class="bg-blue-600 h-2 rounded-full" style="width: 94%"></div>
+                        <div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
                     </div>
                 </div>
                 <div class="bg-green-50 border border-green-200 rounded-xl p-3">

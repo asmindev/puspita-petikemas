@@ -431,11 +431,17 @@ class ContainerController extends Controller
 
         $allContainers = $query->orderBy('exit_date', 'desc')->get();
 
-        // Filter containers yang hanya memiliki penalty
-        $containersWithPenalty = $allContainers->filter(function ($container) {
-            $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
-            return $penaltyInfo['total_amount'] > 0;
-        });
+        // Filter containers berdasarkan penalty status
+        if ($request->filled('penalty_status') && $request->penalty_status === 'has_penalty') {
+            // Filter containers yang hanya memiliki penalty
+            $containersWithPenalty = $allContainers->filter(function ($container) {
+                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
+                return $penaltyInfo['current_amount'] > 0;
+            });
+        } else {
+            // Tampilkan semua containers (dengan dan tanpa penalty)
+            $containersWithPenalty = $allContainers;
+        }
 
         // Manual pagination untuk filtered results
         $perPage = 20;
@@ -456,10 +462,15 @@ class ContainerController extends Controller
             ]
         );
 
-        // Calculate penalty statistics
+        // Calculate penalty statistics - hitung berdasarkan semua container dengan penalty
+        $allContainersWithPenalty = $allContainers->filter(function ($container) {
+            $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
+            return $penaltyInfo['current_amount'] > 0;
+        });
+
         $stats = [
-            'total_containers' => $containersWithPenalty->count(),
-            'containers_with_penalty' => $containersWithPenalty->count(),
+            'total_containers' => $allContainers->count(),
+            'containers_with_penalty' => $allContainersWithPenalty->count(),
             'total_penalty_amount' => 0,
             'by_type' => [
                 '20ft' => ['count' => 0, 'penalty' => 0],
@@ -467,12 +478,12 @@ class ContainerController extends Controller
             ]
         ];
 
-        foreach ($containersWithPenalty as $container) {
-            $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
+        foreach ($allContainersWithPenalty as $container) {
+            $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
 
-            $stats['total_penalty_amount'] += $penaltyInfo['total_amount'];
+            $stats['total_penalty_amount'] += $penaltyInfo['current_amount'];
             $stats['by_type'][$container->type ?? '20ft']['count']++;
-            $stats['by_type'][$container->type ?? '20ft']['penalty'] += $penaltyInfo['total_amount'];
+            $stats['by_type'][$container->type ?? '20ft']['penalty'] += $penaltyInfo['current_amount'];
         }
 
         return view('containers.penalty-report', compact('containers', 'stats'));
@@ -487,7 +498,7 @@ class ContainerController extends Controller
 
         return redirect()->back()->with(
             'success',
-            'Denda berhasil diperbarui. Total denda: Rp ' . number_format($penaltyInfo['total_amount'], 0, ',', '.')
+            'Denda berhasil diperbarui. Denda periode saat ini: Rp ' . number_format($penaltyInfo['current_amount'], 0, ',', '.')
         );
     }
 }

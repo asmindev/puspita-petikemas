@@ -2,338 +2,512 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Container;
 use App\Models\Customer;
-use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
-class UserSeeder extends Seeder
+class ContainerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        // Create admin user
-        $admin = User::create([
-            'name' => 'Administrator Pelabuhan',
-            'email' => 'admin@containerq.com',
-            'password' => Hash::make('password'),
-            'role' => 'admin',
-        ]);
+        // First, find or create the customers mentioned in the CSV
+        $customers = [
+            'PT FITRAH TRANS SULTRA' => Customer::firstOrCreate([
+                'name' => 'PT FITRAH TRANS SULTRA',
+                'email' => 'fitrah.trans@example.com',
+                'phone' => '+6281234567890',
+                'address' => 'Sultra, Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
 
-        // Create secondary admin user for testing
-        $testAdmin = User::create([
+            'PT PRATAMA REJEKI ABADI' => Customer::firstOrCreate([
+                'name' => 'PT PRATAMA REJEKI ABADI',
+                'email' => 'pratama.rejeki@example.com',
+                'phone' => '+6281234567891',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT KHARISMA TIRTA PRIMA' => Customer::firstOrCreate([
+                'name' => 'PT KHARISMA TIRTA PRIMA',
+                'email' => 'kharisma.tirta@example.com',
+                'phone' => '+6281234567892',
+                'address' => 'Indonesia',
+                'type' => 'shipping_line',
+                'is_active' => true,
+            ]),
+
+            'PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES' => Customer::firstOrCreate([
+                'name' => 'PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES',
+                'email' => 'salam.pacific@example.com',
+                'phone' => '+6281234567893',
+                'address' => 'Kantor Pusat, Indonesia',
+                'type' => 'shipping_line',
+                'is_active' => true,
+            ]),
+
+            'PT CAHAYA ANUGRAH TRANS' => Customer::firstOrCreate([
+                'name' => 'PT CAHAYA ANUGRAH TRANS',
+                'email' => 'cahaya.anugrah@example.com',
+                'phone' => '+6281234567894',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT NGUPOYO UPO TRANS' => Customer::firstOrCreate([
+                'name' => 'PT NGUPOYO UPO TRANS',
+                'email' => 'ngupoyo.upo@example.com',
+                'phone' => '+6281234567895',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT EMKL BAHARI KURNIA KENDARI' => Customer::firstOrCreate([
+                'name' => 'PT EMKL BAHARI KURNIA KENDARI',
+                'email' => 'bahari.kurnia@example.com',
+                'phone' => '+6281234567896',
+                'address' => 'Kendari, Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT SAKURA INDAH TRANSPOR' => Customer::firstOrCreate([
+                'name' => 'PT SAKURA INDAH TRANSPOR',
+                'email' => 'sakura.indah@example.com',
+                'phone' => '+6281234567897',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT SARANABHAKTI TIMUR' => Customer::firstOrCreate([
+                'name' => 'PT SARANABHAKTI TIMUR,',
+                'email' => 'saranabhakti@example.com',
+                'phone' => '+6281234567898',
+                'address' => 'Indonesia',
+                'type' => 'manufacturer',
+                'is_active' => true,
+            ]),
+
+            'PT CAHAYA KARUNIA LOGISTIK' => Customer::firstOrCreate([
+                'name' => 'PT CAHAYA KARUNIA LOGISTIK',
+                'email' => 'cahaya.karunia@example.com',
+                'phone' => '+6281234567899',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT CIPTA TRANS LOGISTIC' => Customer::firstOrCreate([
+                'name' => 'PT CIPTA TRANS LOGISTIC',
+                'email' => 'cipta.trans@example.com',
+                'phone' => '+6281234567800',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT SRIWIJAYA LINTAS NUSANTARA' => Customer::firstOrCreate([
+                'name' => 'PT SRIWIJAYA LINTAS NUSANTARA',
+                'email' => 'sriwijaya.lintas@example.com',
+                'phone' => '+6281234567801',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+
+            'PT UNTUNG ANAUGI' => Customer::firstOrCreate([
+                'name' => 'PT UNTUNG ANAUGI',
+                'email' => 'untung.anaugi@example.com',
+                'phone' => '+6281234567802',
+                'address' => 'Indonesia',
+                'type' => 'logistics',
+                'is_active' => true,
+            ]),
+        ];
+
+        // Container data from the CSV
+        $containers = [
+            [
+                'container_number' => 'SPNU2001393',
+                'customer_id' => $customers['PT FITRAH TRANS SULTRA']->id,
+                'entry_date' => Carbon::create(2025, 6, 14, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2001428',
+                'customer_id' => $customers['PT FITRAH TRANS SULTRA']->id,
+                'entry_date' => Carbon::create(2025, 6, 15, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2101263',
+                'customer_id' => $customers['PT PRATAMA REJEKI ABADI']->id,
+                'entry_date' => Carbon::create(2025, 6, 16, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2689218',
+                'customer_id' => $customers['PT PRATAMA REJEKI ABADI']->id,
+                'entry_date' => Carbon::create(2025, 6, 17, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2694214',
+                'customer_id' => $customers['PT KHARISMA TIRTA PRIMA']->id,
+                'entry_date' => Carbon::create(2025, 6, 18, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2717618',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 19, 8, 34, 0),
+                'isi' => json_encode(['BESI DAN SEJENISNYA']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2719333',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 20, 8, 34, 0),
+                'isi' => json_encode(['BESI TUA']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2720550',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 21, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2721285',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 22, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2727302',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 23, 8, 34, 0),
+                'isi' => json_encode(['KABEL']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2727909',
+                'customer_id' => $customers['PT CAHAYA ANUGRAH TRANS']->id,
+                'entry_date' => Carbon::create(2025, 6, 24, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2731262',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 25, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2738354',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 26, 8, 34, 0),
+                'isi' => json_encode(['BESI DAN SEJENISNYA']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2745970',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 27, 8, 34, 0),
+                'isi' => json_encode(['KABEL']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2759491',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 28, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2759697',
+                'customer_id' => $customers['PT NGUPOYO UPO TRANS']->id,
+                'entry_date' => Carbon::create(2025, 6, 29, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2777983',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 30, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2797315',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 6, 31, 8, 34, 0),
+                'isi' => json_encode(['KABEL']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2797737',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 1, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2815511',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 2, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2826265',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 3, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2856228',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 4, 8, 34, 0),
+                'isi' => json_encode(['KARTON']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2881318',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 5, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2890623',
+                'customer_id' => $customers['PT KHARISMA TIRTA PRIMA']->id,
+                'entry_date' => Carbon::create(2025, 7, 6, 8, 34, 0),
+                'isi' => json_encode(['PLASTIK DAN SEJENISNYA']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2897309',
+                'customer_id' => $customers['PT CAHAYA ANUGRAH TRANS']->id,
+                'entry_date' => Carbon::create(2025, 7, 7, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2915167',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 8, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2927851',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 9, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2929710',
+                'customer_id' => $customers['PT EMKL BAHARI KURNIA KENDARI']->id,
+                'entry_date' => Carbon::create(2025, 7, 10, 8, 34, 0),
+                'isi' => json_encode(['KOPRA']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2930984',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 11, 8, 34, 0),
+                'isi' => json_encode(['DEDAK']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2943209',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 12, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2946595',
+                'customer_id' => $customers['PT SAKURA INDAH TRANSPOR']->id,
+                'entry_date' => Carbon::create(2025, 7, 13, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2953742',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 14, 8, 34, 0),
+                'isi' => json_encode(['KAYU']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2965044',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 15, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2965065',
+                'customer_id' => $customers['PT CAHAYA ANUGRAH TRANS']->id,
+                'entry_date' => Carbon::create(2025, 7, 16, 8, 34, 0),
+                'isi' => json_encode(['LIMBAH PABRIK']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2973420',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 17, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2976054',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 18, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2980780',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 19, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2981770',
+                'customer_id' => $customers['PT SARANABHAKTI TIMUR']->id,
+                'entry_date' => Carbon::create(2025, 7, 20, 8, 34, 0),
+                'isi' => json_encode(['BERAS']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2983731',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 21, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2985415',
+                'customer_id' => $customers['PT CAHAYA KARUNIA LOGISTIK']->id,
+                'entry_date' => Carbon::create(2025, 7, 22, 8, 34, 0),
+                'isi' => null,
+                'type' => '20ft',
+            ],
+            [
+                'container_number' => 'SPNU2988380',
+                'customer_id' => $customers['PT EMKL BAHARI KURNIA KENDARI']->id,
+                'entry_date' => Carbon::create(2025, 7, 23, 8, 34, 0),
+                'isi' => json_encode(['KOPRA']),
+                'type' => '20ft',
+            ],
+            // 40ft containers start here
+            [
+                'container_number' => 'SPNU2989067',
+                'customer_id' => $customers['PT CIPTA TRANS LOGISTIC']->id,
+                'entry_date' => Carbon::create(2025, 7, 24, 8, 34, 0),
+                'isi' => json_encode(['LIMBAH PABRIK']),
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU2989766',
+                'customer_id' => $customers['PT SARANABHAKTI TIMUR']->id,
+                'entry_date' => Carbon::create(2025, 7, 25, 8, 34, 0),
+                'isi' => json_encode(['BERAS']),
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU2993745',
+                'customer_id' => $customers['PT SARANABHAKTI TIMUR']->id,
+                'entry_date' => Carbon::create(2025, 7, 26, 8, 34, 0),
+                'isi' => json_encode(['KELAPA']),
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU2999553',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 27, 8, 34, 0),
+                'isi' => json_encode(['BIJI SAWIT']),
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU3016443',
+                'customer_id' => $customers['PT SRIWIJAYA LINTAS NUSANTARA']->id,
+                'entry_date' => Carbon::create(2025, 7, 28, 8, 34, 0),
+                'isi' => null,
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU3033435',
+                'customer_id' => $customers['PT UNTUNG ANAUGI']->id,
+                'entry_date' => Carbon::create(2025, 7, 29, 8, 34, 0),
+                'isi' => null,
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU3037683',
+                'customer_id' => $customers['PT PRATAMA REJEKI ABADI']->id,
+                'entry_date' => Carbon::create(2025, 7, 30, 8, 34, 0),
+                'isi' => null,
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU3046047',
+                'customer_id' => $customers['PT KANTOR PUSAT SALAM PACIFIC INDONESIA LINES']->id,
+                'entry_date' => Carbon::create(2025, 7, 31, 8, 34, 0),
+                'isi' => json_encode(['BERAS']),
+                'type' => '40ft',
+            ],
+            [
+                'container_number' => 'SPNU3048311',
+                'customer_id' => $customers['PT PRATAMA REJEKI ABADI']->id,
+                'entry_date' => Carbon::create(2025, 8, 1, 8, 34, 0),
+                'isi' => null,
+                'type' => '40ft',
+            ],
+        ];
+
+        foreach ($containers as $container) {
+            Container::create([
+                'container_number' => $container['container_number'],
+                'customer_id' => $container['customer_id'],
+                'entry_date' => $container['entry_date'],
+                'isi' => $container['isi'],
+                'type' => $container['type'],
+                'status' => 'waiting', // Default status
+                'priority' => 'Normal', // Default priority
+                'tanggal_masuk' => $container['entry_date'],
+                'waktu_estimasi' => $container['type'] === '20ft' ? 20 : 40,
+            ]);
+        }
+        // users seeder
+        User::create([
             'name' => 'Admin User',
             'email' => 'admin@test.com',
             'password' => Hash::make('123'),
             'role' => 'admin',
         ]);
-
-        // Create operator users (also admins)
-        $operators = [
-            [
-                'name' => 'Operator Crane A',
-                'email' => 'crane.a@pelabuhan-tanjungpriok.co.id',
-                'password' => Hash::make('operator123'),
-                'role' => 'admin',
-            ],
-            [
-                'name' => 'Operator Crane B',
-                'email' => 'crane.b@pelabuhan-tanjungpriok.co.id',
-                'password' => Hash::make('operator123'),
-                'role' => 'admin',
-            ],
-        ];
-
-        foreach ($operators as $operatorData) {
-            User::create($operatorData);
-        }
-
-        // Create customer users (shipping lines & logistics companies)
-        $users = [
-            [
-                'name' => 'User PT. PELNI',
-                'email' => 'operations@pelni.co.id',
-                'password' => Hash::make('pelni2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'User PT. Samudera Indonesia',
-                'email' => 'container@samudera.id',
-                'password' => Hash::make('samudera2025'),
-                'role' => 'customer',
-            ],
-            [
-                'name' => 'User PT. Meratus Line',
-                'email' => 'logistics@meratusline.com',
-                'password' => Hash::make('meratus2025'),
-                'role' => 'customer',
-            ],
-        ];
-
-        foreach ($users as $userData) {
-            User::create($userData);
-        }
-
-        // Create customer companies (separate from users)
-        $customers = [
-            [
-                'name' => 'PT. Pelayaran Nasional Indonesia (PELNI)',
-                'email' => 'corporate@pelni.co.id',
-                'phone' => '+62-21-385-2000',
-                'address' => 'Jl. Gajah Mada No. 14, Jakarta Pusat',
-                'contact_person' => 'Budi Santoso',
-                'type' => 'shipping_line',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Samudera Indonesia',
-                'email' => 'info@samudera.id',
-                'phone' => '+62-21-2985-2100',
-                'address' => 'Samudera Indonesia Building, Jakarta',
-                'contact_person' => 'Sari Dewi',
-                'type' => 'shipping_line',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Meratus Line',
-                'email' => 'info@meratusline.com',
-                'phone' => '+62-511-3360-888',
-                'address' => 'Banjarmasin, Kalimantan Selatan',
-                'contact_person' => 'Ahmad Rahman',
-                'type' => 'logistics',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. TEMAS Tbk',
-                'email' => 'corporate@temas.co.id',
-                'phone' => '+62-21-4585-1234',
-                'address' => 'Terminal Petikemas Surabaya',
-                'contact_person' => 'Lisa Hartono',
-                'type' => 'logistics',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Indofood Sukses Makmur',
-                'email' => 'logistics@indofood.co.id',
-                'phone' => '+62-21-2650-2000',
-                'address' => 'Sudirman Plaza, Jakarta',
-                'contact_person' => 'Rudi Wijaya',
-                'type' => 'manufacturer',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Pan Brothers Tbk',
-                'email' => 'export@panbrothers.com',
-                'phone' => '+62-22-6034-9999',
-                'address' => 'Bandung, Jawa Barat',
-                'contact_person' => 'Maya Sari',
-                'type' => 'manufacturer',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Samsung Electronics Indonesia',
-                'email' => 'logistics@samsung.co.id',
-                'phone' => '+62-21-5299-3333',
-                'address' => 'Cikarang, Jawa Barat',
-                'contact_person' => 'Kim Jong-Su',
-                'type' => 'manufacturer',
-                'is_active' => true,
-            ],
-            [
-                'name' => 'PT. Unilever Indonesia',
-                'email' => 'supply@unilever.co.id',
-                'phone' => '+62-21-2995-1000',
-                'address' => 'BSD City, Tangerang',
-                'contact_person' => 'Diana Putri',
-                'type' => 'manufacturer',
-                'is_active' => true,
-            ],
-        ];
-
-        $customerEntities = [];
-        foreach ($customers as $customerData) {
-            $customerEntities[] = Customer::create($customerData);
-        }
-
-        // Create sample containers with realistic data and assign to customers
-        $this->createSampleContainers($customerEntities);
-    }
-
-    private function createSampleContainers($customerEntities): void
-    {
-        // Container data with realistic scenarios
-        $containers = [
-            // High priority export containers (ready for departure)
-            [
-                'container_number' => 'EVGU1234567',
-                'priority' => 'Darurat',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(2),
-                'waktu_estimasi' => 20,
-                'keterangan' => 'Kapal berangkat dalam 4 jam - prioritas tinggi',
-            ],
-            [
-                'container_number' => 'MSCU9876543',
-                'priority' => 'Tinggi',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(1.5),
-                'waktu_estimasi' => 25,
-                'keterangan' => 'Ekspor tekstil untuk Eropa',
-            ],
-
-            // Import containers waiting for processing
-            [
-                'container_number' => 'OOLU5678901',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(3),
-                'waktu_estimasi' => 35,
-                'keterangan' => 'Import elektronik dari China',
-            ],
-            [
-                'container_number' => 'MAEU3456789',
-                'priority' => 'Tinggi',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subMinutes(45),
-                'waktu_estimasi' => 30,
-                'status_denda' => true,
-                'jumlah_denda' => 750000,
-                'keterangan' => 'Denda keterlambatan bongkar muatan - Import makanan beku',
-            ],
-
-            // Transshipment containers
-            [
-                'container_number' => 'TEMU7890123',
-                'priority' => 'Tinggi',
-                'status' => 'processing',
-                'tanggal_masuk' => now()->subHours(4),
-                'waktu_mulai_proses' => now()->subMinutes(20),
-                'waktu_estimasi' => 40,
-                'keterangan' => 'Transshipment ke Surabaya',
-            ],
-            [
-                'container_number' => 'JICT2345678',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(2.5),
-                'waktu_estimasi' => 45,
-                'keterangan' => 'Transshipment ke Malaysia',
-            ],
-
-            // Domestic containers
-            [
-                'container_number' => 'PELNI456789',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(1),
-                'waktu_estimasi' => 25,
-                'keterangan' => 'Distribusi domestik ke Kalimantan',
-            ],
-            [
-                'container_number' => 'SMDR8901234',
-                'priority' => 'Darurat',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subMinutes(30),
-                'waktu_estimasi' => 15,
-                'keterangan' => 'Obat-obatan darurat untuk Sulawesi',
-            ],
-
-            // Completed containers
-            [
-                'container_number' => 'BLTU1357924',
-                'priority' => 'Normal',
-                'status' => 'completed',
-                'tanggal_masuk' => now()->subHours(8),
-                'waktu_mulai_proses' => now()->subHours(6),
-                'waktu_selesai_proses' => now()->subHours(5),
-                'tanggal_keluar' => now()->subHours(5),
-                'waktu_estimasi' => 35,
-                'keterangan' => 'Ekspor kopi ke Amerika',
-            ],
-            [
-                'container_number' => 'MERU2468135',
-                'priority' => 'Normal',
-                'status' => 'completed',
-                'tanggal_masuk' => now()->subHours(12),
-                'waktu_mulai_proses' => now()->subHours(10),
-                'waktu_selesai_proses' => now()->subHours(9),
-                'tanggal_keluar' => now()->subHours(8),
-                'waktu_estimasi' => 40,
-                'keterangan' => 'Import spare part kendaraan',
-            ],
-
-            // Cancelled container
-            [
-                'container_number' => 'CANC9999999',
-                'priority' => 'Normal',
-                'status' => 'cancelled',
-                'tanggal_masuk' => now()->subHours(6),
-                'waktu_estimasi' => 30,
-                'keterangan' => 'Dibatalkan karena masalah dokumen ekspor',
-            ],
-
-            // Containers with penalties
-            [
-                'container_number' => 'FINE1111111',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(4),
-                'waktu_estimasi' => 50,
-                'status_denda' => true,
-                'jumlah_denda' => 1500000,
-                'keterangan' => 'Denda overtime storage - Barang berbahaya',
-            ],
-            [
-                'container_number' => 'LATE2222222',
-                'priority' => 'Normal',
-                'status' => 'processing',
-                'tanggal_masuk' => now()->subHours(5),
-                'waktu_mulai_proses' => now()->subMinutes(10),
-                'waktu_estimasi' => 60,
-                'status_denda' => true,
-                'jumlah_denda' => 500000,
-                'keterangan' => 'Denda keterlambatan pickup - Distribusi pupuk',
-            ],
-
-            // More waiting containers for queue testing
-            [
-                'container_number' => 'WAIT3333333',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(7),
-                'waktu_estimasi' => 35,
-                'keterangan' => 'Ekspor furniture ke Jepang',
-            ],
-            [
-                'container_number' => 'WAIT4444444',
-                'priority' => 'Tinggi',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(1.8),
-                'waktu_estimasi' => 28,
-                'keterangan' => 'Import material konstruksi',
-            ],
-            [
-                'container_number' => 'WAIT5555555',
-                'priority' => 'Normal',
-                'status' => 'waiting',
-                'tanggal_masuk' => now()->subHours(3.2),
-                'waktu_estimasi' => 42,
-                'keterangan' => 'Transshipment ke Singapura',
-            ],
-        ];
-
-        foreach ($containers as $index => $containerData) {
-            // Assign each container to a random customer entity
-            $randomCustomer = $customerEntities[array_rand($customerEntities)];
-
-            Container::create(array_merge($containerData, [
-                'customer_id' => $randomCustomer->id,
-                'queue_position' => null, // Will be calculated by service
-            ]));
-        }
     }
 }

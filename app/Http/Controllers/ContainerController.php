@@ -325,7 +325,9 @@ class ContainerController extends Controller
 
             if ($container) {
                 $queueData = $this->calculateQueueData($container);
-                return view('containers.track', compact('container', 'queueData'));
+                // Calculate penalty information
+                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
+                return view('containers.track', compact('container', 'queueData', 'penaltyInfo'));
             } else {
                 return view('containers.track')
                     ->with('error', 'Container not found with number: ' . $containerNumber);
@@ -358,8 +360,10 @@ class ContainerController extends Controller
 
         // Calculate queue position and estimated time based on real data
         $queueData = $this->calculateQueueData($container);
+        // Calculate penalty information
+        $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
 
-        return view('containers.track', compact('container', 'queueData'));
+        return view('containers.track', compact('container', 'queueData', 'penaltyInfo'));
     }
 
     /**

@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Container;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Filament\Notifications\Notification;
 
 class NotificationService
 {
@@ -187,32 +186,22 @@ class NotificationService
      */
     private function sendToOperators(string $title, string $message, string $type = 'info'): void
     {
-        // Get all users with operator role
-        $operators = User::where('role', 'operator')->get();
+        // Get all users with admin role (since operators are now admin)
+        $operators = User::where('role', 'admin')->get();
 
         foreach ($operators as $operator) {
-            Notification::make()
-                ->title($title)
-                ->body($message)
-                ->icon($this->getIconForType($type))
-                ->color($type)
-                ->persistent()
-                ->sendToDatabase($operator);
-        }
-    }
+            // Log notification instead of using Filament
+            Log::info('Notification sent to operator', [
+                'operator_id' => $operator->id,
+                'operator_name' => $operator->name,
+                'title' => $title,
+                'message' => $message,
+                'type' => $type
+            ]);
 
-    /**
-     * Get icon based on notification type
-     */
-    private function getIconForType(string $type): string
-    {
-        return match ($type) {
-            'success' => 'heroicon-o-check-circle',
-            'warning' => 'heroicon-o-exclamation-triangle',
-            'danger' => 'heroicon-o-x-circle',
-            'info' => 'heroicon-o-information-circle',
-            default => 'heroicon-o-bell'
-        };
+            // Here you could integrate with email, SMS, or other notification systems
+            // For now, we just log the notification
+        }
     }
 
     /**

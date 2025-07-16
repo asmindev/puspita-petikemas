@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('containers', function (Blueprint $table) {
             $table->id();
-            $table->string('container_number')->unique();
+            $table->string('container_number'); // Removed unique constraint to allow re-entry
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
             $table->enum('status', ['pending', 'in_progress', 'completed', 'cancelled'])->default('pending');
             $table->enum('priority', ['Normal', 'High'])->default('Normal');

@@ -78,7 +78,7 @@ class ContainerController extends Controller
     {
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
-            'container_number' => 'required|string|max:255|unique:containers',
+            'container_number' => 'required|string|max:255',
             'type' => 'required|in:20ft,40ft',
             'contents' => 'nullable|array',
             'contents.*' => 'nullable|string|max:255',
@@ -92,6 +92,34 @@ class ContainerController extends Controller
             'penalty_amount' => 'nullable|numeric|min:0',
             'penalty_reason' => 'nullable|string',
             'notes' => 'nullable|string',
+        ], [
+            'customer_id.required' => 'Pelanggan harus dipilih.',
+            'customer_id.exists' => 'Pelanggan yang dipilih tidak valid.',
+            'container_number.required' => 'Nomor kontainer harus diisi.',
+            'container_number.string' => 'Nomor kontainer harus berupa teks.',
+            'container_number.max' => 'Nomor kontainer maksimal 255 karakter.',
+            'type.required' => 'Tipe kontainer harus dipilih.',
+            'type.in' => 'Tipe kontainer harus 20ft atau 40ft.',
+            'contents.array' => 'Isi kontainer harus berupa daftar.',
+            'contents.*.string' => 'Setiap item isi kontainer harus berupa teks.',
+            'contents.*.max' => 'Setiap item isi kontainer maksimal 255 karakter.',
+            'status.required' => 'Status harus dipilih.',
+            'status.in' => 'Status harus pending, in_progress, completed, atau cancelled.',
+            'priority.required' => 'Prioritas harus dipilih.',
+            'priority.in' => 'Prioritas harus Normal atau High.',
+            'estimated_time.integer' => 'Estimasi waktu harus berupa angka.',
+            'estimated_time.min' => 'Estimasi waktu minimal 1 menit.',
+            'entry_date.required' => 'Tanggal masuk harus diisi.',
+            'entry_date.date' => 'Tanggal masuk harus berupa tanggal yang valid.',
+            'exit_date.date' => 'Tanggal keluar harus berupa tanggal yang valid.',
+            'exit_date.after_or_equal' => 'Tanggal keluar harus sama atau setelah tanggal masuk.',
+            'process_start_time.date' => 'Waktu mulai proses harus berupa tanggal yang valid.',
+            'process_end_time.date' => 'Waktu selesai proses harus berupa tanggal yang valid.',
+            'process_end_time.after' => 'Waktu selesai proses harus setelah waktu mulai proses.',
+            'penalty_amount.numeric' => 'Jumlah denda harus berupa angka.',
+            'penalty_amount.min' => 'Jumlah denda tidak boleh negatif.',
+            'penalty_reason.string' => 'Alasan denda harus berupa teks.',
+            'notes.string' => 'Catatan harus berupa teks.',
         ]);
 
 
@@ -158,7 +186,7 @@ class ContainerController extends Controller
     {
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
-            'container_number' => 'required|string|max:255|unique:containers,container_number,' . $container->id,
+            'container_number' => 'required|string|max:255',
             'type' => 'required|in:20ft,40ft',
             'contents' => 'nullable|array',
             'contents.*' => 'nullable|string|max:255',
@@ -171,6 +199,31 @@ class ContainerController extends Controller
             'penalty_amount' => 'nullable|numeric|min:0',
             'penalty_reason' => 'nullable|string',
             'notes' => 'nullable|string',
+        ], [
+            'customer_id.required' => 'Pelanggan harus dipilih.',
+            'customer_id.exists' => 'Pelanggan yang dipilih tidak valid.',
+            'container_number.required' => 'Nomor kontainer harus diisi.',
+            'container_number.string' => 'Nomor kontainer harus berupa teks.',
+            'container_number.max' => 'Nomor kontainer maksimal 255 karakter.',
+            'type.required' => 'Tipe kontainer harus dipilih.',
+            'type.in' => 'Tipe kontainer harus 20ft atau 40ft.',
+            'contents.array' => 'Isi kontainer harus berupa daftar.',
+            'contents.*.string' => 'Setiap item isi kontainer harus berupa teks.',
+            'contents.*.max' => 'Setiap item isi kontainer maksimal 255 karakter.',
+            'status.required' => 'Status harus dipilih.',
+            'status.in' => 'Status harus pending, in_progress, completed, atau cancelled.',
+            'priority.required' => 'Prioritas harus dipilih.',
+            'priority.in' => 'Prioritas harus Normal atau High.',
+            'estimated_time.integer' => 'Estimasi waktu harus berupa angka.',
+            'estimated_time.min' => 'Estimasi waktu minimal 1 menit.',
+            'exit_date.date' => 'Tanggal keluar harus berupa tanggal yang valid.',
+            'process_start_time.date' => 'Waktu mulai proses harus berupa tanggal yang valid.',
+            'process_end_time.date' => 'Waktu selesai proses harus berupa tanggal yang valid.',
+            'process_end_time.after' => 'Waktu selesai proses harus setelah waktu mulai proses.',
+            'penalty_amount.numeric' => 'Jumlah denda harus berupa angka.',
+            'penalty_amount.min' => 'Jumlah denda tidak boleh negatif.',
+            'penalty_reason.string' => 'Alasan denda harus berupa teks.',
+            'notes.string' => 'Catatan harus berupa teks.',
         ]);
 
         // Filter out empty content items
@@ -344,6 +397,10 @@ class ContainerController extends Controller
     {
         $request->validate([
             'container_number' => 'required|string|max:255',
+        ], [
+            'container_number.required' => 'Nomor kontainer harus diisi.',
+            'container_number.string' => 'Nomor kontainer harus berupa teks.',
+            'container_number.max' => 'Nomor kontainer maksimal 255 karakter.',
         ]);
 
         $containerNumber = $request->input('container_number');

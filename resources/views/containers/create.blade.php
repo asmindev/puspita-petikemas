@@ -304,7 +304,7 @@
             <div class="mt-6 pt-4 border-t border-gray-200">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                     <!-- Tips Section -->
-                    <div class="bg-primtext-primaryborder border-primtext-primary rounded-lg p-3">
+                    <div class="bg-primary/5 border border-primary/80 rounded-lg p-3">
                         <div class="flex items-start">
                             <svg class="w-4 h-4 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
@@ -332,7 +332,7 @@
                             </span>
                         </a>
                         <button type="submit"
-                            class="px-6 py-3 bg-primtext-primary hover:bg-primtext-primary text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md text-sm">
+                            class="px-6 py-3 bg-primary hover:bg-primtext-primary text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md text-sm">
                             <span class="flex items-center">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

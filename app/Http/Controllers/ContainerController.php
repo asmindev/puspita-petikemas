@@ -292,7 +292,7 @@ class ContainerController extends Controller
         $container->update([
             'status' => 'completed',
             'process_end_time' => now(),
-            'exit_date' => now(),
+            // 'exit_date' => now(),
         ]);
 
         return redirect()->route('containers.queue')
@@ -325,8 +325,8 @@ class ContainerController extends Controller
 
             if ($container) {
                 $queueData = $this->calculateQueueData($container);
-                // Calculate penalty information
-                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
+                // Calculate penalty information (current period only)
+                $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
                 return view('containers.track', compact('container', 'queueData', 'penaltyInfo'));
             } else {
                 return view('containers.track')
@@ -360,8 +360,8 @@ class ContainerController extends Controller
 
         // Calculate queue position and estimated time based on real data
         $queueData = $this->calculateQueueData($container);
-        // Calculate penalty information
-        $penaltyInfo = \App\Services\PenaltyCalculationService::calculateDeliveryPenalty($container);
+        // Calculate penalty information (current period only)
+        $penaltyInfo = \App\Services\PenaltyCalculationService::calculateCurrentPeriodPenalty($container);
 
         return view('containers.track', compact('container', 'queueData', 'penaltyInfo'));
     }

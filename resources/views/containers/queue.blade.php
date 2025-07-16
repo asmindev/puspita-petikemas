@@ -448,7 +448,7 @@
     </div>
 
     <!-- Queue Simulation Section -->
-    <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
+    {{-- <div class="bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden">
         <div class="px-6 py-5 border-b border-gray-200 bg-gray-50">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
@@ -552,7 +552,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 @push('scripts')

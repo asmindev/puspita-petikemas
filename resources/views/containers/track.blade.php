@@ -324,6 +324,14 @@
                                 {{ $container->entry_date ? $container->entry_date->format('M d, Y H:i') : 'N/A' }}
                             </span>
                         </div>
+                        @if($container->exit_date)
+                        <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                            <span class="text-gray-600 font-medium">Tanggal Keluar Terjadwal</span>
+                            <span class="text-gray-900 font-semibold">
+                                {{ $container->exit_date->format('M d, Y H:i') }}
+                            </span>
+                        </div>
+                        @endif
 
                         @if($container->process_start_time)
                         <div class="flex justify-between items-center py-3 border-b border-gray-200">
@@ -343,15 +351,6 @@
                         </div>
                         @endif
 
-                        @if($container->exit_date)
-                        <div class="flex justify-between items-center py-3 border-b border-gray-200">
-                            <span class="text-gray-600 font-medium">Tanggal Keluar</span>
-                            <span class="text-gray-900 font-semibold">
-                                {{ $container->exit_date->format('M d, Y H:i') }}
-                            </span>
-                        </div>
-                        @endif
-
                         <div class="flex justify-between items-center py-3">
                             <span class="text-gray-600 font-medium">Terakhir Diperbarui</span>
                             <span class="text-gray-900 font-semibold">
@@ -363,107 +362,87 @@
             </div>
 
             <!-- Penalty Information -->
-            @if(isset($penaltyInfo) && $penaltyInfo['total_amount'] > 0)
+            @if(isset($penaltyInfo))
             <div class="mt-8">
-                <div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl p-6 border border-red-200 shadow-xl">
-                    <h3 class="text-xl font-bold text-red-900 mb-6 flex items-center">
-                        <svg class="w-6 h-6 mr-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-xl">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                         </svg>
                         Informasi Denda
-                        <span
-                            class="ml-2 px-3 py-1 text-xs font-bold bg-red-100 text-red-800 rounded-full border border-red-300">
-                            {{ $penaltyInfo['penalty_days'] }} hari terlambat
-                        </span>
                     </h3>
 
-                    <!-- Total Penalty -->
-                    <div class="mb-6 p-4 bg-white rounded-xl border border-red-200 shadow-sm">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <span class="text-red-600 font-medium">Total Denda</span>
-                                <p class="text-sm text-gray-600 mt-1">{{ $penaltyInfo['description'] }}</p>
+                    <div>
+                        <div class="space-y-4">
+                            @if($container->exit_date)
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Tanggal Keluar Terjadwal:</span>
+                                <span class="text-gray-900 font-bold">{{ $container->exit_date->format('d M Y')
+                                    }}</span>
                             </div>
-                            <div class="text-right">
-                                <span class="text-3xl font-bold text-red-600">Rp {{
-                                    number_format($penaltyInfo['total_amount'], 0, ',', '.') }}</span>
-                                <p class="text-sm text-red-500 font-medium">Penanggung jawab: {{
-                                    $penaltyInfo['responsible_party'] }}</p>
-                            </div>
-                        </div>
-                    </div>
+                            @endif
 
-                    <!-- Penalty Breakdown -->
-                    @if(count($penaltyInfo['breakdown']) > 0)
-                    <div class="space-y-3">
-                        <h4 class="font-semibold text-red-900 mb-3">Rincian Denda:</h4>
-                        @foreach($penaltyInfo['breakdown'] as $breakdown)
-                        <div class="bg-white rounded-lg p-4 border border-red-100 shadow-sm">
-                            <div class="flex justify-between items-start">
-                                <div class="flex-1">
-                                    <h5 class="font-medium text-gray-900">{{ $breakdown['period'] }}</h5>
-                                    <p class="text-sm text-gray-600 mt-1">{{ $breakdown['note'] }}</p>
-                                    <div class="mt-2 flex items-center space-x-4 text-sm">
-                                        <span class="text-gray-600">
-                                            <span class="font-medium">{{ $breakdown['days'] }}</span> hari
-                                        </span>
-                                        <span class="text-gray-600">
-                                            <span class="font-medium">Rp {{ number_format($breakdown['rate'], 0, ',',
-                                                '.') }}</span>/hari
-                                        </span>
-                                        <span
-                                            class="px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded-full">
-                                            {{ $breakdown['responsible'] }}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="text-right ml-4">
-                                    <span class="text-lg font-bold text-red-600">
-                                        Rp {{ number_format($breakdown['amount'], 0, ',', '.') }}
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Hari Terlambat:</span>
+                                <span class="text-gray-900 font-bold">
+                                    @if(isset($penaltyInfo['penalty_days']) && $penaltyInfo['penalty_days'] > 0)
+                                    <span class="text-red-600">{{ $penaltyInfo['penalty_days'] }} hari</span>
+                                    @else
+                                    <span class="text-green-600">0 hari</span>
+                                    @endif
+                                </span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Periode Saat Ini:</span>
+                                <span class="text-gray-900 font-bold">
+                                    @if(isset($penaltyInfo['current_period']) && $penaltyInfo['current_period'])
+                                    {{ $penaltyInfo['current_period'] }}
+                                    @else
+                                    Masa bebas denda
+                                    @endif
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Total Denda Masa Ini:</span>
+                                <span class="text-gray-900 font-bold text-lg">
+                                    @if($container->status === 'completed')
+                                    @if(isset($penaltyInfo['current_amount']) && $penaltyInfo['current_amount'] > 0)
+                                    <span
+                                        class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-bold rounded-full border border-green-200">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Rp {{ number_format($penaltyInfo['current_amount'], 0, ',', '.') }}
+                                        LUNAS
                                     </span>
-                                </div>
+                                    @else
+                                    <span class="text-green-600">Rp 0</span>
+                                    @endif
+                                    @else
+                                    @if(isset($penaltyInfo['current_amount']) && $penaltyInfo['current_amount'] > 0)
+                                    <span class="text-red-600">Rp {{ number_format($penaltyInfo['current_amount'], 0,
+                                        ',', '.') }}</span>
+                                    @else
+                                    <span class="text-green-600">Rp 0</span>
+                                    @endif
+                                    @endif
+                                </span>
                             </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    @endif
 
-                    <!-- Penalty Warning -->
-                    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                        <div class="flex items-start">
-                            <svg class="w-5 h-5 text-amber-600 mr-2 mt-0.5 flex-shrink-0" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <div class="text-sm text-amber-800">
-                                <p class="font-medium">Informasi Penting:</p>
-                                <p class="mt-1">Denda akan terus bertambah setiap hari sampai container diambil. Segera
-                                    hubungi customer service untuk penyelesaian.</p>
+                            @if(isset($penaltyInfo['current_responsible']) && $penaltyInfo['current_responsible'])
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <span class="text-sm font-medium text-gray-600">Tanggung Jawab:</span>
+                                <span class="text-gray-900 font-bold">{{ $penaltyInfo['current_responsible'] }}</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @elseif(isset($penaltyInfo))
-            <!-- No Penalty -->
-            <div class="mt-8">
-                <div class="bg-green-50 rounded-2xl p-6 border border-green-200 shadow-xl">
-                    <div class="flex items-center">
-                        <svg class="w-8 h-8 text-green-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                            <h3 class="text-lg font-bold text-green-900">Tidak Ada Denda</h3>
-                            <p class="text-green-700">{{ $penaltyInfo['description'] }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
             @endif
-
             @if($container->contents && count($container->contents) > 0)
             <!-- Container Contents -->
             <div class="mt-8">

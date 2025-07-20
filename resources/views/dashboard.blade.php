@@ -6,7 +6,8 @@
 @section('content')
 <!-- Enhanced Welcome Header with Animation -->
 <div class="mb-6">
-    <div class="bg-white rounded-xl p-6 border border-gray-200 relative overflow-hidden shadow-sm">
+    <div
+        class="bg-[url('https://www.pelindo.co.id/uploads/slider/Go2YEqT9UGXPsodhDzN5DSF3ELB2uz7kIeVwjajK.jpg')] object-cover rounded-xl p-6 border border-gray-200 relative overflow-hidden shadow-sm">
         <div class="relative z-10">
             <div class="flex items-center justify-between">
                 <div class="max-w-2xl">
@@ -34,14 +35,9 @@
                 </div>
                 <div class="hidden lg:block">
                     <div class="relative">
-                        <div
-                            class="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center border border-blue-200 shadow-sm">
-                            <svg class="w-12 h-12 text-primary animate-pulse" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                            </svg>
-                        </div>
+
+                        <img src="{{ asset('images/brand/pelindo.png') }}" alt="Pelindo Logo"
+                            class="w-96 h-fit object-cover">
                         <!-- Floating particles -->
                         <div class="absolute -top-2 -right-2 w-4 h-4 bg-primary rounded-full opacity-60 animate-ping">
                         </div>

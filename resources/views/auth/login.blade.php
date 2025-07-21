@@ -16,9 +16,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-50 font-sans antialiased min-h-screen">
-    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-md w-full space-y-6">
+<body class="font-sans antialiased min-h-screen relative overflow-hidden">
+    <!-- Full Screen Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://www.pelindo.co.id/uploads/slider/Go2YEqT9UGXPsodhDzN5DSF3ELB2uz7kIeVwjajK.jpg"
+            alt="Pelindo Background" class="w-full h-full object-cover">
+        <!-- Dark overlay for better text readability -->
+        <div class="absolute inset-0 bg-black/60"></div>
+        <!-- Additional gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/60"></div>
+    </div>
+
+    <div class="relative z-10 min-h-screen flex items-center justify-center py-8 px-2 sm:px-4 lg:px-6">
+        <div class="max-w-sm w-full space-y-6">
             <!-- Logo and Header -->
             <div class="text-center">
                 <div class="flex justify-center mb-4">
@@ -46,8 +56,8 @@
                 </div>
 
                 <div class="mb-6">
-                    <h1 class="text-3xl font-bold text-gray-900 mb-1 tracking-tight">PelindoTrack</h1>
-                    <p class="text-lg font-semibold text-primabg-primary uppercase tracking-wide">Sistem Manajemen</p>
+                    <h1 class="text-3xl font-bold text-white mb-1 tracking-tight">PelindoTrack</h1>
+                    <p class="text-lg font-semibold text-gray-100 uppercase tracking-wide">Sistem Manajemen</p>
                     <p class="text-slate-400 text-sm mt-4">Masuk ke akun Anda untuk melanjutkan</p>
                 </div>
             </div>
@@ -90,23 +100,22 @@
             @endif
 
             <!-- Login Form -->
-            <div
-                class="bg-gradient-to-br from-slate-800/60 to-slate-700/60 backdrop-blur-sm rounded-3xl p-8 border border-slate-600/30 shadow-2xl">
+            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 border border-white/40 shadow-2xl shadow-black/50">
                 <form method="POST" action="{{ route('login') }}" class="space-y-6">
                     @csrf
 
                     <!-- Email Field -->
                     <div>
-                        <label for="email" class="block text-sm font-semibold text-slate-300 mb-3">
-                            Alamat Email
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-3">
+                            Email Pengguna
                         </label>
                         <div class="relative">
                             <input type="email" id="email" name="email" value="{{ old('email') }}"
-                                placeholder="Masukkan alamat email Anda"
-                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-primabg-primary focus:ring-4 focus:ring-primabg-primary/20 transition-all duration-200 {{ $errors->has('email') ? '!border-red-500' : '' }}"
+                                placeholder="Masukkan email pengguna"
+                                class="w-full px-5 py-4 bg-white/10 backdrop-blur-sm border-2 border-gray-700/80 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-400/20 transition-all duration-200 {{ $errors->has('email') ? '!border-red-400' : '' }}"
                                 required autocomplete="email" autofocus>
                             <div class="absolute inset-y-0 right-0 flex items-center pr-5">
-                                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor"
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -117,16 +126,16 @@
 
                     <!-- Password Field -->
                     <div>
-                        <label for="password" class="block text-sm font-semibold text-slate-300 mb-3">
-                            Kata Sandi
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-3">
+                            Password
                         </label>
                         <div class="relative">
-                            <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda"
-                                class="w-full px-5 py-4 bg-slate-800/50 border-2 border-slate-600 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-primabg-primary focus:ring-4 focus:ring-primabg-primary/20 transition-all duration-200 {{ $errors->has('password') ? '!border-red-500' : '' }}"
+                            <input type="password" id="password" name="password" placeholder="Masukkan password"
+                                class="w-full px-5 py-4 bg-white/10 backdrop-blur-sm border-2 border-gray-700/80 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-400/20 transition-all duration-200 {{ $errors->has('password') ? '!border-red-500' : '' }}"
                                 required autocomplete="current-password">
                             <div class="absolute inset-y-0 right-0 flex items-center pr-5">
                                 <button type="button" onclick="togglePassword()"
-                                    class="text-slate-400 hover:text-white transition-colors duration-200">
+                                    class="text-gray-400 hover:text-gray-700 transition-colors duration-200">
                                     <svg id="show-password" class="w-5 h-5" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -147,10 +156,15 @@
                     <!-- Remember Me -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <input type="checkbox" id="remember" name="remember"
-                                class="w-4 h-4 text-primabg-primary bg-slate-700 border-slate-600 rounded focus:ring-primabg-primary focus:ring-2">
-                            <label for="remember" class="ml-3 text-sm text-slate-300">
-                                Ingat saya
+                            <label for="remember" class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="remember" name="remember" class="sr-only peer">
+                                <div
+                                    class="w-10 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-500 transition-colors duration-200">
+                                </div>
+                                <div
+                                    class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow peer-checked:translate-x-4 transition-transform duration-200">
+                                </div>
+                                <span class="ml-4 text-sm text-gray-700 select-none">Ingat saya</span>
                             </label>
                         </div>
 
@@ -164,7 +178,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-primabg-primary via-purple-600 to-indigo-600 hover:from-primabg-primary hover:via-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 transform hover:scale-[1.02] hover:shadow-2xl hover:shadow-primabg-primary/25 focus:outline-none focus:ring-4 focus:ring-primabg-primary/50">
+                        class="w-full px-6 py-4 bg-primary hover:bg-primary/90 text-white font-semibold rounded-2xl transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-primary/20">
                         <div class="flex items-center justify-center">
                             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -178,7 +192,7 @@
                 <!-- Additional Actions -->
                 <div class="mt-8 pt-8 border-t border-slate-600/30">
                     <div class="text-center">
-                        <p class="text-slate-400 text-sm mb-4">Akses Cepat</p>
+                        <p class="text-slate-700 text-sm mb-4">Akses Cepat</p>
                         <div class="flex justify-center space-x-4">
                             <a href="{{ route('containers.track') }}"
                                 class="inline-flex items-center px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white text-sm font-medium rounded-xl transition-all duration-200 transform hover:scale-105">
@@ -194,7 +208,7 @@
             </div>
 
             <!-- Demo Info -->
-            <div
+            {{-- <div
                 class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-2xl p-4 mt-6">
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-amber-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
@@ -211,18 +225,18 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="fixed bottom-0 left-0 right-0 bg-slate-800/30 border-t border-slate-700 backdrop-blur-sm">
+    {{-- <footer class="fixed bottom-0 left-0 right-0 bg-slate-800/30 border-t border-slate-700 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="text-center text-slate-400 text-sm">
                 <p>&copy; {{ date('Y') }} Sistem Manajemen PetikemasQ. Hak cipta dilindungi.</p>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 
     <script>
         function togglePassword() {

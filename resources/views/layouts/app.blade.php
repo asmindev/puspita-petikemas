@@ -17,10 +17,10 @@
 </head>
 
 <body class="bg-white font-sans antialiased">
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden relative">
         <!-- Enhanced Sticky Sidebar -->
         <aside id="sidebar"
-            class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 border-r border-gray-200 flex flex-col">
+            class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-xl transform -translate-x-full transition-all duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 border-r border-gray-200 flex flex-col sidebar-expanded">
             <div class="w-full flex flex-col h-full overflow-hidden">
 
                 <!-- Logo Section - Fixed at top -->
@@ -78,7 +78,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <span class="font-semibold text-sm">Beranda</span>
-                                        <p class="text-xs text-gray-500 group-hover:text-gray-600">Ikhtisar & Analitik
+                                        <p
+                                            class="text-xs {{ request()->routeIs('dashboard') ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-600' }}">
+                                            Ikhtisar & Analitik
                                         </p>
                                     </div>
                                 </div>
@@ -99,7 +101,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <span class="font-semibold text-sm">JPT</span>
-                                        <p class="text-xs text-gray-500 group-hover:text-gray-600">Kelola Pelanggan</p>
+                                        <p
+                                            class="text-xs  {{ request()->routeIs('customers.*') ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-600' }}">
+                                            Kelola Pelanggan</p>
                                     </div>
                                 </div>
                                 @if(request()->routeIs('customers.*'))
@@ -119,7 +123,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <span class="font-semibold text-sm">Peti Kemas</span>
-                                        <p class="text-xs text-gray-500 group-hover:text-gray-600">Manajemen Peti Kemas
+                                        <p
+                                            class="text-xs {{ request()->routeIs('containers.*') && !request()->routeIs('containers.queue') && !request()->routeIs('containers.penalty-report') ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-600' }}">
+                                            Manajemen Peti Kemas
                                         </p>
                                     </div>
                                 </div>
@@ -141,7 +147,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <span class="font-semibold text-sm">Antrian</span>
-                                        <p class="text-xs text-gray-500 group-hover:text-gray-600">FCFS + Prioritas</p>
+                                        <p
+                                            class="text-xs {{ request()->routeIs('containers.queue') ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-600' }}">
+                                            FCFS + Prioritas</p>
                                     </div>
                                 </div>
                                 @if(request()->routeIs('containers.queue'))
@@ -161,7 +169,9 @@
                                     </div>
                                     <div class="ml-3">
                                         <span class="font-semibold text-sm">Laporan Denda</span>
-                                        <p class="text-xs text-gray-500 group-hover:text-gray-600">Denda Delivery</p>
+                                        <p
+                                            class="text-xs {{ request()->routeIs('containers.penalty-report') ? 'text-gray-200' : 'text-gray-500 group-hover:text-gray-600' }}">
+                                            Denda Delivery</p>
                                     </div>
                                 </div>
                                 @if(request()->routeIs('containers.penalty-report'))
@@ -202,7 +212,7 @@
         <div id="sidebar-overlay" class="fixed inset-0 bg-gray-600 bg-opacity-75 z-40 lg:hidden hidden"></div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col w-full overflow-hidden">
+        <div class="flex-1 flex flex-col w-full overflow-hidden transition-all duration-300 ease-in-out" id="mainContent">
             <!-- Enhanced Header -->
             <header class="py-2 bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 flex-shrink-0">
                 <div class="flex items-center justify-between h-14 px-3 sm:px-4 lg:px-6">
@@ -212,6 +222,20 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        <!-- Tombol toggle sidebar untuk desktop -->
+                        <button id="toggleDesktopSidebar"
+                            class="hidden lg:block p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all duration-200 transform hover:scale-110 mr-2 relative h-10 w-10"
+                            title="Toggle sidebar">
+                            <svg class="w-5 h-5 toggle-open absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                            </svg>
+                            <svg class="w-5 h-5 toggle-close absolute" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 5l7 7-7 7M5 5l7 7-7 7" />
                             </svg>
                         </button>
                         <div class="ml-2 sm:ml-4 lg:ml-0">
@@ -350,23 +374,75 @@
         openSidebar.addEventListener('click', () => {
             sidebar.classList.remove('-translate-x-full');
             overlay.classList.remove('hidden');
+            sidebar.classList.add('sidebar-expanded');
+            localStorage.setItem('sidebarExpanded', 'true');
         });
 
         closeSidebar.addEventListener('click', () => {
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
+            sidebar.classList.remove('sidebar-expanded');
+            localStorage.setItem('sidebarExpanded', 'false');
         });
 
         overlay.addEventListener('click', () => {
             sidebar.classList.add('-translate-x-full');
             overlay.classList.add('hidden');
         });
+
+        // Desktop sidebar toggle
+        const toggleDesktopSidebar = document.getElementById('toggleDesktopSidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        // Check if sidebar state is saved in localStorage
+        const sidebarState = localStorage.getItem('sidebarExpanded');
+        // Default to expanded if no state is saved
+        const shouldCollapse = sidebarState === 'false';
+        
+        if (shouldCollapse) {
+            document.documentElement.classList.add('sidebar-hidden');
+            sidebar.classList.remove('sidebar-expanded', 'lg:translate-x-0');
+            sidebar.classList.add('-translate-x-full');
+            mainContent.classList.add('sidebar-collapsed');
+        }
+
+        // Sidebar toggle setup complete        // Initial state setup
+        const isExpanded = sidebarState !== 'false';
+        
+        // Add sidebar-hidden class to html element if sidebar is collapsed
+        if (!isExpanded) {
+            document.documentElement.classList.add('sidebar-hidden');
+        }
+
+        toggleDesktopSidebar.addEventListener('click', () => {
+            const isSidebarExpanded = !document.documentElement.classList.contains('sidebar-hidden');
+            
+            if (isSidebarExpanded) {
+                // Collapse sidebar
+                document.documentElement.classList.add('sidebar-hidden');
+                sidebar.classList.remove('sidebar-expanded', 'lg:translate-x-0');
+                sidebar.classList.add('-translate-x-full');
+                mainContent.classList.add('sidebar-collapsed');
+                localStorage.setItem('sidebarExpanded', 'false');
+            } else {
+                // Expand sidebar
+                document.documentElement.classList.remove('sidebar-hidden');
+                sidebar.classList.add('sidebar-expanded', 'lg:translate-x-0');
+                sidebar.classList.remove('-translate-x-full');
+                mainContent.classList.remove('sidebar-collapsed');
+                localStorage.setItem('sidebarExpanded', 'true');
+            }
+        });
     </script>
 
     <style>
         .nav-link {
             @apply flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200;
-            @apply text-gray-600 hover: text-gray-900 hover:bg-gray-100;
+            @apply text-gray-600 hover: bg-gray-100;
+        }
+
+        .nav-link:hover {
+            @apply text-gray-900;
         }
 
         .nav-link.active {
@@ -375,6 +451,87 @@
 
         .nav-link.active svg {
             @apply text-primary;
+        }
+
+        /* Sidebar animation & collapse styles */
+        #sidebar {
+            @apply transition-all duration-300 ease-in-out;
+            transition-property: transform, width, margin, opacity, visibility;
+        }
+
+        .sidebar-collapsed #toggleDesktopSidebar {
+            @apply ml-0;
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar-collapsed {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .sidebar-hidden #sidebar {
+                position: absolute !important;
+                transform: translateX(-16rem) !important;
+                width: 0 !important;
+                visibility: hidden;
+                overflow: hidden;
+                opacity: 0;
+            }
+
+            .sidebar-hidden #mainContent {
+                margin-left: 0;
+                width: 100% !important;
+            }
+            
+            #sidebar.sidebar-expanded {
+                position: static !important;
+                width: 16rem !important;
+                transform: none !important;
+                visibility: visible;
+                opacity: 1;
+            }
+
+            /* Icon animation for sidebar toggle */
+            #toggleDesktopSidebar {
+                position: relative;
+            }
+
+            .toggle-open,
+            .toggle-close {
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* Add smooth animation to the toggle icon */
+            #toggleDesktopSidebar .toggle-open,
+            #toggleDesktopSidebar .toggle-close {
+                position: absolute;
+                inset: 0;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.3s ease-in-out;
+            }
+            
+            .sidebar-hidden #toggleDesktopSidebar .toggle-open {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .sidebar-hidden #toggleDesktopSidebar .toggle-close {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            #toggleDesktopSidebar .toggle-open {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            #toggleDesktopSidebar .toggle-close {
+                opacity: 0;
+                visibility: hidden;
+            }
         }
 
         /* Custom scrollbar styles */

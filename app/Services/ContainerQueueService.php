@@ -140,15 +140,17 @@ class ContainerQueueService
     protected function sortByPriorityAndFCFS(Collection $containers): Collection
     {
         return $containers->sort(function ($a, $b) {
-            // First, compare by priority (High priority first)
+            // pertama, bandingkan berdasarkan prioritas (Prioritas Tinggi terlebih dahulu)
+            // jika prioritas tidak ditemukan, gunakan nilai default 999,  menggunnakan 999 karena angka 999 adalah nilai yang sangat besar,
+            // sehingga semua prioritas yang tidak terdefinisi akan dianggap sebagai prioritas terendah
             $priorityA = self::PRIORITY_ORDER[$a->priority] ?? 999;
             $priorityB = self::PRIORITY_ORDER[$b->priority] ?? 999;
 
+            // jika prioritas tidak sama, kembalikan perbandingan prioritas
             if ($priorityA !== $priorityB) {
                 return $priorityA <=> $priorityB;
             }
-
-            // If same priority, use FCFS (earliest entry_date first)
+            // Jika prioritas sama (termasuk `999`), bandingkan berdasarkan entry_date (FCFS)
             $entryDateA = $a->entry_date ? $a->entry_date->timestamp : 0;
             $entryDateB = $b->entry_date ? $b->entry_date->timestamp : 0;
 

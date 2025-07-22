@@ -212,7 +212,8 @@
         <div id="sidebar-overlay" class="fixed inset-0 bg-gray-600 bg-opacity-75 z-40 lg:hidden hidden"></div>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col w-full overflow-hidden transition-all duration-300 ease-in-out" id="mainContent">
+        <div class="flex-1 flex flex-col w-full overflow-hidden transition-all duration-300 ease-in-out"
+            id="mainContent">
             <!-- Enhanced Header -->
             <header class="py-2 bg-white shadow-sm border-b border-gray-200 sticky top-0 z-30 flex-shrink-0">
                 <div class="flex items-center justify-between h-14 px-3 sm:px-4 lg:px-6">
@@ -228,7 +229,8 @@
                         <button id="toggleDesktopSidebar"
                             class="hidden lg:block p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-all duration-200 transform hover:scale-110 mr-2 relative h-10 w-10"
                             title="Toggle sidebar">
-                            <svg class="w-5 h-5 toggle-open absolute" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <svg class="w-5 h-5 toggle-open absolute" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                             </svg>
@@ -398,7 +400,7 @@
         const sidebarState = localStorage.getItem('sidebarExpanded');
         // Default to expanded if no state is saved
         const shouldCollapse = sidebarState === 'false';
-        
+
         if (shouldCollapse) {
             document.documentElement.classList.add('sidebar-hidden');
             sidebar.classList.remove('sidebar-expanded', 'lg:translate-x-0');
@@ -408,7 +410,7 @@
 
         // Sidebar toggle setup complete        // Initial state setup
         const isExpanded = sidebarState !== 'false';
-        
+
         // Add sidebar-hidden class to html element if sidebar is collapsed
         if (!isExpanded) {
             document.documentElement.classList.add('sidebar-hidden');
@@ -416,7 +418,7 @@
 
         toggleDesktopSidebar.addEventListener('click', () => {
             const isSidebarExpanded = !document.documentElement.classList.contains('sidebar-hidden');
-            
+
             if (isSidebarExpanded) {
                 // Collapse sidebar
                 document.documentElement.classList.add('sidebar-hidden');
@@ -482,7 +484,7 @@
                 margin-left: 0;
                 width: 100% !important;
             }
-            
+
             #sidebar.sidebar-expanded {
                 position: static !important;
                 width: 16rem !important;
@@ -512,7 +514,7 @@
                 justify-content: center;
                 transition: opacity 0.3s ease-in-out;
             }
-            
+
             .sidebar-hidden #toggleDesktopSidebar .toggle-open {
                 opacity: 0;
                 visibility: hidden;
@@ -522,12 +524,12 @@
                 opacity: 1;
                 visibility: visible;
             }
-            
+
             #toggleDesktopSidebar .toggle-open {
                 opacity: 1;
                 visibility: visible;
             }
-            
+
             #toggleDesktopSidebar .toggle-close {
                 opacity: 0;
                 visibility: hidden;

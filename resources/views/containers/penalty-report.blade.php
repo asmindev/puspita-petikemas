@@ -24,14 +24,14 @@
                 <div class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
                 {{ $stats['total_containers'] }} Total Container
             </div>
-            <div class="flex items-center text-red-600">
+            {{-- <div class="flex items-center text-red-600">
                 <div class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $stats['containers_with_penalty'] }} Bermasalah
-            </div>
-            <div class="flex items-center text-orange-600">
+            </div> --}}
+            {{-- <div class="flex items-center text-orange-600">
                 <div class="w-2 h-2 bg-orange-400 rounded-full mr-2 animate-pulse"></div>
                 Rp {{ number_format($stats['total_penalty_amount'], 0, ',', '.') }}
-            </div>
+            </div> --}}
             <div class="flex items-center text-green-600">
                 <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $containers->count() }} Ditampilkan

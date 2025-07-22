@@ -9,10 +9,10 @@
     <div class="mb-8">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Manajemen Antrian Peti Kemas</h1>
+                <h1 class="text-2xl sm:text-3xl font-bold text-gray-50 mb-2">Manajemen Antrian Peti Kemas</h1>
                 <div class="flex items-center space-x-2">
                     <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
-                    <p class="text-gray-600 text-sm">Algoritma Penjadwalan FCFS + Prioritas</p>
+                    <p class="text-gray-300 text-sm">Algoritma Penjadwalan FCFS + Prioritas</p>
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-3">

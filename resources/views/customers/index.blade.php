@@ -28,10 +28,10 @@
                 <div class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 {{ $customers->sum('containers_count') }} Total Peti Kemas
             </div>
-            <div class="flex items-center text-red-600">
+            {{-- <div class="flex items-center text-red-600">
                 <div class="w-2 h-2 bg-red-400 rounded-full mr-2 animate-pulse"></div>
                 Rp {{ number_format($customers->sum('total_penalty') ?? 0, 0, ',', '.') }} Total Denda
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="mt-4 lg:mt-0">

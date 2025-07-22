@@ -27,7 +27,15 @@
             </div>
             <div class="ml-4">
                 <h1 class="text-xl font-bold text-gray-900 mb-1">{{ $container->container_number }}</h1>
-                <p class="text-gray-600 text-sm font-medium">{{ $container->customer->name ?? 'Tidak Ada Pelanggan' }}
+                <div
+                    class="text-gray-600 text-xs font-medium bg-blue-100 rounded-lg px-2 py-1 w-fit border border-blue-200">
+                    {{-- create link to customer --}}
+                    <a href="{{ route('customers.show', $container->customer) }}"
+                        class="text-blue-600 hover:underline">{{ $container->customer->name ?? 'Tidak Ada Pelanggan'
+                        }}</a>
+                </div>
+                {{-- <p class="text-gray-600 text-sm font-medium">{{ $container->customer->name ?? 'Tidak Ada Pelanggan'
+                    }} --}}
                 </p>
                 <div class="flex items-center space-x-2 mt-2">
                     <span class="inline-flex items-center px-3 py-1.5 rounded-xl text-sm font-bold border

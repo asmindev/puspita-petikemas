@@ -29,9 +29,9 @@
                     <div class="flex items-center group">
                         <div class="relative">
                             <div
-                                class="size-10 bg-primary rounded-lg flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                                class="size-10  rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                                 <!-- Try to load PNG logo first -->
-                                <img src="{{ asset('images/brand/logo.jpeg') }}" alt="PelindoTrack Logo"
+                                <img src="{{ asset('images/brand/pelindo-logo.png') }}" alt="PelindoTrack Logo"
                                     class="w-full h-full object-cover"
                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
 
@@ -45,9 +45,9 @@
                         </div>
                         <div class="ml-3">
                             <span class="text-lg font-bold text-gray-900 block tracking-tight">PelindoTrack</span>
-                            <span
+                            {{-- <span
                                 class="text-xs font-semibold text-primary uppercase tracking-wide bg-blue-50 px-2 py-0.5 rounded">Manajemen
-                                Pro</span>
+                                Pro</span> --}}
                         </div>
                     </div>
                     <button id="closeSidebar"
@@ -177,8 +177,7 @@
                     <div class="bg-gray-50 rounded-lg p-3 border border-gray-200 shadow-sm">
                         <div class="flex items-center">
                             <div class="relative">
-                                <div
-                                    class="w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-sm">
+                                <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center shadow-sm">
                                     <span class="text-white text-xs font-bold">A</span>
                                 </div>
                                 <div
@@ -287,45 +286,53 @@
             </header>
 
             <!-- Page Content -->
-            <main class="flex-1 overflow-y-auto bg-gray-50 min-h-0">
-                @if(session('success'))
-                <div class="mx-3 sm:mx-6 lg:mx-8 mt-4">
-                    <div
-                        class="bg-green-50 border border-green-200 text-green-800 px-4 sm:px-6 py-3 rounded-lg flex items-center shadow-sm">
-                        <svg class="w-5 h-5 mr-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span class="font-medium">{{ session('success') }}</span>
-                    </div>
-                </div>
-                @endif
-
-                @if($errors->any())
-
-                <div class="mx-3 sm:mx-6 lg:mx-8 mt-4">
-                    <div class="bg-red-50 border border-red-200 text-red-800 px-4 sm:px-6 py-3 rounded-lg shadow-sm">
-                        <div class="flex items-start">
-                            <svg class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 text-red-600" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
+            <main
+                class="flex-1 overflow-y-auto bg-gray-5 w-full bg-[url('https://www.pelindo.co.id/uploads/slider/Go2YEqT9UGXPsodhDzN5DSF3ELB2uz7kIeVwjajK.jpg')] bg-cover bg-top min-h-0 relative">
+                <!-- Tambahkan overlay hitam semi-transparan -->
+                <div class="absolute inset-0 bg-black/50"></div>
+                <!-- Konten utama dengan z-index untuk berada di atas overlay -->
+                <div class="relative z-10 w-full h-full">
+                    @if(session('success'))
+                    <div class="mx-3 sm:mx-6 lg:mx-8 mt-4">
+                        <div
+                            class="bg-green-50 border border-green-200 text-green-800 px-4 sm:px-6 py-3 rounded-lg flex items-center shadow-sm">
+                            <svg class="w-5 h-5 mr-3 text-green-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <div>
-                                <p class="font-medium">Silakan perbaiki kesalahan berikut:</p>
-                                <ul class="mt-2 list-disc list-inside text-sm space-y-1">
-                                    @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <span class="font-medium">{{ session('success') }}</span>
+                        </div>
+                    </div>
+                    @endif
+
+                    @if($errors->any())
+
+                    <div class="mx-3 sm:mx-6 lg:mx-8 mt-4">
+                        <div
+                            class="bg-red-50 border border-red-200 text-red-800 px-4 sm:px-6 py-3 rounded-lg shadow-sm">
+                            <div class="flex items-start">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 text-red-600" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div>
+                                    <p class="font-medium">Silakan perbaiki kesalahan berikut:</p>
+                                    <ul class="mt-2 list-disc list-inside text-sm space-y-1">
+                                        @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endif
+                    @endif
 
-                <div class="p-3 sm:p-4 lg:p-6 w-full">
-                    @yield('content')
+                    <div class="p-3 sm:p-4 lg:p-6 w-full">
+                        @yield('content')
+                    </div>
                 </div>
             </main>
         </div>

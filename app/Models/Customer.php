@@ -12,6 +12,7 @@ class Customer extends Model
     protected $fillable = [
         'name',
         'container_count',
+        'pin',
     ];
 
     /**

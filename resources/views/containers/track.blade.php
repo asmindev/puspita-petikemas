@@ -77,13 +77,31 @@
                     <div class="relative">
                         <input type="text" id="container_number" name="container_number"
                             value="{{ old('container_number', request('container_number')) }}"
-                            placeholder="Masukkan nomor peti kemas (contoh: CONT001, CONT002)"
+                            placeholder="Masukkan nomor peti kemas"
                             class="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 text-lg"
                             required>
                         <div class="absolute inset-y-0 right-0 flex items-center pr-6">
                             <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <label for="pin" class="block text-sm font-semibold text-gray-700 mb-3">
+                        PIN Keamanan
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="pin" name="pin" value="{{ old('pin') }}"
+                            placeholder="Masukkan PIN keamanan Anda"
+                            class="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 text-lg"
+                            required>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-6">
+                            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
                         </div>
                     </div>
@@ -503,7 +521,7 @@
         @endif
 
         <!-- Quick Examples -->
-        @if(!isset($container))
+        {{-- @if(!isset($container))
         <div class="max-w-4xl mx-auto mt-16">
             <div class="text-center mb-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Butuh bantuan menemukan peti kemas Anda?</h2>
@@ -523,7 +541,7 @@
                 @endforeach
             </div>
         </div>
-        @endif
+        @endif --}}
     </main>
 
     <!-- Footer -->

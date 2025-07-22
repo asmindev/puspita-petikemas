@@ -114,10 +114,16 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'pin' => 'required|string|size:6|regex:/^[0-9]+$/',
+        ], [
+            'pin.required' => 'PIN keamanan harus diisi.',
+            'pin.size' => 'PIN keamanan harus terdiri dari 6 digit.',
+            'pin.regex' => 'PIN keamanan hanya boleh berisi angka.'
         ]);
 
         Customer::create([
             'name' => $request->name,
+            'pin' => $request->pin,
             'container_count' => 0,
         ]);
 
@@ -140,10 +146,16 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'pin' => 'required|string|size:6|regex:/^[0-9]+$/',
+        ], [
+            'pin.required' => 'PIN keamanan harus diisi.',
+            'pin.size' => 'PIN keamanan harus terdiri dari 6 digit.',
+            'pin.regex' => 'PIN keamanan hanya boleh berisi angka.'
         ]);
 
         $customer->update([
             'name' => $request->name,
+            'pin' => $request->pin,
         ]);
 
         return redirect()->route('customers.index')

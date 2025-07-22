@@ -468,5 +468,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@test.com',
             'password' => Hash::make('123'),
         ]);
+
+        // Run the CustomerPinSeeder to add PINs to customers
+        $this->call(CustomerPinSeeder::class);
     }
 }

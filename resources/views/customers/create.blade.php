@@ -93,6 +93,58 @@
                     </div>
                 </div>
 
+                <!-- PIN Field -->
+                <div class="group mt-6">
+                    <label for="pin" class="block text-lg font-bold text-gray-900 mb-4">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-amber-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                            PIN Keamanan *
+                        </div>
+                    </label>
+                    <div class="relative">
+                        <input type="text" name="pin" id="pin" value="{{ old('pin', rand(100000, 999999)) }}"
+                            class="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300 text-lg font-medium @error('pin') border-red-500 focus:ring-red-500/20 focus:border-red-500 @enderror"
+                            placeholder="Masukkan PIN keamanan (6 digit)" maxlength="6" pattern="[0-9]{6}" required>
+                        <div
+                            class="absolute inset-0 rounded-2xl bg-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                        </div>
+                        @if(!$errors->has('pin'))
+                        <div class="absolute right-4 top-1/2 transform -translate-y-1/2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        @endif
+                    </div>
+                    @error('pin')
+                    <div class="mt-3 p-4 bg-red-50 border border-red-200 rounded-xl">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <p class="text-red-600 font-medium">{{ $message }}</p>
+                        </div>
+                    </div>
+                    @enderror
+                    <div class="mt-3 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            PIN ini akan digunakan untuk verifikasi saat pelanggan melacak peti kemas
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Additional Info Section -->
                 <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
                     <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">

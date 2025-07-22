@@ -397,13 +397,18 @@ class ContainerController extends Controller
     {
         $request->validate([
             'container_number' => 'required|string|max:255',
+            'pin' => 'required|string|max:255',
         ], [
             'container_number.required' => 'Nomor kontainer harus diisi.',
             'container_number.string' => 'Nomor kontainer harus berupa teks.',
             'container_number.max' => 'Nomor kontainer maksimal 255 karakter.',
+            'pin.required' => 'PIN keamanan harus diisi.',
+            'pin.string' => 'PIN keamanan harus berupa teks.',
+            'pin.max' => 'PIN keamanan maksimal 255 karakter.',
         ]);
 
         $containerNumber = $request->input('container_number');
+        $pin = $request->input('pin');
 
         $container = Container::with('customer')
             ->where('container_number', $containerNumber)
@@ -412,7 +417,14 @@ class ContainerController extends Controller
         if (!$container) {
             return redirect()->back()
                 ->withInput()
-                ->with('error', 'Container not found with number: ' . $containerNumber);
+                ->with('error', 'Container tidak ditemukan dengan nomor: ' . $containerNumber);
+        }
+
+        // Verifikasi PIN customer
+        if (!$container->customer || $container->customer->pin !== $pin) {
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'PIN keamanan tidak valid untuk kontainer ini.');
         }
 
         // Calculate queue position and estimated time based on real data

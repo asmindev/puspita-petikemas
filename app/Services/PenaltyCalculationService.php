@@ -179,7 +179,7 @@ class PenaltyCalculationService
         }
 
         $penaltyDays = $exitDate->diffInDays($today);
-        $containerType = $container->type ?? '20ft';
+        $containerType = $container->type ?? '20ft';  // Jika type tidak ada, default ke 20ft
 
         // Set tarif berdasarkan type container
         if ($containerType === '40ft') {
@@ -192,6 +192,7 @@ class PenaltyCalculationService
             $masa2Rate = 15200;    // Rp.15.200/hari
         }
 
+        // Inisialisasi variabel untuk periode saat ini
         $currentAmount = 0;
         $currentPeriod = '';
         $currentResponsible = '';

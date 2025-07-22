@@ -16,9 +16,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased min-h-screen relative overflow-hidden">
+<body class="font-sans antialiased min-h-screen relative overflow-y-auto">
     <!-- Full Screen Background Image -->
-    <div class="absolute inset-0 z-0">
+    <div class="fixed inset-0 z-0">
         <img src="https://www.pelindo.co.id/uploads/slider/Go2YEqT9UGXPsodhDzN5DSF3ELB2uz7kIeVwjajK.jpg"
             alt="Pelindo Background" class="w-full h-full object-cover">
         <!-- Dark overlay for better text readability -->
@@ -27,8 +27,8 @@
         <div class="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-transparent to-slate-900/60"></div>
     </div>
 
-    <div class="relative z-10 min-h-screen flex items-center justify-center py-8 px-2 sm:px-4 lg:px-6">
-        <div class="max-w-sm w-full space-y-6">
+    <div class="relative z-10 min-h-screen flex items-center justify-center py-12 px-2 sm:px-4 lg:px-6">
+        <div class="max-w-sm w-full space-y-6 my-8">
             <!-- Logo and Header -->
             <div class="text-center">
                 <div class="flex justify-center mb-4">
@@ -100,7 +100,8 @@
             @endif
 
             <!-- Login Form -->
-            <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 border border-white/40 shadow-2xl shadow-black/50">
+            <div
+                class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 border border-white/40 shadow-2xl shadow-black/50 mx-auto max-w-sm">
                 <form method="POST" action="{{ route('login') }}" class="space-y-6">
                     @csrf
 
@@ -264,6 +265,23 @@
                     document.getElementById('password').value = 'password';
                 });
             }
+
+            // Pastikan scroll berfungsi dengan benar
+            document.documentElement.style.height = '100%';
+            document.body.style.minHeight = '100%';
+
+            // Menangani masalah viewport pada perangkat mobile
+            function adjustViewport() {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+
+            // Jalankan sekali saat halaman dimuat
+            adjustViewport();
+
+            // Dan setiap kali ukuran jendela berubah
+            window.addEventListener('resize', adjustViewport);
+            window.addEventListener('orientationchange', adjustViewport);
         });
     </script>
 
@@ -297,6 +315,34 @@
             90% {
                 transform: translate3d(0, -1px, 0);
             }
+        }
+
+        /* Pastikan untuk menambahkan padding pada body untuk menghindari konten tertutup oleh fixed footer */
+        body {
+            padding-bottom: env(safe-area-inset-bottom, 1rem);
+            min-height: 100vh;
+        }
+
+        /* Perbaikan untuk perangkat mobile */
+        @media (max-height: 700px) {
+            .flex.items-center.justify-center {
+                align-items: flex-start;
+                padding-top: 2rem;
+            }
+        }
+
+        /* Gunakan viewport height custom untuk menangani masalah mobile */
+        .min-h-screen {
+            min-height: 100vh;
+            /* Fallback */
+            min-height: calc(var(--vh, 1vh) * 100);
+        }
+
+        /* Pastikan konten dapat di-scroll */
+        html,
+        body {
+            height: auto;
+            overflow-y: auto;
         }
     </style>
 </body>

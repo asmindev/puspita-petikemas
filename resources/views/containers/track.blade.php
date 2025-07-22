@@ -94,7 +94,7 @@
                         PIN Keamanan
                     </label>
                     <div class="relative">
-                        <input type="password" id="pin" name="pin" value="{{ old('pin') }}"
+                        <input type="text" id="pin" name="pin" value="{{ old('pin') }}"
                             placeholder="Masukkan PIN keamanan Anda"
                             class="w-full px-6 py-4 bg-white border-2 border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-200 text-lg"
                             required>
